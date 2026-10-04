@@ -29,3 +29,27 @@ time="2026-10-04T13:12:08-04:00" level=info msg="[hostagent] Waiting for the fin
 time="2026-10-04T13:12:08-04:00" level=info msg="[hostagent] Time sync: guest agent is alive, starting time synchronization"
 time="2026-10-04T13:12:08-04:00" level=info msg="[hostagent] Not forwarding TCP 0.0.0.0:22"
 time="2026-10-04T13:12:08-04:00" level=info msg="[hostagent] Not forwarding TCP [::]:22"
+time="2026-10-04T13:12:13-04:00" level=info msg="[hostagent] Time sync: guest clock adjusted (was 222ms off)"
+time="2026-10-04T13:12:14-04:00" level=info msg="[hostagent] The final requirement 1 of 1 is satisfied"
+time="2026-10-04T13:12:14-04:00" level=info msg="READY. Run `limactl shell colima-inspect-comparison` to open the shell."
+installing: 386 OK
+installing: amd64 OK
+{
+  "supported": [
+    "linux/arm64",
+    "linux/amd64",
+    "linux/386"
+  ],
+  "emulators": [
+    "python3.12",
+    "qemu-i386",
+    "qemu-x86_64"
+  ]
+}
+time="2026-10-04T13:12:15-04:00" level=info msg="provisioning ..." context=docker
+colima-inspect-comparison
+Successfully created context "colima-inspect-comparison"
+colima-inspect-comparison
+Current context is now "colima-inspect-comparison"
+time="2026-10-04T13:12:16-04:00" level=info msg="starting ..." context=docker
+time="2026-10-04T13:12:16-04:00" level=info msg=done
