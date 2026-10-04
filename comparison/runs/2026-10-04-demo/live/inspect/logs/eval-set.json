@@ -1,0 +1,44 @@
+{
+  "eval_set_id": "VBuihVQoxYZ2uijEmHJF2u",
+  "tasks": [
+    {
+      "name": "coding_repair",
+      "task_id": "f4ZrrXtmsaSxmnHcMNdW4J",
+      "task_file": "comparison/inspect_runner.py",
+      "task_args": {
+        "case_id": "slug",
+        "compose_file": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/live/inspect/compose.yaml",
+        "output_dir": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/live/inspect/records"
+      },
+      "model": "openai/gpt-4o-mini-2024-07-18",
+      "model_args": {},
+      "sequence": 0
+    },
+    {
+      "name": "coding_repair",
+      "task_id": "4TP8NePSagMjBFuVh7EcCj",
+      "task_file": "comparison/inspect_runner.py",
+      "task_args": {
+        "case_id": "intervals",
+        "compose_file": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/live/inspect/compose.yaml",
+        "output_dir": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/live/inspect/records"
+      },
+      "model": "openai/gpt-4o-mini-2024-07-18",
+      "model_args": {},
+      "sequence": 1
+    },
+    {
+      "name": "coding_repair",
+      "task_id": "Fe8NKd2p64APgzj8MENzQg",
+      "task_file": "comparison/inspect_runner.py",
+      "task_args": {
+        "case_id": "chunks",
+        "compose_file": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/live/inspect/compose.yaml",
+        "output_dir": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/live/inspect/records"
+      },
+      "model": "openai/gpt-4o-mini-2024-07-18",
+      "model_args": {},
+      "sequence": 2
+    }
+  ]
+}

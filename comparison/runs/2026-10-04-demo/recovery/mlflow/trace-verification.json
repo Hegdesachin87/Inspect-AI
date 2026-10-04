@@ -1,0 +1,29 @@
+[
+  {
+    "trace_id": "tr-6334bc15684d8e7874f93e927cf71e28",
+    "spans": [
+      {
+        "name": "coding_repair",
+        "type": "AGENT"
+      }
+    ]
+  },
+  {
+    "trace_id": "tr-bb3ca3d33cf9827ea9c6ab910cd73508",
+    "spans": [
+      {
+        "name": "coding_repair",
+        "type": "AGENT"
+      }
+    ]
+  },
+  {
+    "trace_id": "tr-7c3d142f9c4bf0865207ebb8f45c75b8",
+    "spans": [
+      {
+        "name": "coding_repair",
+        "type": "AGENT"
+      }
+    ]
+  }
+]

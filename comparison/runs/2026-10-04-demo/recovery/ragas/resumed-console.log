@@ -1,0 +1,2 @@
+Running experiment:   0%|          | 0/2 [00:00<?, ?it/s]Running experiment:  50%|█████     | 1/2 [00:00<00:00,  1.58it/s]Running experiment: 100%|██████████| 2/2 [00:00<00:00,  3.16it/s]
+{"framework": "ragas", "rows": 2, "passed": 2}

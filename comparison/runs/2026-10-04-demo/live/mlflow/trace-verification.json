@@ -1,0 +1,101 @@
+[
+  {
+    "trace_id": "tr-da4e3fe46c9656a6a6edfd1fe5e105c4",
+    "spans": [
+      {
+        "name": "coding_repair",
+        "type": "AGENT"
+      },
+      {
+        "name": "Completions",
+        "type": "CHAT_MODEL"
+      },
+      {
+        "name": "Completions",
+        "type": "CHAT_MODEL"
+      },
+      {
+        "name": "Completions",
+        "type": "CHAT_MODEL"
+      },
+      {
+        "name": "Completions",
+        "type": "CHAT_MODEL"
+      },
+      {
+        "name": "Completions",
+        "type": "CHAT_MODEL"
+      },
+      {
+        "name": "Completions",
+        "type": "CHAT_MODEL"
+      }
+    ]
+  },
+  {
+    "trace_id": "tr-5c7d61936e023f718eb5280ab1d610bb",
+    "spans": [
+      {
+        "name": "coding_repair",
+        "type": "AGENT"
+      },
+      {
+        "name": "Completions",
+        "type": "CHAT_MODEL"
+      },
+      {
+        "name": "Completions",
+        "type": "CHAT_MODEL"
+      },
+      {
+        "name": "Completions",
+        "type": "CHAT_MODEL"
+      },
+      {
+        "name": "Completions",
+        "type": "CHAT_MODEL"
+      },
+      {
+        "name": "Completions",
+        "type": "CHAT_MODEL"
+      },
+      {
+        "name": "Completions",
+        "type": "CHAT_MODEL"
+      }
+    ]
+  },
+  {
+    "trace_id": "tr-8595b0612aa357dce64edd9f5a4e10b8",
+    "spans": [
+      {
+        "name": "coding_repair",
+        "type": "AGENT"
+      },
+      {
+        "name": "Completions",
+        "type": "CHAT_MODEL"
+      },
+      {
+        "name": "Completions",
+        "type": "CHAT_MODEL"
+      },
+      {
+        "name": "Completions",
+        "type": "CHAT_MODEL"
+      },
+      {
+        "name": "Completions",
+        "type": "CHAT_MODEL"
+      },
+      {
+        "name": "Completions",
+        "type": "CHAT_MODEL"
+      },
+      {
+        "name": "Completions",
+        "type": "CHAT_MODEL"
+      }
+    ]
+  }
+]

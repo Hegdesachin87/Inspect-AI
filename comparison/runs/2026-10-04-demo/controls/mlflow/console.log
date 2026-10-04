@@ -1,0 +1,15 @@
+2026/10/04 13:32:25 INFO mlflow.models.evaluation.utils.trace: Auto tracing is temporarily enabled during the model evaluation for computing some metrics and debugging. To disable tracing, call `mlflow.autolog(disable=True)`.
+Evaluating:   0%|          | 0/6 [Elapsed: 00:00, Remaining: ?]Evaluating:  17%|█▋        | 1/6 [Elapsed: 00:00, Remaining: 00:04]Evaluating:  33%|███▎      | 2/6 [Elapsed: 00:01, Remaining: 00:02]Evaluating:  50%|█████     | 3/6 [Elapsed: 00:01, Remaining: 00:01]Evaluating:  67%|██████▋   | 4/6 [Elapsed: 00:01, Remaining: 00:00]Evaluating:  83%|████████▎ | 5/6 [Elapsed: 00:02, Remaining: 00:00]Evaluating: 100%|██████████| 6/6 [Elapsed: 00:02, Remaining: 00:00]Evaluating: 100%|██████████| 6/6 [Elapsed: 00:02, Remaining: 00:00] [predict_fn: 0%, scorers: 100%]Evaluating: 100%|██████████| 6/6 [Elapsed: 00:02, Remaining: 00:00] [predict_fn: 0%, scorers: 100%]
+/Users/ankitsingh/dev/Inspect-AI/comparison/mlflow_runner.py:58: FutureWarning: Parameter 'experiment_ids' is deprecated. Please use 'locations' instead.
+  traces = mlflow.search_traces(experiment_ids=[experiment_id])
+
+✨ Evaluation completed.
+
+Metrics and evaluation results are logged to the MLflow run:
+  Run name: [94mthundering-croc-328[0m
+  Run ID: [94m1da8ee5ccfbf4a0a8be3e2f0b0e4e824[0m
+
+To view the detailed evaluation results with sample-wise scores,
+open the [93m[1mTraces[0m tab in the Run page in the MLflow UI.
+
+{"framework": "mlflow", "rows": 6, "passed": 3}

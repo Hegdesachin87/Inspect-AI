@@ -75,6 +75,10 @@ Report test pass rate, token use and cost, how well each system explains failure
 
 The hypothesis is that Inspect needs less custom execution code for this agent experiment. A result showing that the other tools cover it with similar effort would weaken that claim. For answer-only or RAG experiments, its advantage may remain small.
 
+## Executed comparison
+
+The plan was executed on 2026-10-04. See the [measured results](comparison-results.md) and [reproduction runbook](comparison-runbook.md). All four SDKs graded the same projects identically; Inspect's evaluation-set runner also reused the completed task after process interruption in the tested setup.
+
 ## Review scope
 
 Read both directories' Python files, tutorial README and requirements, all five saved evaluation headers, and the three detailed DeepSeek samples. Checked the upstream README, sandboxing and evaluation-set documentation, ReAct guide, code execution example, and matcher implementation. No paid model calls or new evaluations were run. Existing code, logs, and the conversation transcript were left unchanged.

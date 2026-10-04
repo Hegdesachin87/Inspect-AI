@@ -1,0 +1,4 @@
+2026/10/04 13:36:42 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/10/04 13:36:42 INFO mlflow.store.db.utils: Updating database tables
+2026/10/04 13:36:43 INFO mlflow.models.evaluation.utils.trace: Auto tracing is temporarily enabled during the model evaluation for computing some metrics and debugging. To disable tracing, call `mlflow.autolog(disable=True)`.
+Evaluating:   0%|          | 0/2 [Elapsed: 00:00, Remaining: ?]Evaluating:  50%|█████     | 1/2 [Elapsed: 00:00, Remaining: 00:00]

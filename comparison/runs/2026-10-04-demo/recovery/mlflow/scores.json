@@ -1,0 +1,12 @@
+[
+  {
+    "artifact_id": "intervals",
+    "score": 1.0,
+    "reason": "test_intervals (__main__.RepairTests.test_intervals) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+  },
+  {
+    "artifact_id": "slug",
+    "score": 1.0,
+    "reason": "test_slug (__main__.RepairTests.test_slug) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+  }
+]

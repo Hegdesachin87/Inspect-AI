@@ -1,0 +1,31 @@
+{
+  "eval_set_id": "gfb9T5kM93twk6MUe4Aw4i",
+  "tasks": [
+    {
+      "name": "coding_repair",
+      "task_id": "dBFUbkC5wd8YPLySjsZSSE",
+      "task_file": "comparison/inspect_runner.py",
+      "task_args": {
+        "case_id": "slug",
+        "compose_file": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/compose.yaml",
+        "output_dir": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/records"
+      },
+      "model": "openai/gpt-4o-mini-2024-07-18",
+      "model_args": {},
+      "sequence": 0
+    },
+    {
+      "name": "coding_repair",
+      "task_id": "Nkn34FDHSyesFsqd9i35cv",
+      "task_file": "comparison/inspect_runner.py",
+      "task_args": {
+        "case_id": "intervals",
+        "compose_file": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/compose.yaml",
+        "output_dir": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/records"
+      },
+      "model": "openai/gpt-4o-mini-2024-07-18",
+      "model_args": {},
+      "sequence": 1
+    }
+  ]
+}

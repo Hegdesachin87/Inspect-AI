@@ -1,0 +1,204 @@
+[
+  {
+    "trace_id":"tr-bb3ca3d33cf9827ea9c6ab910cd73508",
+    "fixed_tests\/value":1.0,
+    "fixed_tests\/rationale":"test_slug (__main__.RepairTests.test_slug) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+    "trace":"{\"info\": {\"trace_id\": \"tr-bb3ca3d33cf9827ea9c6ab910cd73508\", \"trace_location\": {\"type\": \"MLFLOW_EXPERIMENT\", \"mlflow_experiment\": {\"experiment_id\": \"1\"}}, \"request_time\": \"2026-10-04T17:37:16.550Z\", \"state\": \"OK\", \"trace_metadata\": {\"mlflow.source.git.branch\": \"main\", \"mlflow.trace.sizeStats\": \"{\\\"total_size_bytes\\\": 2922, \\\"num_spans\\\": 1, \\\"max\\\": 1122, \\\"p25\\\": 1122, \\\"p50\\\": 1122, \\\"p75\\\": 1122}\", \"mlflow.traceInputs\": \"{\\\"case_id\\\": \\\"slug\\\"}\", \"mlflow.source.git.repoURL\": \"https:\/\/github.com\/Hegdesachin87\/Inspect-AI.git\", \"mlflow.trace.sizeBytes\": \"2922\", \"mlflow.traceOutputs\": \"{\\\"case_id\\\": \\\"slug\\\", \\\"model\\\": \\\"deterministic-recovery-fixture\\\", \\\"input\\\": \\\"Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading\/trailing hyphens. Empty or all-se...\", \"mlflow.trace.infoFinalized\": \"true\", \"mlflow.trace_schema.version\": \"3\", \"mlflow.sourceRun\": \"dd8427523b9e4858bab80fda44d379b3\", \"mlflow.user\": \"ankitsingh\", \"mlflow.source.git.commit\": \"51b3920a2aaefbea273b1167e15f061ff740744e\", \"mlflow.source.name\": \"\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/worker.py\", \"mlflow.source.type\": \"LOCAL\"}, \"assessments\": [{\"assessment_id\": \"a-c28eb66c4aec4fbd8db919d352879d82\", \"assessment_name\": \"fixed_tests\", \"trace_id\": \"tr-bb3ca3d33cf9827ea9c6ab910cd73508\", \"span_id\": \"2033f9ddfd3dbb70\", \"source\": {\"source_type\": \"CODE\", \"source_id\": \"default\"}, \"create_time\": \"2026-10-04T17:37:16.797Z\", \"last_update_time\": \"2026-10-04T17:37:16.797Z\", \"feedback\": {\"value\": 1.0}, \"rationale\": \"test_slug (__main__.RepairTests.test_slug) ... ok\\n\\n----------------------------------------------------------------------\\nRan 1 test in 0.000s\\n\\nOK\\n\", \"metadata\": {\"mlflow.assessment.sourceRunId\": \"dd8427523b9e4858bab80fda44d379b3\"}, \"valid\": true}], \"tags\": {\"mlflow.artifactLocation\": \"file:\/\/\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/runs\/2026-10-04-demo\/recovery\/mlflow\/artifacts\/traces\/tr-bb3ca3d33cf9827ea9c6ab910cd73508\/artifacts\", \"mlflow.eval.requestId\": \"88f7b476-7a0b-4c22-97af-54dcbbbeab92\", \"mlflow.traceName\": \"coding_repair\", \"mlflow.trace.spansLocation\": \"TRACKING_STORE\"}, \"request_preview\": \"{\\\"case_id\\\": \\\"slug\\\"}\", \"response_preview\": \"{\\\"case_id\\\": \\\"slug\\\", \\\"model\\\": \\\"deterministic-recovery-fixture\\\", \\\"input\\\": \\\"Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading\/trailing hyphens. Empty or all-separator input returns an empty string.\\\\nThe file is \/workspace\/project.py.\\\", \\\"final_source\\\": \\\"import re\\\\n\\\\ndef slug(text):\\\\n    return re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')\\\\n\\\", \\\"messages\\\": [], \\\"events\\\": [], \\\"input_tokens\\\": 0, \\\"output_tokens\\\": 0, \\\"model_calls\\\": 0, \\\"agent_seconds\\\": 0}\", \"execution_duration_ms\": 0}, \"data\": {\"spans\": [{\"trace_id\": \"uzyj0zz5gn6pxquRDNc1CA==\", \"span_id\": \"IDP53f09u3A=\", \"parent_span_id\": null, \"name\": \"coding_repair\", \"start_time_unix_nano\": 1791135436550305000, \"end_time_unix_nano\": 1791135436551125000, \"events\": [], \"status\": {\"code\": \"STATUS_CODE_OK\", \"message\": \"\"}, \"attributes\": {\"mlflow.traceRequestId\": \"\\\"tr-bb3ca3d33cf9827ea9c6ab910cd73508\\\"\", \"mlflow.spanType\": \"\\\"AGENT\\\"\", \"mlflow.spanFunctionName\": \"\\\"predict\\\"\", \"mlflow.spanInputs\": \"{\\\"case_id\\\": \\\"slug\\\"}\", \"mlflow.spanOutputs\": \"{\\\"case_id\\\": \\\"slug\\\", \\\"model\\\": \\\"deterministic-recovery-fixture\\\", \\\"input\\\": \\\"Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading\/trailing hyphens. Empty or all-separator input returns an empty string.\\\\nThe file is \/workspace\/project.py.\\\", \\\"final_source\\\": \\\"import re\\\\n\\\\ndef slug(text):\\\\n    return re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')\\\\n\\\", \\\"messages\\\": [], \\\"events\\\": [], \\\"input_tokens\\\": 0, \\\"output_tokens\\\": 0, \\\"model_calls\\\": 0, \\\"agent_seconds\\\": 0}\", \"mlflow.spanLogLevel\": \"20\", \"mlflow.llm.model\": \"\\\"deterministic-recovery-fixture\\\"\"}, \"links\": []}]}}",
+    "client_request_id":null,
+    "state":"OK",
+    "request_time":1791135436550,
+    "execution_duration":0,
+    "request":{
+      "case_id":"slug"
+    },
+    "response":{
+      "case_id":"slug",
+      "model":"deterministic-recovery-fixture",
+      "input":"Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading\/trailing hyphens. Empty or all-separator input returns an empty string.\nThe file is \/workspace\/project.py.",
+      "final_source":"import re\n\ndef slug(text):\n    return re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')\n",
+      "messages":[
+
+      ],
+      "events":[
+
+      ],
+      "input_tokens":0,
+      "output_tokens":0,
+      "model_calls":0,
+      "agent_seconds":0
+    },
+    "trace_metadata":{
+      "mlflow.source.git.branch":"main",
+      "mlflow.source.git.commit":"51b3920a2aaefbea273b1167e15f061ff740744e",
+      "mlflow.source.git.repoURL":"https:\/\/github.com\/Hegdesachin87\/Inspect-AI.git",
+      "mlflow.source.name":"\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/worker.py",
+      "mlflow.source.type":"LOCAL",
+      "mlflow.sourceRun":"dd8427523b9e4858bab80fda44d379b3",
+      "mlflow.trace.infoFinalized":"true",
+      "mlflow.trace.sizeBytes":"2922",
+      "mlflow.trace.sizeStats":"{\"total_size_bytes\": 2922, \"num_spans\": 1, \"max\": 1122, \"p25\": 1122, \"p50\": 1122, \"p75\": 1122}",
+      "mlflow.traceInputs":"{\"case_id\": \"slug\"}",
+      "mlflow.traceOutputs":"{\"case_id\": \"slug\", \"model\": \"deterministic-recovery-fixture\", \"input\": \"Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading\/trailing hyphens. Empty or all-se...",
+      "mlflow.trace_schema.version":"3",
+      "mlflow.user":"ankitsingh"
+    },
+    "tags":{
+      "mlflow.artifactLocation":"file:\/\/\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/runs\/2026-10-04-demo\/recovery\/mlflow\/artifacts\/traces\/tr-bb3ca3d33cf9827ea9c6ab910cd73508\/artifacts",
+      "mlflow.trace.spansLocation":"TRACKING_STORE",
+      "mlflow.eval.requestId":"88f7b476-7a0b-4c22-97af-54dcbbbeab92",
+      "mlflow.traceName":"coding_repair"
+    },
+    "spans":[
+      {
+        "trace_id":"uzyj0zz5gn6pxquRDNc1CA==",
+        "span_id":"IDP53f09u3A=",
+        "parent_span_id":null,
+        "name":"coding_repair",
+        "start_time_unix_nano":1791135436550305000,
+        "end_time_unix_nano":1791135436551125000,
+        "events":[
+
+        ],
+        "status":{
+          "code":"STATUS_CODE_OK",
+          "message":""
+        },
+        "attributes":{
+          "mlflow.traceRequestId":"\"tr-bb3ca3d33cf9827ea9c6ab910cd73508\"",
+          "mlflow.spanType":"\"AGENT\"",
+          "mlflow.spanFunctionName":"\"predict\"",
+          "mlflow.spanInputs":"{\"case_id\": \"slug\"}",
+          "mlflow.spanOutputs":"{\"case_id\": \"slug\", \"model\": \"deterministic-recovery-fixture\", \"input\": \"Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading\/trailing hyphens. Empty or all-separator input returns an empty string.\\nThe file is \/workspace\/project.py.\", \"final_source\": \"import re\\n\\ndef slug(text):\\n    return re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')\\n\", \"messages\": [], \"events\": [], \"input_tokens\": 0, \"output_tokens\": 0, \"model_calls\": 0, \"agent_seconds\": 0}",
+          "mlflow.spanLogLevel":"20",
+          "mlflow.llm.model":"\"deterministic-recovery-fixture\""
+        },
+        "links":[
+
+        ]
+      }
+    ],
+    "assessments":[
+      {
+        "assessment_id":"a-c28eb66c4aec4fbd8db919d352879d82",
+        "assessment_name":"fixed_tests",
+        "trace_id":"tr-bb3ca3d33cf9827ea9c6ab910cd73508",
+        "span_id":"2033f9ddfd3dbb70",
+        "source":{
+          "source_type":"CODE",
+          "source_id":"default"
+        },
+        "create_time":"2026-10-04T17:37:16.797Z",
+        "last_update_time":"2026-10-04T17:37:16.797Z",
+        "feedback":{
+          "value":1.0
+        },
+        "rationale":"test_slug (__main__.RepairTests.test_slug) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+        "metadata":{
+          "mlflow.assessment.sourceRunId":"dd8427523b9e4858bab80fda44d379b3"
+        },
+        "valid":true
+      }
+    ]
+  },
+  {
+    "trace_id":"tr-6334bc15684d8e7874f93e927cf71e28",
+    "fixed_tests\/value":1.0,
+    "fixed_tests\/rationale":"test_intervals (__main__.RepairTests.test_intervals) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+    "trace":"{\"info\": {\"trace_id\": \"tr-6334bc15684d8e7874f93e927cf71e28\", \"trace_location\": {\"type\": \"MLFLOW_EXPERIMENT\", \"mlflow_experiment\": {\"experiment_id\": \"1\"}}, \"request_time\": \"2026-10-04T17:37:16.570Z\", \"state\": \"OK\", \"trace_metadata\": {\"mlflow.source.git.branch\": \"main\", \"mlflow.trace.sizeStats\": \"{\\\"total_size_bytes\\\": 3319, \\\"num_spans\\\": 1, \\\"max\\\": 1318, \\\"p25\\\": 1318, \\\"p50\\\": 1318, \\\"p75\\\": 1318}\", \"mlflow.traceInputs\": \"{\\\"case_id\\\": \\\"intervals\\\"}\", \"mlflow.source.git.repoURL\": \"https:\/\/github.com\/Hegdesachin87\/Inspect-AI.git\", \"mlflow.trace.sizeBytes\": \"3319\", \"mlflow.traceOutputs\": \"{\\\"case_id\\\": \\\"intervals\\\", \\\"model\\\": \\\"deterministic-recovery-fixture\\\", \\\"input\\\": \\\"Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input retu...\", \"mlflow.trace.infoFinalized\": \"true\", \"mlflow.trace_schema.version\": \"3\", \"mlflow.sourceRun\": \"dd8427523b9e4858bab80fda44d379b3\", \"mlflow.user\": \"ankitsingh\", \"mlflow.source.git.commit\": \"51b3920a2aaefbea273b1167e15f061ff740744e\", \"mlflow.source.name\": \"\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/worker.py\", \"mlflow.source.type\": \"LOCAL\"}, \"assessments\": [{\"assessment_id\": \"a-2c9983425a394d60b8ad3a92dbe7c531\", \"assessment_name\": \"fixed_tests\", \"trace_id\": \"tr-6334bc15684d8e7874f93e927cf71e28\", \"span_id\": \"f062d0f58053e9ac\", \"source\": {\"source_type\": \"CODE\", \"source_id\": \"default\"}, \"create_time\": \"2026-10-04T17:37:17.036Z\", \"last_update_time\": \"2026-10-04T17:37:17.036Z\", \"feedback\": {\"value\": 1.0}, \"rationale\": \"test_intervals (__main__.RepairTests.test_intervals) ... ok\\n\\n----------------------------------------------------------------------\\nRan 1 test in 0.000s\\n\\nOK\\n\", \"metadata\": {\"mlflow.assessment.sourceRunId\": \"dd8427523b9e4858bab80fda44d379b3\"}, \"valid\": true}], \"tags\": {\"mlflow.artifactLocation\": \"file:\/\/\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/runs\/2026-10-04-demo\/recovery\/mlflow\/artifacts\/traces\/tr-6334bc15684d8e7874f93e927cf71e28\/artifacts\", \"mlflow.eval.requestId\": \"9a8a9646-380a-4f66-b167-bdfadbc605b6\", \"mlflow.traceName\": \"coding_repair\", \"mlflow.trace.spansLocation\": \"TRACKING_STORE\"}, \"request_preview\": \"{\\\"case_id\\\": \\\"intervals\\\"}\", \"response_preview\": \"{\\\"case_id\\\": \\\"intervals\\\", \\\"model\\\": \\\"deterministic-recovery-fixture\\\", \\\"input\\\": \\\"Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\\\\nThe file is \/workspace\/project.py.\\\", \\\"final_source\\\": \\\"def merge_intervals(intervals):\\\\n    result = []\\\\n    for start, end in sorted(intervals):\\\\n        if result and start <= result[-1][1]:\\\\n            result[-1][1] = max(result[-1][1], end)\\\\n        else:\\\\n            result.append([start, end])\\\\n    return result\\\\n\\\", \\\"messages\\\": [], \\\"events\\\": [], \\\"input_tokens\\\": 0, \\\"output_tokens\\\": 0, \\\"model_calls\\\": 0, \\\"agent_seconds\\\": 0}\", \"execution_duration_ms\": 0}, \"data\": {\"spans\": [{\"trace_id\": \"YzS8FWhNjnh0+T6SfPceKA==\", \"span_id\": \"8GLQ9YBT6aw=\", \"parent_span_id\": null, \"name\": \"coding_repair\", \"start_time_unix_nano\": 1791135436570594000, \"end_time_unix_nano\": 1791135436571162000, \"events\": [], \"status\": {\"code\": \"STATUS_CODE_OK\", \"message\": \"\"}, \"attributes\": {\"mlflow.traceRequestId\": \"\\\"tr-6334bc15684d8e7874f93e927cf71e28\\\"\", \"mlflow.spanType\": \"\\\"AGENT\\\"\", \"mlflow.spanFunctionName\": \"\\\"predict\\\"\", \"mlflow.spanInputs\": \"{\\\"case_id\\\": \\\"intervals\\\"}\", \"mlflow.spanOutputs\": \"{\\\"case_id\\\": \\\"intervals\\\", \\\"model\\\": \\\"deterministic-recovery-fixture\\\", \\\"input\\\": \\\"Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\\\\nThe file is \/workspace\/project.py.\\\", \\\"final_source\\\": \\\"def merge_intervals(intervals):\\\\n    result = []\\\\n    for start, end in sorted(intervals):\\\\n        if result and start <= result[-1][1]:\\\\n            result[-1][1] = max(result[-1][1], end)\\\\n        else:\\\\n            result.append([start, end])\\\\n    return result\\\\n\\\", \\\"messages\\\": [], \\\"events\\\": [], \\\"input_tokens\\\": 0, \\\"output_tokens\\\": 0, \\\"model_calls\\\": 0, \\\"agent_seconds\\\": 0}\", \"mlflow.spanLogLevel\": \"20\", \"mlflow.llm.model\": \"\\\"deterministic-recovery-fixture\\\"\"}, \"links\": []}]}}",
+    "client_request_id":null,
+    "state":"OK",
+    "request_time":1791135436570,
+    "execution_duration":0,
+    "request":{
+      "case_id":"intervals"
+    },
+    "response":{
+      "case_id":"intervals",
+      "model":"deterministic-recovery-fixture",
+      "input":"Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\nThe file is \/workspace\/project.py.",
+      "final_source":"def merge_intervals(intervals):\n    result = []\n    for start, end in sorted(intervals):\n        if result and start <= result[-1][1]:\n            result[-1][1] = max(result[-1][1], end)\n        else:\n            result.append([start, end])\n    return result\n",
+      "messages":[
+
+      ],
+      "events":[
+
+      ],
+      "input_tokens":0,
+      "output_tokens":0,
+      "model_calls":0,
+      "agent_seconds":0
+    },
+    "trace_metadata":{
+      "mlflow.source.git.branch":"main",
+      "mlflow.source.git.commit":"51b3920a2aaefbea273b1167e15f061ff740744e",
+      "mlflow.source.git.repoURL":"https:\/\/github.com\/Hegdesachin87\/Inspect-AI.git",
+      "mlflow.source.name":"\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/worker.py",
+      "mlflow.source.type":"LOCAL",
+      "mlflow.sourceRun":"dd8427523b9e4858bab80fda44d379b3",
+      "mlflow.trace.infoFinalized":"true",
+      "mlflow.trace.sizeBytes":"3319",
+      "mlflow.trace.sizeStats":"{\"total_size_bytes\": 3319, \"num_spans\": 1, \"max\": 1318, \"p25\": 1318, \"p50\": 1318, \"p75\": 1318}",
+      "mlflow.traceInputs":"{\"case_id\": \"intervals\"}",
+      "mlflow.traceOutputs":"{\"case_id\": \"intervals\", \"model\": \"deterministic-recovery-fixture\", \"input\": \"Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input retu...",
+      "mlflow.trace_schema.version":"3",
+      "mlflow.user":"ankitsingh"
+    },
+    "tags":{
+      "mlflow.artifactLocation":"file:\/\/\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/runs\/2026-10-04-demo\/recovery\/mlflow\/artifacts\/traces\/tr-6334bc15684d8e7874f93e927cf71e28\/artifacts",
+      "mlflow.trace.spansLocation":"TRACKING_STORE",
+      "mlflow.eval.requestId":"9a8a9646-380a-4f66-b167-bdfadbc605b6",
+      "mlflow.traceName":"coding_repair"
+    },
+    "spans":[
+      {
+        "trace_id":"YzS8FWhNjnh0+T6SfPceKA==",
+        "span_id":"8GLQ9YBT6aw=",
+        "parent_span_id":null,
+        "name":"coding_repair",
+        "start_time_unix_nano":1791135436570594000,
+        "end_time_unix_nano":1791135436571162000,
+        "events":[
+
+        ],
+        "status":{
+          "code":"STATUS_CODE_OK",
+          "message":""
+        },
+        "attributes":{
+          "mlflow.traceRequestId":"\"tr-6334bc15684d8e7874f93e927cf71e28\"",
+          "mlflow.spanType":"\"AGENT\"",
+          "mlflow.spanFunctionName":"\"predict\"",
+          "mlflow.spanInputs":"{\"case_id\": \"intervals\"}",
+          "mlflow.spanOutputs":"{\"case_id\": \"intervals\", \"model\": \"deterministic-recovery-fixture\", \"input\": \"Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\\nThe file is \/workspace\/project.py.\", \"final_source\": \"def merge_intervals(intervals):\\n    result = []\\n    for start, end in sorted(intervals):\\n        if result and start <= result[-1][1]:\\n            result[-1][1] = max(result[-1][1], end)\\n        else:\\n            result.append([start, end])\\n    return result\\n\", \"messages\": [], \"events\": [], \"input_tokens\": 0, \"output_tokens\": 0, \"model_calls\": 0, \"agent_seconds\": 0}",
+          "mlflow.spanLogLevel":"20",
+          "mlflow.llm.model":"\"deterministic-recovery-fixture\""
+        },
+        "links":[
+
+        ]
+      }
+    ],
+    "assessments":[
+      {
+        "assessment_id":"a-2c9983425a394d60b8ad3a92dbe7c531",
+        "assessment_name":"fixed_tests",
+        "trace_id":"tr-6334bc15684d8e7874f93e927cf71e28",
+        "span_id":"f062d0f58053e9ac",
+        "source":{
+          "source_type":"CODE",
+          "source_id":"default"
+        },
+        "create_time":"2026-10-04T17:37:17.036Z",
+        "last_update_time":"2026-10-04T17:37:17.036Z",
+        "feedback":{
+          "value":1.0
+        },
+        "rationale":"test_intervals (__main__.RepairTests.test_intervals) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+        "metadata":{
+          "mlflow.assessment.sourceRunId":"dd8427523b9e4858bab80fda44d379b3"
+        },
+        "valid":true
+      }
+    ]
+  }
+]

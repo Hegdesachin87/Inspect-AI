@@ -1,0 +1,23 @@
+{
+  "timestamp": "2026-10-04T17:36:55.143479+00:00",
+  "python": "3.12.11",
+  "versions": {
+    "inspect-ai": "0.3.276",
+    "ragas": "0.4.3",
+    "deepeval": "4.2.8",
+    "mlflow": "3.16.1",
+    "openai": "3.3.0",
+    "langchain-community": "0.3.31"
+  },
+  "model": "gpt-4o-mini-2024-07-18",
+  "max_model_calls_per_case": 6,
+  "max_output_tokens_per_call": 700,
+  "temperature": 0,
+  "image": "python@sha256:02108f5d322dd89f1c9e552442c25acb0543dfdbc455693a5599624f20d9155d",
+  "system_prompt": "You are repairing a small Python project. Use run_command to inspect and edit /workspace/project.py and run local checks. Implement the stated requirements without changing the function name. You have at most 6 model calls, each with at most 700 output tokens. The sandbox has Python and no network. Grading runs fixed tests outside your editable sandbox after you finish. When done, give a short summary without calling another tool.",
+  "case_ids": [
+    "slug",
+    "intervals",
+    "chunks"
+  ]
+}

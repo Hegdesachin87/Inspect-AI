@@ -1,0 +1,59 @@
+{
+  "inspect": {
+    "interrupted_exit_code": -9,
+    "resumed_exit_code": 0,
+    "completed_before_interruption": [
+      "slug"
+    ],
+    "callbacks_on_resume": [
+      "intervals"
+    ],
+    "repeated_completed_callbacks": [],
+    "model_calls": 0
+  },
+  "ragas": {
+    "interrupted_exit_code": -9,
+    "resumed_exit_code": 0,
+    "completed_before_interruption": [
+      "intervals"
+    ],
+    "callbacks_on_resume": [
+      "intervals",
+      "slug"
+    ],
+    "repeated_completed_callbacks": [
+      "intervals"
+    ],
+    "model_calls": 0
+  },
+  "deepeval": {
+    "interrupted_exit_code": -9,
+    "resumed_exit_code": 0,
+    "completed_before_interruption": [
+      "slug"
+    ],
+    "callbacks_on_resume": [
+      "slug",
+      "intervals"
+    ],
+    "repeated_completed_callbacks": [
+      "slug"
+    ],
+    "model_calls": 0
+  },
+  "mlflow": {
+    "interrupted_exit_code": -9,
+    "resumed_exit_code": 0,
+    "completed_before_interruption": [
+      "slug"
+    ],
+    "callbacks_on_resume": [
+      "slug",
+      "intervals"
+    ],
+    "repeated_completed_callbacks": [
+      "slug"
+    ],
+    "model_calls": 0
+  }
+}

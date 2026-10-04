@@ -1,0 +1,45 @@
+{
+  "type": "estimate_not_provider_invoice",
+  "pricing_source": "https://developers.openai.com/api/docs/models/gpt-4o-mini",
+  "input_usd_per_million": 0.15,
+  "output_usd_per_million": 0.6,
+  "cached_input_discount_applied": false,
+  "common": {
+    "input_tokens": 7953,
+    "output_tokens": 743,
+    "estimated_usd": 0.00163875
+  },
+  "live": {
+    "inspect": {
+      "input_tokens": 7951,
+      "output_tokens": 740,
+      "estimated_usd": 0.00163665
+    },
+    "ragas": {
+      "input_tokens": 8095,
+      "output_tokens": 789,
+      "estimated_usd": 0.00168765
+    },
+    "deepeval": {
+      "input_tokens": 7919,
+      "output_tokens": 754,
+      "estimated_usd": 0.0016402499999999998
+    },
+    "mlflow": {
+      "input_tokens": 7919,
+      "output_tokens": 765,
+      "estimated_usd": 0.0016468499999999998
+    }
+  },
+  "failed_inspect_setup": {
+    "input_tokens": 8058,
+    "output_tokens": 799,
+    "estimated_usd": 0.0016881
+  },
+  "connection_preflight": {
+    "input_tokens": 10,
+    "output_tokens": 2,
+    "estimated_usd": 2.7e-06
+  },
+  "estimated_total_model_usd": 0.00994095
+}

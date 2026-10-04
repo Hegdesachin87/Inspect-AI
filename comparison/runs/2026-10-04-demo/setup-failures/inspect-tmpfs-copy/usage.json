@@ -1,0 +1,23 @@
+[
+  {
+    "case_id": "slug",
+    "input_tokens": 2518,
+    "output_tokens": 272,
+    "model_calls": 6,
+    "error": "FileNotFoundError(2, 'No such file or directory.')"
+  },
+  {
+    "case_id": "intervals",
+    "input_tokens": 2993,
+    "output_tokens": 268,
+    "model_calls": 6,
+    "error": "FileNotFoundError(2, 'No such file or directory.')"
+  },
+  {
+    "case_id": "chunks",
+    "input_tokens": 2547,
+    "output_tokens": 259,
+    "model_calls": 6,
+    "error": "FileNotFoundError(2, 'No such file or directory.')"
+  }
+]

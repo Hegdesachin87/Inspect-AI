@@ -1,0 +1,17 @@
+2026/10/04 13:34:32 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/10/04 13:34:32 INFO mlflow.store.db.utils: Updating database tables
+2026/10/04 13:34:33 INFO mlflow.models.evaluation.utils.trace: Auto tracing is temporarily enabled during the model evaluation for computing some metrics and debugging. To disable tracing, call `mlflow.autolog(disable=True)`.
+Evaluating:   0%|          | 0/3 [Elapsed: 00:00, Remaining: ?]Evaluating:  33%|███▎      | 1/3 [Elapsed: 00:07, Remaining: 00:14]Evaluating:  67%|██████▋   | 2/3 [Elapsed: 00:13, Remaining: 00:06]Evaluating: 100%|██████████| 3/3 [Elapsed: 00:18, Remaining: 00:00]Evaluating: 100%|██████████| 3/3 [Elapsed: 00:18, Remaining: 00:00] [predict_fn: 96%, scorers: 4%]Evaluating: 100%|██████████| 3/3 [Elapsed: 00:18, Remaining: 00:00] [predict_fn: 96%, scorers: 4%]
+/Users/ankitsingh/dev/Inspect-AI/comparison/mlflow_runner.py:58: FutureWarning: Parameter 'experiment_ids' is deprecated. Please use 'locations' instead.
+  traces = mlflow.search_traces(experiment_ids=[experiment_id])
+
+✨ Evaluation completed.
+
+Metrics and evaluation results are logged to the MLflow run:
+  Run name: [94mpeaceful-conch-386[0m
+  Run ID: [94m7a478ea6f6bc41e8986e69ba9348d2e5[0m
+
+To view the detailed evaluation results with sample-wise scores,
+open the [93m[1mTraces[0m tab in the Run page in the MLflow UI.
+
+{"framework": "mlflow", "rows": 3, "passed": 2}

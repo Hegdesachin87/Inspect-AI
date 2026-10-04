@@ -1,0 +1,12 @@
+{
+  "case_id": "slug",
+  "model": "deterministic-recovery-fixture",
+  "input": "Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading/trailing hyphens. Empty or all-separator input returns an empty string.\nThe file is /workspace/project.py.",
+  "final_source": "import re\n\ndef slug(text):\n    return re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')\n",
+  "messages": [],
+  "events": [],
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "model_calls": 0,
+  "agent_seconds": 0
+}

@@ -1,0 +1,944 @@
+{
+  "2026-10-04T17-27-19-00-00_shared-trajectory_WHKBtxmfxg9cpsktkGypRd.eval": {
+    "version": 2,
+    "status": "success",
+    "eval": {
+      "eval_set_id": "HXdo9rhSUYEmudiSHMm7G3",
+      "eval_id": "LxdDHk4gKLUciBpmeeAYBC",
+      "run_id": "mdoTp5vUsXxJMPdjL8DnCQ",
+      "created": "2026-10-04T17:27:19+00:00",
+      "task": "shared_trajectory",
+      "task_id": "WHKBtxmfxg9cpsktkGypRd",
+      "task_version": 0,
+      "task_file": "comparison/inspect_runner.py",
+      "task_display_name": "shared_trajectory",
+      "task_registry_name": "replay_task",
+      "task_attribs": {},
+      "task_args": {
+        "case_id": "chunks-reference",
+        "record": {
+          "artifact_id": "chunks-reference",
+          "case_id": "chunks",
+          "input": "Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items is empty. Input items is a list; size is an integer. Do not mutate items.\nThe file is /workspace/project.py.",
+          "final_source": "def chunks(items, size):\n    if size <= 0:\n        raise ValueError('size must be positive')\n    return [items[i:i + size] for i in range(0, len(items), size)]\n"
+        }
+      },
+      "task_args_passed": {
+        "case_id": "chunks-reference",
+        "record": {
+          "artifact_id": "chunks-reference",
+          "case_id": "chunks",
+          "input": "Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items is empty. Input items is a list; size is an integer. Do not mutate items.\nThe file is /workspace/project.py.",
+          "final_source": "def chunks(items, size):\n    if size <= 0:\n        raise ValueError('size must be positive')\n    return [items[i:i + size] for i in range(0, len(items), size)]\n"
+        }
+      },
+      "solver_args_passed": {},
+      "dataset": {
+        "samples": 1,
+        "sample_ids": [
+          "chunks-reference"
+        ],
+        "shuffled": false
+      },
+      "model": "openai/gpt-4o-mini-2024-07-18",
+      "model_generate_config": {},
+      "model_args": {},
+      "config": {
+        "epochs": 1,
+        "fail_on_error": true,
+        "continue_on_fail": false,
+        "score_on_error": false,
+        "max_samples": 1,
+        "max_tasks": 1,
+        "max_sandboxes": 1,
+        "sandbox_cleanup": true,
+        "sandbox_prebuilt": false,
+        "log_samples": true,
+        "log_realtime": true,
+        "log_images": true,
+        "log_model_api": false,
+        "score_display": true
+      },
+      "revision": {
+        "type": "git",
+        "origin": "https://github.com/Hegdesachin87/Inspect-AI.git",
+        "commit": "c5cc7a3",
+        "dirty": true
+      },
+      "packages": {
+        "inspect_ai": "0.3.276"
+      },
+      "scorers": [
+        {
+          "name": "fixed_tests",
+          "options": {},
+          "metrics": [
+            {
+              "name": "inspect_ai/accuracy",
+              "options": {}
+            }
+          ],
+          "metadata": {}
+        }
+      ]
+    },
+    "plan": {
+      "name": "plan",
+      "steps": [
+        {
+          "solver": "replay",
+          "params": {
+            "record": {
+              "artifact_id": "chunks-reference",
+              "case_id": "chunks",
+              "input": "Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items is empty. Input items is a list; size is an integer. Do not mutate items.\nThe file is /workspace/project.py.",
+              "final_source": "def chunks(items, size):\n    if size <= 0:\n        raise ValueError('size must be positive')\n    return [items[i:i + size] for i in range(0, len(items), size)]\n"
+            }
+          },
+          "params_passed": {
+            "record": {
+              "artifact_id": "chunks-reference",
+              "case_id": "chunks",
+              "input": "Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items is empty. Input items is a list; size is an integer. Do not mutate items.\nThe file is /workspace/project.py.",
+              "final_source": "def chunks(items, size):\n    if size <= 0:\n        raise ValueError('size must be positive')\n    return [items[i:i + size] for i in range(0, len(items), size)]\n"
+            }
+          }
+        }
+      ],
+      "config": {}
+    },
+    "results": {
+      "total_samples": 1,
+      "completed_samples": 1,
+      "scores": [
+        {
+          "name": "fixed_tests",
+          "scorer": "fixed_tests",
+          "scored_samples": 1,
+          "unscored_samples": 0,
+          "params": {},
+          "metrics": {
+            "accuracy": {
+              "name": "accuracy",
+              "value": 1.0,
+              "params": {}
+            }
+          }
+        }
+      ],
+      "headline": {
+        "scorer": "fixed_tests",
+        "score": "fixed_tests",
+        "metric": "accuracy"
+      }
+    },
+    "stats": {
+      "started_at": "2026-10-04T17:27:20+00:00",
+      "completed_at": "2026-10-04T17:27:21+00:00",
+      "model_usage": {},
+      "role_usage": {},
+      "connection_limit_history": []
+    },
+    "invalidated": false,
+    "tags": [],
+    "metadata": {},
+    "reductions": [
+      {
+        "scorer": "fixed_tests",
+        "samples": [
+          {
+            "value": 1.0,
+            "explanation": "test_chunks (__main__.RepairTests.test_chunks) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+            "history": [],
+            "sample_id": "chunks-reference"
+          }
+        ]
+      }
+    ]
+  },
+  "2026-10-04T17-27-19-00-00_shared-trajectory_5U8zj8MLbcDxh362ncLF4g.eval": {
+    "version": 2,
+    "status": "success",
+    "eval": {
+      "eval_set_id": "HXdo9rhSUYEmudiSHMm7G3",
+      "eval_id": "Mm2bhsDuzofpwRgs8cRqzC",
+      "run_id": "mdoTp5vUsXxJMPdjL8DnCQ",
+      "created": "2026-10-04T17:27:19+00:00",
+      "task": "shared_trajectory",
+      "task_id": "5U8zj8MLbcDxh362ncLF4g",
+      "task_version": 0,
+      "task_file": "comparison/inspect_runner.py",
+      "task_display_name": "shared_trajectory",
+      "task_registry_name": "replay_task",
+      "task_attribs": {},
+      "task_args": {
+        "case_id": "chunks-broken",
+        "record": {
+          "artifact_id": "chunks-broken",
+          "case_id": "chunks",
+          "input": "Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items is empty. Input items is a list; size is an integer. Do not mutate items.\nThe file is /workspace/project.py.",
+          "final_source": "def chunks(items, size):\n    return [items[i:i + size] for i in range(0, len(items) - size + 1, size)]\n"
+        }
+      },
+      "task_args_passed": {
+        "case_id": "chunks-broken",
+        "record": {
+          "artifact_id": "chunks-broken",
+          "case_id": "chunks",
+          "input": "Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items is empty. Input items is a list; size is an integer. Do not mutate items.\nThe file is /workspace/project.py.",
+          "final_source": "def chunks(items, size):\n    return [items[i:i + size] for i in range(0, len(items) - size + 1, size)]\n"
+        }
+      },
+      "solver_args_passed": {},
+      "dataset": {
+        "samples": 1,
+        "sample_ids": [
+          "chunks-broken"
+        ],
+        "shuffled": false
+      },
+      "model": "openai/gpt-4o-mini-2024-07-18",
+      "model_generate_config": {},
+      "model_args": {},
+      "config": {
+        "epochs": 1,
+        "fail_on_error": true,
+        "continue_on_fail": false,
+        "score_on_error": false,
+        "max_samples": 1,
+        "max_tasks": 1,
+        "max_sandboxes": 1,
+        "sandbox_cleanup": true,
+        "sandbox_prebuilt": false,
+        "log_samples": true,
+        "log_realtime": true,
+        "log_images": true,
+        "log_model_api": false,
+        "score_display": true
+      },
+      "revision": {
+        "type": "git",
+        "origin": "https://github.com/Hegdesachin87/Inspect-AI.git",
+        "commit": "c5cc7a3",
+        "dirty": true
+      },
+      "packages": {
+        "inspect_ai": "0.3.276"
+      },
+      "scorers": [
+        {
+          "name": "fixed_tests",
+          "options": {},
+          "metrics": [
+            {
+              "name": "inspect_ai/accuracy",
+              "options": {}
+            }
+          ],
+          "metadata": {}
+        }
+      ]
+    },
+    "plan": {
+      "name": "plan",
+      "steps": [
+        {
+          "solver": "replay",
+          "params": {
+            "record": {
+              "artifact_id": "chunks-broken",
+              "case_id": "chunks",
+              "input": "Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items is empty. Input items is a list; size is an integer. Do not mutate items.\nThe file is /workspace/project.py.",
+              "final_source": "def chunks(items, size):\n    return [items[i:i + size] for i in range(0, len(items) - size + 1, size)]\n"
+            }
+          },
+          "params_passed": {
+            "record": {
+              "artifact_id": "chunks-broken",
+              "case_id": "chunks",
+              "input": "Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items is empty. Input items is a list; size is an integer. Do not mutate items.\nThe file is /workspace/project.py.",
+              "final_source": "def chunks(items, size):\n    return [items[i:i + size] for i in range(0, len(items) - size + 1, size)]\n"
+            }
+          }
+        }
+      ],
+      "config": {}
+    },
+    "results": {
+      "total_samples": 1,
+      "completed_samples": 1,
+      "scores": [
+        {
+          "name": "fixed_tests",
+          "scorer": "fixed_tests",
+          "scored_samples": 1,
+          "unscored_samples": 0,
+          "params": {},
+          "metrics": {
+            "accuracy": {
+              "name": "accuracy",
+              "value": 0.0,
+              "params": {}
+            }
+          }
+        }
+      ],
+      "headline": {
+        "scorer": "fixed_tests",
+        "score": "fixed_tests",
+        "metric": "accuracy"
+      }
+    },
+    "stats": {
+      "started_at": "2026-10-04T17:27:20+00:00",
+      "completed_at": "2026-10-04T17:27:20+00:00",
+      "model_usage": {},
+      "role_usage": {},
+      "connection_limit_history": []
+    },
+    "invalidated": false,
+    "tags": [],
+    "metadata": {},
+    "reductions": [
+      {
+        "scorer": "fixed_tests",
+        "samples": [
+          {
+            "value": 0.0,
+            "explanation": "test_chunks (__main__.RepairTests.test_chunks) ... \n  test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2, 3, 4, 5], size=2) ... FAIL\n  test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2], size=5) ... FAIL\n  test_chunks (__main__.RepairTests.test_chunks) (value=[], size=-1) ... FAIL\n  test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2], size=-1) ... FAIL\n\n======================================================================\nFAIL: test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2, 3, 4, 5], size=2)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 27, in test_chunks\nAssertionError: Lists differ: [[1, 2], [3, 4]] != [[1, 2], [3, 4], [5]]\n\nSecond list contains 1 additional elements.\nFirst extra element 2:\n[5]\n\n- [[1, 2], [3, 4]]\n+ [[1, 2], [3, 4], [5]]\n?                ++++ +\n\n\n======================================================================\nFAIL: test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2], size=5)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 27, in test_chunks\nAssertionError: Lists differ: [] != [[1, 2]]\n\nSecond list contains 1 additional elements.\nFirst extra element 0:\n[1, 2]\n\n- []\n+ [[1, 2]]\n\n======================================================================\nFAIL: test_chunks (__main__.RepairTests.test_chunks) (value=[], size=-1)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 32, in test_chunks\nAssertionError: ValueError not raised\n\n======================================================================\nFAIL: test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2], size=-1)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 32, in test_chunks\nAssertionError: ValueError not raised\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=4)\n",
+            "history": [],
+            "sample_id": "chunks-broken"
+          }
+        ]
+      }
+    ]
+  },
+  "2026-10-04T17-27-18-00-00_shared-trajectory_dad7haFjX9Zrb5QVmDqTUp.eval": {
+    "version": 2,
+    "status": "success",
+    "eval": {
+      "eval_set_id": "HXdo9rhSUYEmudiSHMm7G3",
+      "eval_id": "5Djz6W2hj3MVkqhpYNSvCE",
+      "run_id": "mdoTp5vUsXxJMPdjL8DnCQ",
+      "created": "2026-10-04T17:27:18+00:00",
+      "task": "shared_trajectory",
+      "task_id": "dad7haFjX9Zrb5QVmDqTUp",
+      "task_version": 0,
+      "task_file": "comparison/inspect_runner.py",
+      "task_display_name": "shared_trajectory",
+      "task_registry_name": "replay_task",
+      "task_attribs": {},
+      "task_args": {
+        "case_id": "intervals-reference",
+        "record": {
+          "artifact_id": "intervals-reference",
+          "case_id": "intervals",
+          "input": "Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\nThe file is /workspace/project.py.",
+          "final_source": "def merge_intervals(intervals):\n    result = []\n    for start, end in sorted(intervals):\n        if result and start <= result[-1][1]:\n            result[-1][1] = max(result[-1][1], end)\n        else:\n            result.append([start, end])\n    return result\n"
+        }
+      },
+      "task_args_passed": {
+        "case_id": "intervals-reference",
+        "record": {
+          "artifact_id": "intervals-reference",
+          "case_id": "intervals",
+          "input": "Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\nThe file is /workspace/project.py.",
+          "final_source": "def merge_intervals(intervals):\n    result = []\n    for start, end in sorted(intervals):\n        if result and start <= result[-1][1]:\n            result[-1][1] = max(result[-1][1], end)\n        else:\n            result.append([start, end])\n    return result\n"
+        }
+      },
+      "solver_args_passed": {},
+      "dataset": {
+        "samples": 1,
+        "sample_ids": [
+          "intervals-reference"
+        ],
+        "shuffled": false
+      },
+      "model": "openai/gpt-4o-mini-2024-07-18",
+      "model_generate_config": {},
+      "model_args": {},
+      "config": {
+        "epochs": 1,
+        "fail_on_error": true,
+        "continue_on_fail": false,
+        "score_on_error": false,
+        "max_samples": 1,
+        "max_tasks": 1,
+        "max_sandboxes": 1,
+        "sandbox_cleanup": true,
+        "sandbox_prebuilt": false,
+        "log_samples": true,
+        "log_realtime": true,
+        "log_images": true,
+        "log_model_api": false,
+        "score_display": true
+      },
+      "revision": {
+        "type": "git",
+        "origin": "https://github.com/Hegdesachin87/Inspect-AI.git",
+        "commit": "c5cc7a3",
+        "dirty": true
+      },
+      "packages": {
+        "inspect_ai": "0.3.276"
+      },
+      "scorers": [
+        {
+          "name": "fixed_tests",
+          "options": {},
+          "metrics": [
+            {
+              "name": "inspect_ai/accuracy",
+              "options": {}
+            }
+          ],
+          "metadata": {}
+        }
+      ]
+    },
+    "plan": {
+      "name": "plan",
+      "steps": [
+        {
+          "solver": "replay",
+          "params": {
+            "record": {
+              "artifact_id": "intervals-reference",
+              "case_id": "intervals",
+              "input": "Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\nThe file is /workspace/project.py.",
+              "final_source": "def merge_intervals(intervals):\n    result = []\n    for start, end in sorted(intervals):\n        if result and start <= result[-1][1]:\n            result[-1][1] = max(result[-1][1], end)\n        else:\n            result.append([start, end])\n    return result\n"
+            }
+          },
+          "params_passed": {
+            "record": {
+              "artifact_id": "intervals-reference",
+              "case_id": "intervals",
+              "input": "Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\nThe file is /workspace/project.py.",
+              "final_source": "def merge_intervals(intervals):\n    result = []\n    for start, end in sorted(intervals):\n        if result and start <= result[-1][1]:\n            result[-1][1] = max(result[-1][1], end)\n        else:\n            result.append([start, end])\n    return result\n"
+            }
+          }
+        }
+      ],
+      "config": {}
+    },
+    "results": {
+      "total_samples": 1,
+      "completed_samples": 1,
+      "scores": [
+        {
+          "name": "fixed_tests",
+          "scorer": "fixed_tests",
+          "scored_samples": 1,
+          "unscored_samples": 0,
+          "params": {},
+          "metrics": {
+            "accuracy": {
+              "name": "accuracy",
+              "value": 1.0,
+              "params": {}
+            }
+          }
+        }
+      ],
+      "headline": {
+        "scorer": "fixed_tests",
+        "score": "fixed_tests",
+        "metric": "accuracy"
+      }
+    },
+    "stats": {
+      "started_at": "2026-10-04T17:27:20+00:00",
+      "completed_at": "2026-10-04T17:27:20+00:00",
+      "model_usage": {},
+      "role_usage": {},
+      "connection_limit_history": []
+    },
+    "invalidated": false,
+    "tags": [],
+    "metadata": {},
+    "reductions": [
+      {
+        "scorer": "fixed_tests",
+        "samples": [
+          {
+            "value": 1.0,
+            "explanation": "test_intervals (__main__.RepairTests.test_intervals) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+            "history": [],
+            "sample_id": "intervals-reference"
+          }
+        ]
+      }
+    ]
+  },
+  "2026-10-04T17-27-18-00-00_shared-trajectory_4c6DDgMHVoY4uhuPQX6PkR.eval": {
+    "version": 2,
+    "status": "success",
+    "eval": {
+      "eval_set_id": "HXdo9rhSUYEmudiSHMm7G3",
+      "eval_id": "HiLFQzdfoYh4dqU23dJ8an",
+      "run_id": "mdoTp5vUsXxJMPdjL8DnCQ",
+      "created": "2026-10-04T17:27:18+00:00",
+      "task": "shared_trajectory",
+      "task_id": "4c6DDgMHVoY4uhuPQX6PkR",
+      "task_version": 0,
+      "task_file": "comparison/inspect_runner.py",
+      "task_display_name": "shared_trajectory",
+      "task_registry_name": "replay_task",
+      "task_attribs": {},
+      "task_args": {
+        "case_id": "intervals-broken",
+        "record": {
+          "artifact_id": "intervals-broken",
+          "case_id": "intervals",
+          "input": "Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\nThe file is /workspace/project.py.",
+          "final_source": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n    result = [intervals[0]]\n    for start, end in intervals[1:]:\n        if start < result[-1][1]:\n            result[-1][1] = end\n        else:\n            result.append([start, end])\n    return result\n"
+        }
+      },
+      "task_args_passed": {
+        "case_id": "intervals-broken",
+        "record": {
+          "artifact_id": "intervals-broken",
+          "case_id": "intervals",
+          "input": "Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\nThe file is /workspace/project.py.",
+          "final_source": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n    result = [intervals[0]]\n    for start, end in intervals[1:]:\n        if start < result[-1][1]:\n            result[-1][1] = end\n        else:\n            result.append([start, end])\n    return result\n"
+        }
+      },
+      "solver_args_passed": {},
+      "dataset": {
+        "samples": 1,
+        "sample_ids": [
+          "intervals-broken"
+        ],
+        "shuffled": false
+      },
+      "model": "openai/gpt-4o-mini-2024-07-18",
+      "model_generate_config": {},
+      "model_args": {},
+      "config": {
+        "epochs": 1,
+        "fail_on_error": true,
+        "continue_on_fail": false,
+        "score_on_error": false,
+        "max_samples": 1,
+        "max_tasks": 1,
+        "max_sandboxes": 1,
+        "sandbox_cleanup": true,
+        "sandbox_prebuilt": false,
+        "log_samples": true,
+        "log_realtime": true,
+        "log_images": true,
+        "log_model_api": false,
+        "score_display": true
+      },
+      "revision": {
+        "type": "git",
+        "origin": "https://github.com/Hegdesachin87/Inspect-AI.git",
+        "commit": "c5cc7a3",
+        "dirty": true
+      },
+      "packages": {
+        "inspect_ai": "0.3.276"
+      },
+      "scorers": [
+        {
+          "name": "fixed_tests",
+          "options": {},
+          "metrics": [
+            {
+              "name": "inspect_ai/accuracy",
+              "options": {}
+            }
+          ],
+          "metadata": {}
+        }
+      ]
+    },
+    "plan": {
+      "name": "plan",
+      "steps": [
+        {
+          "solver": "replay",
+          "params": {
+            "record": {
+              "artifact_id": "intervals-broken",
+              "case_id": "intervals",
+              "input": "Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\nThe file is /workspace/project.py.",
+              "final_source": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n    result = [intervals[0]]\n    for start, end in intervals[1:]:\n        if start < result[-1][1]:\n            result[-1][1] = end\n        else:\n            result.append([start, end])\n    return result\n"
+            }
+          },
+          "params_passed": {
+            "record": {
+              "artifact_id": "intervals-broken",
+              "case_id": "intervals",
+              "input": "Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\nThe file is /workspace/project.py.",
+              "final_source": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n    result = [intervals[0]]\n    for start, end in intervals[1:]:\n        if start < result[-1][1]:\n            result[-1][1] = end\n        else:\n            result.append([start, end])\n    return result\n"
+            }
+          }
+        }
+      ],
+      "config": {}
+    },
+    "results": {
+      "total_samples": 1,
+      "completed_samples": 1,
+      "scores": [
+        {
+          "name": "fixed_tests",
+          "scorer": "fixed_tests",
+          "scored_samples": 1,
+          "unscored_samples": 0,
+          "params": {},
+          "metrics": {
+            "accuracy": {
+              "name": "accuracy",
+              "value": 0.0,
+              "params": {}
+            }
+          }
+        }
+      ],
+      "headline": {
+        "scorer": "fixed_tests",
+        "score": "fixed_tests",
+        "metric": "accuracy"
+      }
+    },
+    "stats": {
+      "started_at": "2026-10-04T17:27:20+00:00",
+      "completed_at": "2026-10-04T17:27:20+00:00",
+      "model_usage": {},
+      "role_usage": {},
+      "connection_limit_history": []
+    },
+    "invalidated": false,
+    "tags": [],
+    "metadata": {},
+    "reductions": [
+      {
+        "scorer": "fixed_tests",
+        "samples": [
+          {
+            "value": 0.0,
+            "explanation": "test_intervals (__main__.RepairTests.test_intervals) ... \n  test_intervals (__main__.RepairTests.test_intervals) (value=[[5, 6], [1, 3], [2, 6]]) ... FAIL\n  test_intervals (__main__.RepairTests.test_intervals) (value=[[1, 3], [2, 3]]) ... FAIL\n  test_intervals (__main__.RepairTests.test_intervals) (value=[[1, 2], [2, 3]]) ... FAIL\n  test_intervals (__main__.RepairTests.test_intervals) (value=[[5, 2], [1, 2]]) ... FAIL\n\n======================================================================\nFAIL: test_intervals (__main__.RepairTests.test_intervals) (value=[[5, 6], [1, 3], [2, 6]])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 19, in test_intervals\nAssertionError: Lists differ: [[5, 6]] != [[1, 7]]\n\nFirst differing element 0:\n[5, 6]\n[1, 7]\n\n- [[5, 6]]\n?   ^  ^\n\n+ [[1, 7]]\n?   ^  ^\n\n\n======================================================================\nFAIL: test_intervals (__main__.RepairTests.test_intervals) (value=[[1, 3], [2, 3]])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 19, in test_intervals\nAssertionError: Lists differ: [[1, 3]] != [[1, 10]]\n\nFirst differing element 0:\n[1, 3]\n[1, 10]\n\n- [[1, 3]]\n?      ^\n\n+ [[1, 10]]\n?      ^^\n\n\n======================================================================\nFAIL: test_intervals (__main__.RepairTests.test_intervals) (value=[[1, 2], [2, 3]])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 19, in test_intervals\nAssertionError: Lists differ: [[1, 2], [2, 3]] != [[1, 3]]\n\nFirst differing element 0:\n[1, 2]\n[1, 3]\n\nFirst list contains 1 additional elements.\nFirst extra element 1:\n[2, 3]\n\n- [[1, 2], [2, 3]]\n+ [[1, 3]]\n\n======================================================================\nFAIL: test_intervals (__main__.RepairTests.test_intervals) (value=[[5, 2], [1, 2]])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 19, in test_intervals\nAssertionError: Lists differ: [[5, 2]] != [[1, 2], [5, 6]]\n\nFirst differing element 0:\n[5, 2]\n[1, 2]\n\nSecond list contains 1 additional elements.\nFirst extra element 1:\n[5, 6]\n\n- [[5, 2]]\n+ [[1, 2], [5, 6]]\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=4)\n",
+            "history": [],
+            "sample_id": "intervals-broken"
+          }
+        ]
+      }
+    ]
+  },
+  "2026-10-04T17-27-18-00-00_shared-trajectory_faeud2JvK59ifz3aMnEBJ4.eval": {
+    "version": 2,
+    "status": "success",
+    "eval": {
+      "eval_set_id": "HXdo9rhSUYEmudiSHMm7G3",
+      "eval_id": "XVnjzL5uxiet9sFR9UBbhX",
+      "run_id": "mdoTp5vUsXxJMPdjL8DnCQ",
+      "created": "2026-10-04T17:27:18+00:00",
+      "task": "shared_trajectory",
+      "task_id": "faeud2JvK59ifz3aMnEBJ4",
+      "task_version": 0,
+      "task_file": "comparison/inspect_runner.py",
+      "task_display_name": "shared_trajectory",
+      "task_registry_name": "replay_task",
+      "task_attribs": {},
+      "task_args": {
+        "case_id": "slug-reference",
+        "record": {
+          "artifact_id": "slug-reference",
+          "case_id": "slug",
+          "input": "Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading/trailing hyphens. Empty or all-separator input returns an empty string.\nThe file is /workspace/project.py.",
+          "final_source": "import re\n\ndef slug(text):\n    return re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')\n"
+        }
+      },
+      "task_args_passed": {
+        "case_id": "slug-reference",
+        "record": {
+          "artifact_id": "slug-reference",
+          "case_id": "slug",
+          "input": "Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading/trailing hyphens. Empty or all-separator input returns an empty string.\nThe file is /workspace/project.py.",
+          "final_source": "import re\n\ndef slug(text):\n    return re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')\n"
+        }
+      },
+      "solver_args_passed": {},
+      "dataset": {
+        "samples": 1,
+        "sample_ids": [
+          "slug-reference"
+        ],
+        "shuffled": false
+      },
+      "model": "openai/gpt-4o-mini-2024-07-18",
+      "model_generate_config": {},
+      "model_args": {},
+      "config": {
+        "epochs": 1,
+        "fail_on_error": true,
+        "continue_on_fail": false,
+        "score_on_error": false,
+        "max_samples": 1,
+        "max_tasks": 1,
+        "max_sandboxes": 1,
+        "sandbox_cleanup": true,
+        "sandbox_prebuilt": false,
+        "log_samples": true,
+        "log_realtime": true,
+        "log_images": true,
+        "log_model_api": false,
+        "score_display": true
+      },
+      "revision": {
+        "type": "git",
+        "origin": "https://github.com/Hegdesachin87/Inspect-AI.git",
+        "commit": "c5cc7a3",
+        "dirty": true
+      },
+      "packages": {
+        "inspect_ai": "0.3.276"
+      },
+      "scorers": [
+        {
+          "name": "fixed_tests",
+          "options": {},
+          "metrics": [
+            {
+              "name": "inspect_ai/accuracy",
+              "options": {}
+            }
+          ],
+          "metadata": {}
+        }
+      ]
+    },
+    "plan": {
+      "name": "plan",
+      "steps": [
+        {
+          "solver": "replay",
+          "params": {
+            "record": {
+              "artifact_id": "slug-reference",
+              "case_id": "slug",
+              "input": "Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading/trailing hyphens. Empty or all-separator input returns an empty string.\nThe file is /workspace/project.py.",
+              "final_source": "import re\n\ndef slug(text):\n    return re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')\n"
+            }
+          },
+          "params_passed": {
+            "record": {
+              "artifact_id": "slug-reference",
+              "case_id": "slug",
+              "input": "Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading/trailing hyphens. Empty or all-separator input returns an empty string.\nThe file is /workspace/project.py.",
+              "final_source": "import re\n\ndef slug(text):\n    return re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')\n"
+            }
+          }
+        }
+      ],
+      "config": {}
+    },
+    "results": {
+      "total_samples": 1,
+      "completed_samples": 1,
+      "scores": [
+        {
+          "name": "fixed_tests",
+          "scorer": "fixed_tests",
+          "scored_samples": 1,
+          "unscored_samples": 0,
+          "params": {},
+          "metrics": {
+            "accuracy": {
+              "name": "accuracy",
+              "value": 1.0,
+              "params": {}
+            }
+          }
+        }
+      ],
+      "headline": {
+        "scorer": "fixed_tests",
+        "score": "fixed_tests",
+        "metric": "accuracy"
+      }
+    },
+    "stats": {
+      "started_at": "2026-10-04T17:27:19+00:00",
+      "completed_at": "2026-10-04T17:27:20+00:00",
+      "model_usage": {},
+      "role_usage": {},
+      "connection_limit_history": []
+    },
+    "invalidated": false,
+    "tags": [],
+    "metadata": {},
+    "reductions": [
+      {
+        "scorer": "fixed_tests",
+        "samples": [
+          {
+            "value": 1.0,
+            "explanation": "test_slug (__main__.RepairTests.test_slug) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+            "history": [],
+            "sample_id": "slug-reference"
+          }
+        ]
+      }
+    ]
+  },
+  "2026-10-04T17-27-17-00-00_shared-trajectory_7bC9yecY9xWwvske7tbRZt.eval": {
+    "version": 2,
+    "status": "success",
+    "eval": {
+      "eval_set_id": "HXdo9rhSUYEmudiSHMm7G3",
+      "eval_id": "J2xxy6febPCP45dGYURpFF",
+      "run_id": "mdoTp5vUsXxJMPdjL8DnCQ",
+      "created": "2026-10-04T17:27:17+00:00",
+      "task": "shared_trajectory",
+      "task_id": "7bC9yecY9xWwvske7tbRZt",
+      "task_version": 0,
+      "task_file": "comparison/inspect_runner.py",
+      "task_display_name": "shared_trajectory",
+      "task_registry_name": "replay_task",
+      "task_attribs": {},
+      "task_args": {
+        "case_id": "slug-broken",
+        "record": {
+          "artifact_id": "slug-broken",
+          "case_id": "slug",
+          "input": "Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading/trailing hyphens. Empty or all-separator input returns an empty string.\nThe file is /workspace/project.py.",
+          "final_source": "def slug(text):\n    return text.lower().replace(' ', '-')\n"
+        }
+      },
+      "task_args_passed": {
+        "case_id": "slug-broken",
+        "record": {
+          "artifact_id": "slug-broken",
+          "case_id": "slug",
+          "input": "Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading/trailing hyphens. Empty or all-separator input returns an empty string.\nThe file is /workspace/project.py.",
+          "final_source": "def slug(text):\n    return text.lower().replace(' ', '-')\n"
+        }
+      },
+      "solver_args_passed": {},
+      "dataset": {
+        "samples": 1,
+        "sample_ids": [
+          "slug-broken"
+        ],
+        "shuffled": false
+      },
+      "model": "openai/gpt-4o-mini-2024-07-18",
+      "model_generate_config": {},
+      "model_args": {},
+      "config": {
+        "epochs": 1,
+        "fail_on_error": true,
+        "continue_on_fail": false,
+        "score_on_error": false,
+        "max_samples": 1,
+        "max_tasks": 1,
+        "max_sandboxes": 1,
+        "sandbox_cleanup": true,
+        "sandbox_prebuilt": false,
+        "log_samples": true,
+        "log_realtime": true,
+        "log_images": true,
+        "log_model_api": false,
+        "score_display": true
+      },
+      "revision": {
+        "type": "git",
+        "origin": "https://github.com/Hegdesachin87/Inspect-AI.git",
+        "commit": "c5cc7a3",
+        "dirty": true
+      },
+      "packages": {
+        "inspect_ai": "0.3.276"
+      },
+      "scorers": [
+        {
+          "name": "fixed_tests",
+          "options": {},
+          "metrics": [
+            {
+              "name": "inspect_ai/accuracy",
+              "options": {}
+            }
+          ],
+          "metadata": {}
+        }
+      ]
+    },
+    "plan": {
+      "name": "plan",
+      "steps": [
+        {
+          "solver": "replay",
+          "params": {
+            "record": {
+              "artifact_id": "slug-broken",
+              "case_id": "slug",
+              "input": "Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading/trailing hyphens. Empty or all-separator input returns an empty string.\nThe file is /workspace/project.py.",
+              "final_source": "def slug(text):\n    return text.lower().replace(' ', '-')\n"
+            }
+          },
+          "params_passed": {
+            "record": {
+              "artifact_id": "slug-broken",
+              "case_id": "slug",
+              "input": "Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading/trailing hyphens. Empty or all-separator input returns an empty string.\nThe file is /workspace/project.py.",
+              "final_source": "def slug(text):\n    return text.lower().replace(' ', '-')\n"
+            }
+          }
+        }
+      ],
+      "config": {}
+    },
+    "results": {
+      "total_samples": 1,
+      "completed_samples": 1,
+      "scores": [
+        {
+          "name": "fixed_tests",
+          "scorer": "fixed_tests",
+          "scored_samples": 1,
+          "unscored_samples": 0,
+          "params": {},
+          "metrics": {
+            "accuracy": {
+              "name": "accuracy",
+              "value": 0.0,
+              "params": {}
+            }
+          }
+        }
+      ],
+      "headline": {
+        "scorer": "fixed_tests",
+        "score": "fixed_tests",
+        "metric": "accuracy"
+      }
+    },
+    "stats": {
+      "started_at": "2026-10-04T17:27:19+00:00",
+      "completed_at": "2026-10-04T17:27:19+00:00",
+      "model_usage": {},
+      "role_usage": {},
+      "connection_limit_history": []
+    },
+    "invalidated": false,
+    "tags": [],
+    "metadata": {},
+    "reductions": [
+      {
+        "scorer": "fixed_tests",
+        "samples": [
+          {
+            "value": 0.0,
+            "explanation": "test_slug (__main__.RepairTests.test_slug) ... \n  test_slug (__main__.RepairTests.test_slug) (value='  A___B!!! ') ... FAIL\n  test_slug (__main__.RepairTests.test_slug) (value='---') ... FAIL\n  test_slug (__main__.RepairTests.test_slug) (value='API v2.0') ... FAIL\n  test_slug (__main__.RepairTests.test_slug) (value='a\\tb\\nc') ... FAIL\n  test_slug (__main__.RepairTests.test_slug) (value='CAFÉ') ... FAIL\n\n======================================================================\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='  A___B!!! ')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 11, in test_slug\nAssertionError: '--a___b!!!-' != 'a-b'\n- --a___b!!!-\n+ a-b\n\n\n======================================================================\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='---')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 11, in test_slug\nAssertionError: '---' != ''\n- ---\n\n\n======================================================================\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='API v2.0')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 11, in test_slug\nAssertionError: 'api-v2.0' != 'api-v2-0'\n- api-v2.0\n?       ^\n+ api-v2-0\n?       ^\n\n\n======================================================================\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='a\\tb\\nc')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 11, in test_slug\nAssertionError: 'a\\tb\\nc' != 'a-b-c'\n+ a-b-c\n- a\tb\n- c\n\n\n======================================================================\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='CAFÉ')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 11, in test_slug\nAssertionError: 'café' != 'caf'\n- café\n?    -\n+ caf\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=5)\n",
+            "history": [],
+            "sample_id": "slug-broken"
+          }
+        ]
+      }
+    ]
+  }
+}

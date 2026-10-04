@@ -1,0 +1,507 @@
+{
+  "2026-10-04T17-35-31-00-00_coding-repair_Nkn34FDHSyesFsqd9i35cv.eval": {
+    "version": 2,
+    "status": "success",
+    "eval": {
+      "eval_set_id": "gfb9T5kM93twk6MUe4Aw4i",
+      "eval_id": "JzTeNSJXQqDLqUTKLtYadJ",
+      "run_id": "68DvjHzXXXWb5iQwRyEaA5",
+      "created": "2026-10-04T17:35:31+00:00",
+      "task": "coding_repair",
+      "task_id": "Nkn34FDHSyesFsqd9i35cv",
+      "task_version": 0,
+      "task_file": "comparison/inspect_runner.py",
+      "task_display_name": "coding_repair",
+      "task_registry_name": "repair",
+      "task_attribs": {},
+      "task_args": {
+        "case_id": "intervals",
+        "compose_file": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/compose.yaml",
+        "output_dir": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/records"
+      },
+      "task_args_passed": {
+        "case_id": "intervals",
+        "compose_file": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/compose.yaml",
+        "output_dir": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/records"
+      },
+      "solver_args_passed": {},
+      "dataset": {
+        "samples": 1,
+        "sample_ids": [
+          "intervals"
+        ],
+        "shuffled": false
+      },
+      "sandbox": {
+        "type": "docker",
+        "config": "runs/2026-10-04-demo/recovery/inspect/compose.yaml"
+      },
+      "model": "openai/gpt-4o-mini-2024-07-18",
+      "model_generate_config": {},
+      "model_args": {},
+      "config": {
+        "epochs": 1,
+        "fail_on_error": true,
+        "continue_on_fail": false,
+        "score_on_error": false,
+        "max_samples": 1,
+        "max_tasks": 1,
+        "max_sandboxes": 1,
+        "sandbox_cleanup": true,
+        "sandbox_prebuilt": false,
+        "log_samples": true,
+        "log_realtime": true,
+        "log_images": true,
+        "log_model_api": false,
+        "score_display": true
+      },
+      "revision": {
+        "type": "git",
+        "origin": "https://github.com/Hegdesachin87/Inspect-AI.git",
+        "commit": "51b3920",
+        "dirty": true
+      },
+      "packages": {
+        "inspect_ai": "0.3.276"
+      },
+      "scorers": [
+        {
+          "name": "fixed_tests",
+          "options": {},
+          "metrics": [
+            {
+              "name": "inspect_ai/accuracy",
+              "options": {}
+            }
+          ],
+          "metadata": {}
+        }
+      ]
+    },
+    "plan": {
+      "name": "plan",
+      "steps": [
+        {
+          "solver": "system_message",
+          "params": {
+            "template": "You are repairing a small Python project. Use run_command to inspect and edit /workspace/project.py and run local checks. Implement the stated requirements without changing the function name. You have at most 6 model calls, each with at most 700 output tokens. The sandbox has Python and no network. Grading runs fixed tests outside your editable sandbox after you finish. When done, give a short summary without calling another tool."
+          },
+          "params_passed": {
+            "template": "You are repairing a small Python project. Use run_command to inspect and edit /workspace/project.py and run local checks. Implement the stated requirements without changing the function name. You have at most 6 model calls, each with at most 700 output tokens. The sandbox has Python and no network. Grading runs fixed tests outside your editable sandbox after you finish. When done, give a short summary without calling another tool."
+          }
+        },
+        {
+          "solver": "use_tools",
+          "params": {
+            "tools": [
+              {
+                "type": "tool",
+                "name": "run_command",
+                "params": {}
+              }
+            ],
+            "tool_choice": "auto",
+            "append": false
+          },
+          "params_passed": {
+            "tools": [
+              {
+                "type": "tool",
+                "name": "run_command",
+                "params": {}
+              }
+            ]
+          }
+        },
+        {
+          "solver": "recovery_fixture",
+          "params": {
+            "output_dir": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/records"
+          },
+          "params_passed": {
+            "output_dir": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/records"
+          }
+        }
+      ],
+      "config": {
+        "max_retries": 0,
+        "timeout": 45,
+        "max_tokens": 700,
+        "temperature": 0.0,
+        "parallel_tool_calls": false
+      }
+    },
+    "results": {
+      "total_samples": 1,
+      "completed_samples": 1,
+      "scores": [
+        {
+          "name": "fixed_tests",
+          "scorer": "fixed_tests",
+          "scored_samples": 1,
+          "unscored_samples": 0,
+          "params": {},
+          "metrics": {
+            "accuracy": {
+              "name": "accuracy",
+              "value": 1.0,
+              "params": {}
+            }
+          }
+        }
+      ],
+      "headline": {
+        "scorer": "fixed_tests",
+        "score": "fixed_tests",
+        "metric": "accuracy"
+      }
+    },
+    "stats": {
+      "started_at": "2026-10-04T17:35:31+00:00",
+      "completed_at": "2026-10-04T17:35:33+00:00",
+      "model_usage": {},
+      "role_usage": {},
+      "connection_limit_history": []
+    },
+    "invalidated": false,
+    "tags": [],
+    "metadata": {},
+    "reductions": [
+      {
+        "scorer": "fixed_tests",
+        "samples": [
+          {
+            "value": 1.0,
+            "explanation": "test_intervals (__main__.RepairTests.test_intervals) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+            "history": [],
+            "sample_id": "intervals"
+          }
+        ]
+      }
+    ]
+  },
+  "2026-10-04T17-34-55-00-00_coding-repair_Nkn34FDHSyesFsqd9i35cv.eval": {
+    "version": 2,
+    "status": "started",
+    "eval": {
+      "eval_set_id": "gfb9T5kM93twk6MUe4Aw4i",
+      "eval_id": "JBztEu9aBioSiqZdHMj3zd",
+      "run_id": "g2umS2p6cPZguVcT75gRuc",
+      "created": "2026-10-04T17:34:55+00:00",
+      "task": "coding_repair",
+      "task_id": "Nkn34FDHSyesFsqd9i35cv",
+      "task_version": 0,
+      "task_file": "comparison/inspect_runner.py",
+      "task_display_name": "coding_repair",
+      "task_registry_name": "repair",
+      "task_attribs": {},
+      "task_args": {
+        "case_id": "intervals",
+        "compose_file": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/compose.yaml",
+        "output_dir": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/records"
+      },
+      "task_args_passed": {
+        "case_id": "intervals",
+        "compose_file": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/compose.yaml",
+        "output_dir": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/records"
+      },
+      "solver_args_passed": {},
+      "dataset": {
+        "samples": 1,
+        "sample_ids": [
+          "intervals"
+        ],
+        "shuffled": false
+      },
+      "sandbox": {
+        "type": "docker",
+        "config": "runs/2026-10-04-demo/recovery/inspect/compose.yaml"
+      },
+      "model": "openai/gpt-4o-mini-2024-07-18",
+      "model_generate_config": {},
+      "model_args": {},
+      "config": {
+        "epochs": 1,
+        "fail_on_error": true,
+        "continue_on_fail": false,
+        "score_on_error": false,
+        "max_samples": 1,
+        "max_tasks": 1,
+        "max_sandboxes": 1,
+        "sandbox_cleanup": true,
+        "sandbox_prebuilt": false,
+        "log_samples": true,
+        "log_realtime": true,
+        "log_images": true,
+        "log_model_api": false,
+        "score_display": true
+      },
+      "revision": {
+        "type": "git",
+        "origin": "https://github.com/Hegdesachin87/Inspect-AI.git",
+        "commit": "c360672",
+        "dirty": true
+      },
+      "packages": {
+        "inspect_ai": "0.3.276"
+      },
+      "scorers": [
+        {
+          "name": "fixed_tests",
+          "options": {},
+          "metrics": [
+            {
+              "name": "inspect_ai/accuracy",
+              "options": {}
+            }
+          ],
+          "metadata": {}
+        }
+      ]
+    },
+    "plan": {
+      "name": "plan",
+      "steps": [
+        {
+          "solver": "system_message",
+          "params": {
+            "template": "You are repairing a small Python project. Use run_command to inspect and edit /workspace/project.py and run local checks. Implement the stated requirements without changing the function name. You have at most 6 model calls, each with at most 700 output tokens. The sandbox has Python and no network. Grading runs fixed tests outside your editable sandbox after you finish. When done, give a short summary without calling another tool."
+          },
+          "params_passed": {
+            "template": "You are repairing a small Python project. Use run_command to inspect and edit /workspace/project.py and run local checks. Implement the stated requirements without changing the function name. You have at most 6 model calls, each with at most 700 output tokens. The sandbox has Python and no network. Grading runs fixed tests outside your editable sandbox after you finish. When done, give a short summary without calling another tool."
+          }
+        },
+        {
+          "solver": "use_tools",
+          "params": {
+            "tools": [
+              {
+                "type": "tool",
+                "name": "run_command",
+                "params": {}
+              }
+            ],
+            "tool_choice": "auto",
+            "append": false
+          },
+          "params_passed": {
+            "tools": [
+              {
+                "type": "tool",
+                "name": "run_command",
+                "params": {}
+              }
+            ]
+          }
+        },
+        {
+          "solver": "recovery_fixture",
+          "params": {
+            "output_dir": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/records"
+          },
+          "params_passed": {
+            "output_dir": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/records"
+          }
+        }
+      ],
+      "config": {
+        "max_retries": 0,
+        "timeout": 45,
+        "max_tokens": 700,
+        "temperature": 0.0,
+        "parallel_tool_calls": false
+      }
+    },
+    "stats": {
+      "started_at": "",
+      "completed_at": "",
+      "model_usage": {},
+      "role_usage": {},
+      "connection_limit_history": []
+    },
+    "invalidated": false,
+    "tags": [],
+    "metadata": {}
+  },
+  "2026-10-04T17-34-55-00-00_coding-repair_dBFUbkC5wd8YPLySjsZSSE.eval": {
+    "version": 2,
+    "status": "success",
+    "eval": {
+      "eval_set_id": "gfb9T5kM93twk6MUe4Aw4i",
+      "eval_id": "SoaVXMMSbqSkEiEUFrrKu2",
+      "run_id": "g2umS2p6cPZguVcT75gRuc",
+      "created": "2026-10-04T17:34:55+00:00",
+      "task": "coding_repair",
+      "task_id": "dBFUbkC5wd8YPLySjsZSSE",
+      "task_version": 0,
+      "task_file": "comparison/inspect_runner.py",
+      "task_display_name": "coding_repair",
+      "task_registry_name": "repair",
+      "task_attribs": {},
+      "task_args": {
+        "case_id": "slug",
+        "compose_file": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/compose.yaml",
+        "output_dir": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/records"
+      },
+      "task_args_passed": {
+        "case_id": "slug",
+        "compose_file": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/compose.yaml",
+        "output_dir": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/records"
+      },
+      "solver_args_passed": {},
+      "dataset": {
+        "samples": 1,
+        "sample_ids": [
+          "slug"
+        ],
+        "shuffled": false
+      },
+      "sandbox": {
+        "type": "docker",
+        "config": "runs/2026-10-04-demo/recovery/inspect/compose.yaml"
+      },
+      "model": "openai/gpt-4o-mini-2024-07-18",
+      "model_generate_config": {},
+      "model_args": {},
+      "config": {
+        "epochs": 1,
+        "fail_on_error": true,
+        "continue_on_fail": false,
+        "score_on_error": false,
+        "max_samples": 1,
+        "max_tasks": 1,
+        "max_sandboxes": 1,
+        "sandbox_cleanup": true,
+        "sandbox_prebuilt": false,
+        "log_samples": true,
+        "log_realtime": true,
+        "log_images": true,
+        "log_model_api": false,
+        "score_display": true
+      },
+      "revision": {
+        "type": "git",
+        "origin": "https://github.com/Hegdesachin87/Inspect-AI.git",
+        "commit": "c360672",
+        "dirty": true
+      },
+      "packages": {
+        "inspect_ai": "0.3.276"
+      },
+      "scorers": [
+        {
+          "name": "fixed_tests",
+          "options": {},
+          "metrics": [
+            {
+              "name": "inspect_ai/accuracy",
+              "options": {}
+            }
+          ],
+          "metadata": {}
+        }
+      ]
+    },
+    "plan": {
+      "name": "plan",
+      "steps": [
+        {
+          "solver": "system_message",
+          "params": {
+            "template": "You are repairing a small Python project. Use run_command to inspect and edit /workspace/project.py and run local checks. Implement the stated requirements without changing the function name. You have at most 6 model calls, each with at most 700 output tokens. The sandbox has Python and no network. Grading runs fixed tests outside your editable sandbox after you finish. When done, give a short summary without calling another tool."
+          },
+          "params_passed": {
+            "template": "You are repairing a small Python project. Use run_command to inspect and edit /workspace/project.py and run local checks. Implement the stated requirements without changing the function name. You have at most 6 model calls, each with at most 700 output tokens. The sandbox has Python and no network. Grading runs fixed tests outside your editable sandbox after you finish. When done, give a short summary without calling another tool."
+          }
+        },
+        {
+          "solver": "use_tools",
+          "params": {
+            "tools": [
+              {
+                "type": "tool",
+                "name": "run_command",
+                "params": {}
+              }
+            ],
+            "tool_choice": "auto",
+            "append": false
+          },
+          "params_passed": {
+            "tools": [
+              {
+                "type": "tool",
+                "name": "run_command",
+                "params": {}
+              }
+            ]
+          }
+        },
+        {
+          "solver": "recovery_fixture",
+          "params": {
+            "output_dir": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/records"
+          },
+          "params_passed": {
+            "output_dir": "/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/recovery/inspect/records"
+          }
+        }
+      ],
+      "config": {
+        "max_retries": 0,
+        "timeout": 45,
+        "max_tokens": 700,
+        "temperature": 0.0,
+        "parallel_tool_calls": false
+      }
+    },
+    "results": {
+      "total_samples": 1,
+      "completed_samples": 1,
+      "scores": [
+        {
+          "name": "fixed_tests",
+          "scorer": "fixed_tests",
+          "scored_samples": 1,
+          "unscored_samples": 0,
+          "params": {},
+          "metrics": {
+            "accuracy": {
+              "name": "accuracy",
+              "value": 1.0,
+              "params": {}
+            }
+          }
+        }
+      ],
+      "headline": {
+        "scorer": "fixed_tests",
+        "score": "fixed_tests",
+        "metric": "accuracy"
+      }
+    },
+    "stats": {
+      "started_at": "2026-10-04T17:34:55+00:00",
+      "completed_at": "2026-10-04T17:34:57+00:00",
+      "model_usage": {},
+      "role_usage": {},
+      "connection_limit_history": []
+    },
+    "invalidated": false,
+    "tags": [],
+    "metadata": {},
+    "reductions": [
+      {
+        "scorer": "fixed_tests",
+        "samples": [
+          {
+            "value": 1.0,
+            "explanation": "test_slug (__main__.RepairTests.test_slug) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+            "history": [],
+            "sample_id": "slug"
+          }
+        ]
+      }
+    ]
+  }
+}

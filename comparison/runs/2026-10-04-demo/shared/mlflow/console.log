@@ -1,0 +1,17 @@
+2026/10/04 13:33:21 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/10/04 13:33:21 INFO mlflow.store.db.utils: Updating database tables
+2026/10/04 13:33:22 INFO mlflow.models.evaluation.utils.trace: Auto tracing is temporarily enabled during the model evaluation for computing some metrics and debugging. To disable tracing, call `mlflow.autolog(disable=True)`.
+Evaluating:   0%|          | 0/9 [Elapsed: 00:00, Remaining: ?]Evaluating:  11%|█         | 1/9 [Elapsed: 00:00, Remaining: 00:06]Evaluating:  22%|██▏       | 2/9 [Elapsed: 00:01, Remaining: 00:03]Evaluating:  33%|███▎      | 3/9 [Elapsed: 00:01, Remaining: 00:02]Evaluating:  44%|████▍     | 4/9 [Elapsed: 00:01, Remaining: 00:01]Evaluating:  56%|█████▌    | 5/9 [Elapsed: 00:01, Remaining: 00:01]Evaluating:  67%|██████▋   | 6/9 [Elapsed: 00:02, Remaining: 00:01]Evaluating:  78%|███████▊  | 7/9 [Elapsed: 00:02, Remaining: 00:00]Evaluating:  89%|████████▉ | 8/9 [Elapsed: 00:02, Remaining: 00:00]Evaluating: 100%|██████████| 9/9 [Elapsed: 00:02, Remaining: 00:00]Evaluating: 100%|██████████| 9/9 [Elapsed: 00:02, Remaining: 00:00] [predict_fn: 0%, scorers: 100%]Evaluating: 100%|██████████| 9/9 [Elapsed: 00:02, Remaining: 00:00] [predict_fn: 0%, scorers: 100%]
+/Users/ankitsingh/dev/Inspect-AI/comparison/mlflow_runner.py:58: FutureWarning: Parameter 'experiment_ids' is deprecated. Please use 'locations' instead.
+  traces = mlflow.search_traces(experiment_ids=[experiment_id])
+
+✨ Evaluation completed.
+
+Metrics and evaluation results are logged to the MLflow run:
+  Run name: [94minvincible-hare-644[0m
+  Run ID: [94m324e69c5fbd44b92a8a01a7c57b0e973[0m
+
+To view the detailed evaluation results with sample-wise scores,
+open the [93m[1mTraces[0m tab in the Run page in the MLflow UI.
+
+{"framework": "mlflow", "rows": 9, "passed": 5}

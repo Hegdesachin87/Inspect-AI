@@ -1,0 +1,536 @@
+[
+  {
+    "trace_id":"tr-6124bcb5f8db92041f7b5bf2f2aa1919",
+    "fixed_tests\/value":0.0,
+    "fixed_tests\/rationale":"test_slug (__main__.RepairTests.test_slug) ... \n  test_slug (__main__.RepairTests.test_slug) (value='  A___B!!! ') ... FAIL\n  test_slug (__main__.RepairTests.test_slug) (value='---') ... FAIL\n  test_slug (__main__.RepairTests.test_slug) (value='API v2.0') ... FAIL\n  test_slug (__main__.RepairTests.test_slug) (value='a\\tb\\nc') ... FAIL\n  test_slug (__main__.RepairTests.test_slug) (value='CAF\u00c9') ... FAIL\n\n======================================================================\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='  A___B!!! ')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 11, in test_slug\nAssertionError: '--a___b!!!-' != 'a-b'\n- --a___b!!!-\n+ a-b\n\n\n======================================================================\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='---')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 11, in test_slug\nAssertionError: '---' != ''\n- ---\n\n\n======================================================================\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='API v2.0')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 11, in test_slug\nAssertionError: 'api-v2.0' != 'api-v2-0'\n- api-v2.0\n?       ^\n+ api-v2-0\n?       ^\n\n\n======================================================================\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='a\\tb\\nc')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 11, in test_slug\nAssertionError: 'a\\tb\\nc' != 'a-b-c'\n+ a-b-c\n- a\tb\n- c\n\n\n======================================================================\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='CAF\u00c9')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 11, in test_slug\nAssertionError: 'caf\u00e9' != 'caf'\n- caf\u00e9\n?    -\n+ caf\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=5)\n",
+    "trace":"{\"info\": {\"trace_id\": \"tr-6124bcb5f8db92041f7b5bf2f2aa1919\", \"trace_location\": {\"type\": \"MLFLOW_EXPERIMENT\", \"mlflow_experiment\": {\"experiment_id\": \"1\"}}, \"request_time\": \"2026-10-04T17:32:26.574Z\", \"state\": \"OK\", \"trace_metadata\": {\"mlflow.traceInputs\": \"{\\\"artifact_id\\\": \\\"slug-broken\\\"}\", \"mlflow.source.git.branch\": \"main\", \"mlflow.trace.infoFinalized\": \"true\", \"mlflow.trace.sizeStats\": \"{\\\"total_size_bytes\\\": 2597, \\\"num_spans\\\": 1, \\\"max\\\": 919, \\\"p25\\\": 919, \\\"p50\\\": 919, \\\"p75\\\": 919}\", \"mlflow.source.name\": \"\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/worker.py\", \"mlflow.trace_schema.version\": \"3\", \"mlflow.sourceRun\": \"1da8ee5ccfbf4a0a8be3e2f0b0e4e824\", \"mlflow.source.git.commit\": \"270d1a9b40ce5a7c02287a1b4673f6821e9cf61a\", \"mlflow.source.git.repoURL\": \"https:\/\/github.com\/Hegdesachin87\/Inspect-AI.git\", \"mlflow.source.type\": \"LOCAL\", \"mlflow.traceOutputs\": \"{\\\"artifact_id\\\": \\\"slug-broken\\\", \\\"case_id\\\": \\\"slug\\\", \\\"input\\\": \\\"Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading\/trailing hyphens. Empty or all-separator input...\", \"mlflow.trace.sizeBytes\": \"2597\", \"mlflow.user\": \"ankitsingh\"}, \"assessments\": [{\"assessment_id\": \"a-290e5bd1519b4f9ebaa1e9d7a8533fa0\", \"assessment_name\": \"fixed_tests\", \"trace_id\": \"tr-6124bcb5f8db92041f7b5bf2f2aa1919\", \"span_id\": \"f725f8a3445a637b\", \"source\": {\"source_type\": \"CODE\", \"source_id\": \"default\"}, \"create_time\": \"2026-10-04T17:32:26.924Z\", \"last_update_time\": \"2026-10-04T17:32:26.924Z\", \"feedback\": {\"value\": 0.0}, \"rationale\": \"test_slug (__main__.RepairTests.test_slug) ... \\n  test_slug (__main__.RepairTests.test_slug) (value='  A___B!!! ') ... FAIL\\n  test_slug (__main__.RepairTests.test_slug) (value='---') ... FAIL\\n  test_slug (__main__.RepairTests.test_slug) (value='API v2.0') ... FAIL\\n  test_slug (__main__.RepairTests.test_slug) (value='a\\\\tb\\\\nc') ... FAIL\\n  test_slug (__main__.RepairTests.test_slug) (value='CAF\\u00c9') ... FAIL\\n\\n======================================================================\\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='  A___B!!! ')\\n----------------------------------------------------------------------\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 11, in test_slug\\nAssertionError: '--a___b!!!-' != 'a-b'\\n- --a___b!!!-\\n+ a-b\\n\\n\\n======================================================================\\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='---')\\n----------------------------------------------------------------------\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 11, in test_slug\\nAssertionError: '---' != ''\\n- ---\\n\\n\\n======================================================================\\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='API v2.0')\\n----------------------------------------------------------------------\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 11, in test_slug\\nAssertionError: 'api-v2.0' != 'api-v2-0'\\n- api-v2.0\\n?       ^\\n+ api-v2-0\\n?       ^\\n\\n\\n======================================================================\\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='a\\\\tb\\\\nc')\\n----------------------------------------------------------------------\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 11, in test_slug\\nAssertionError: 'a\\\\tb\\\\nc' != 'a-b-c'\\n+ a-b-c\\n- a\\tb\\n- c\\n\\n\\n======================================================================\\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='CAF\\u00c9')\\n----------------------------------------------------------------------\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 11, in test_slug\\nAssertionError: 'caf\\u00e9' != 'caf'\\n- caf\\u00e9\\n?    -\\n+ caf\\n\\n\\n----------------------------------------------------------------------\\nRan 1 test in 0.000s\\n\\nFAILED (failures=5)\\n\", \"metadata\": {\"mlflow.assessment.sourceRunId\": \"1da8ee5ccfbf4a0a8be3e2f0b0e4e824\"}, \"valid\": true}], \"tags\": {\"mlflow.artifactLocation\": \"file:\/\/\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/runs\/2026-10-04-demo\/controls\/mlflow\/artifacts\/traces\/tr-6124bcb5f8db92041f7b5bf2f2aa1919\/artifacts\", \"mlflow.trace.spansLocation\": \"TRACKING_STORE\", \"mlflow.eval.requestId\": \"fb873da6e10987d0508ebca5dfb4038e308f88ae2e12f66a74ad592d4f2dc1b8\", \"mlflow.traceName\": \"root_span\"}, \"request_preview\": \"{\\\"artifact_id\\\": \\\"slug-broken\\\"}\", \"response_preview\": \"{\\\"artifact_id\\\": \\\"slug-broken\\\", \\\"case_id\\\": \\\"slug\\\", \\\"input\\\": \\\"Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading\/trailing hyphens. Empty or all-separator input returns an empty string.\\\\nThe file is \/workspace\/project.py.\\\", \\\"final_source\\\": \\\"def slug(text):\\\\n    return text.lower().replace(' ', '-')\\\\n\\\"}\", \"execution_duration_ms\": 0}, \"data\": {\"spans\": [{\"trace_id\": \"YSS8tfjbkgQfe1vy8qoZGQ==\", \"span_id\": \"9yX4o0RaY3s=\", \"parent_span_id\": null, \"name\": \"root_span\", \"start_time_unix_nano\": 1791135146574577000, \"end_time_unix_nano\": 1791135146574985000, \"events\": [], \"status\": {\"code\": \"STATUS_CODE_OK\", \"message\": \"\"}, \"attributes\": {\"mlflow.traceRequestId\": \"\\\"tr-6124bcb5f8db92041f7b5bf2f2aa1919\\\"\", \"mlflow.spanType\": \"\\\"CHAIN\\\"\", \"mlflow.spanInputs\": \"{\\\"artifact_id\\\": \\\"slug-broken\\\"}\", \"mlflow.spanOutputs\": \"{\\\"artifact_id\\\": \\\"slug-broken\\\", \\\"case_id\\\": \\\"slug\\\", \\\"input\\\": \\\"Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading\/trailing hyphens. Empty or all-separator input returns an empty string.\\\\nThe file is \/workspace\/project.py.\\\", \\\"final_source\\\": \\\"def slug(text):\\\\n    return text.lower().replace(' ', '-')\\\\n\\\"}\", \"mlflow.spanLogLevel\": \"10\"}, \"links\": []}]}}",
+    "client_request_id":null,
+    "state":"OK",
+    "request_time":1791135146574,
+    "execution_duration":0,
+    "request":{
+      "artifact_id":"slug-broken"
+    },
+    "response":{
+      "artifact_id":"slug-broken",
+      "case_id":"slug",
+      "input":"Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading\/trailing hyphens. Empty or all-separator input returns an empty string.\nThe file is \/workspace\/project.py.",
+      "final_source":"def slug(text):\n    return text.lower().replace(' ', '-')\n"
+    },
+    "trace_metadata":{
+      "mlflow.source.git.branch":"main",
+      "mlflow.source.git.commit":"270d1a9b40ce5a7c02287a1b4673f6821e9cf61a",
+      "mlflow.source.git.repoURL":"https:\/\/github.com\/Hegdesachin87\/Inspect-AI.git",
+      "mlflow.source.name":"\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/worker.py",
+      "mlflow.source.type":"LOCAL",
+      "mlflow.sourceRun":"1da8ee5ccfbf4a0a8be3e2f0b0e4e824",
+      "mlflow.trace.infoFinalized":"true",
+      "mlflow.trace.sizeBytes":"2597",
+      "mlflow.trace.sizeStats":"{\"total_size_bytes\": 2597, \"num_spans\": 1, \"max\": 919, \"p25\": 919, \"p50\": 919, \"p75\": 919}",
+      "mlflow.traceInputs":"{\"artifact_id\": \"slug-broken\"}",
+      "mlflow.traceOutputs":"{\"artifact_id\": \"slug-broken\", \"case_id\": \"slug\", \"input\": \"Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading\/trailing hyphens. Empty or all-separator input...",
+      "mlflow.trace_schema.version":"3",
+      "mlflow.user":"ankitsingh"
+    },
+    "tags":{
+      "mlflow.artifactLocation":"file:\/\/\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/runs\/2026-10-04-demo\/controls\/mlflow\/artifacts\/traces\/tr-6124bcb5f8db92041f7b5bf2f2aa1919\/artifacts",
+      "mlflow.trace.spansLocation":"TRACKING_STORE",
+      "mlflow.eval.requestId":"fb873da6e10987d0508ebca5dfb4038e308f88ae2e12f66a74ad592d4f2dc1b8",
+      "mlflow.traceName":"root_span"
+    },
+    "spans":[
+      {
+        "trace_id":"YSS8tfjbkgQfe1vy8qoZGQ==",
+        "span_id":"9yX4o0RaY3s=",
+        "parent_span_id":null,
+        "name":"root_span",
+        "start_time_unix_nano":1791135146574577000,
+        "end_time_unix_nano":1791135146574985000,
+        "events":[
+
+        ],
+        "status":{
+          "code":"STATUS_CODE_OK",
+          "message":""
+        },
+        "attributes":{
+          "mlflow.traceRequestId":"\"tr-6124bcb5f8db92041f7b5bf2f2aa1919\"",
+          "mlflow.spanType":"\"CHAIN\"",
+          "mlflow.spanInputs":"{\"artifact_id\": \"slug-broken\"}",
+          "mlflow.spanOutputs":"{\"artifact_id\": \"slug-broken\", \"case_id\": \"slug\", \"input\": \"Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading\/trailing hyphens. Empty or all-separator input returns an empty string.\\nThe file is \/workspace\/project.py.\", \"final_source\": \"def slug(text):\\n    return text.lower().replace(' ', '-')\\n\"}",
+          "mlflow.spanLogLevel":"10"
+        },
+        "links":[
+
+        ]
+      }
+    ],
+    "assessments":[
+      {
+        "assessment_id":"a-290e5bd1519b4f9ebaa1e9d7a8533fa0",
+        "assessment_name":"fixed_tests",
+        "trace_id":"tr-6124bcb5f8db92041f7b5bf2f2aa1919",
+        "span_id":"f725f8a3445a637b",
+        "source":{
+          "source_type":"CODE",
+          "source_id":"default"
+        },
+        "create_time":"2026-10-04T17:32:26.924Z",
+        "last_update_time":"2026-10-04T17:32:26.924Z",
+        "feedback":{
+          "value":0.0
+        },
+        "rationale":"test_slug (__main__.RepairTests.test_slug) ... \n  test_slug (__main__.RepairTests.test_slug) (value='  A___B!!! ') ... FAIL\n  test_slug (__main__.RepairTests.test_slug) (value='---') ... FAIL\n  test_slug (__main__.RepairTests.test_slug) (value='API v2.0') ... FAIL\n  test_slug (__main__.RepairTests.test_slug) (value='a\\tb\\nc') ... FAIL\n  test_slug (__main__.RepairTests.test_slug) (value='CAF\u00c9') ... FAIL\n\n======================================================================\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='  A___B!!! ')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 11, in test_slug\nAssertionError: '--a___b!!!-' != 'a-b'\n- --a___b!!!-\n+ a-b\n\n\n======================================================================\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='---')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 11, in test_slug\nAssertionError: '---' != ''\n- ---\n\n\n======================================================================\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='API v2.0')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 11, in test_slug\nAssertionError: 'api-v2.0' != 'api-v2-0'\n- api-v2.0\n?       ^\n+ api-v2-0\n?       ^\n\n\n======================================================================\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='a\\tb\\nc')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 11, in test_slug\nAssertionError: 'a\\tb\\nc' != 'a-b-c'\n+ a-b-c\n- a\tb\n- c\n\n\n======================================================================\nFAIL: test_slug (__main__.RepairTests.test_slug) (value='CAF\u00c9')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 11, in test_slug\nAssertionError: 'caf\u00e9' != 'caf'\n- caf\u00e9\n?    -\n+ caf\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=5)\n",
+        "metadata":{
+          "mlflow.assessment.sourceRunId":"1da8ee5ccfbf4a0a8be3e2f0b0e4e824"
+        },
+        "valid":true
+      }
+    ]
+  },
+  {
+    "trace_id":"tr-d547e4dd2865c91b493a42ce28f700be",
+    "fixed_tests\/value":1.0,
+    "fixed_tests\/rationale":"test_slug (__main__.RepairTests.test_slug) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+    "trace":"{\"info\": {\"trace_id\": \"tr-d547e4dd2865c91b493a42ce28f700be\", \"trace_location\": {\"type\": \"MLFLOW_EXPERIMENT\", \"mlflow_experiment\": {\"experiment_id\": \"1\"}}, \"request_time\": \"2026-10-04T17:32:26.612Z\", \"state\": \"OK\", \"trace_metadata\": {\"mlflow.traceInputs\": \"{\\\"artifact_id\\\": \\\"slug-reference\\\"}\", \"mlflow.source.git.branch\": \"main\", \"mlflow.trace.infoFinalized\": \"true\", \"mlflow.trace.sizeStats\": \"{\\\"total_size_bytes\\\": 2684, \\\"num_spans\\\": 1, \\\"max\\\": 961, \\\"p25\\\": 961, \\\"p50\\\": 961, \\\"p75\\\": 961}\", \"mlflow.source.name\": \"\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/worker.py\", \"mlflow.trace_schema.version\": \"3\", \"mlflow.sourceRun\": \"1da8ee5ccfbf4a0a8be3e2f0b0e4e824\", \"mlflow.source.git.commit\": \"270d1a9b40ce5a7c02287a1b4673f6821e9cf61a\", \"mlflow.source.git.repoURL\": \"https:\/\/github.com\/Hegdesachin87\/Inspect-AI.git\", \"mlflow.source.type\": \"LOCAL\", \"mlflow.traceOutputs\": \"{\\\"artifact_id\\\": \\\"slug-reference\\\", \\\"case_id\\\": \\\"slug\\\", \\\"input\\\": \\\"Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading\/trailing hyphens. Empty or all-separator in...\", \"mlflow.trace.sizeBytes\": \"2684\", \"mlflow.user\": \"ankitsingh\"}, \"assessments\": [{\"assessment_id\": \"a-d8baebd9e1bc4853abe181fac63ec761\", \"assessment_name\": \"fixed_tests\", \"trace_id\": \"tr-d547e4dd2865c91b493a42ce28f700be\", \"span_id\": \"14bda922e812eccd\", \"source\": {\"source_type\": \"CODE\", \"source_id\": \"default\"}, \"create_time\": \"2026-10-04T17:32:27.190Z\", \"last_update_time\": \"2026-10-04T17:32:27.190Z\", \"feedback\": {\"value\": 1.0}, \"rationale\": \"test_slug (__main__.RepairTests.test_slug) ... ok\\n\\n----------------------------------------------------------------------\\nRan 1 test in 0.000s\\n\\nOK\\n\", \"metadata\": {\"mlflow.assessment.sourceRunId\": \"1da8ee5ccfbf4a0a8be3e2f0b0e4e824\"}, \"valid\": true}], \"tags\": {\"mlflow.artifactLocation\": \"file:\/\/\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/runs\/2026-10-04-demo\/controls\/mlflow\/artifacts\/traces\/tr-d547e4dd2865c91b493a42ce28f700be\/artifacts\", \"mlflow.trace.spansLocation\": \"TRACKING_STORE\", \"mlflow.eval.requestId\": \"2b52fefe41a0e68049168fcf0ad5c762356954ef6913f6704751cd5dab034494\", \"mlflow.traceName\": \"root_span\"}, \"request_preview\": \"{\\\"artifact_id\\\": \\\"slug-reference\\\"}\", \"response_preview\": \"{\\\"artifact_id\\\": \\\"slug-reference\\\", \\\"case_id\\\": \\\"slug\\\", \\\"input\\\": \\\"Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading\/trailing hyphens. Empty or all-separator input returns an empty string.\\\\nThe file is \/workspace\/project.py.\\\", \\\"final_source\\\": \\\"import re\\\\n\\\\ndef slug(text):\\\\n    return re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')\\\\n\\\"}\", \"execution_duration_ms\": 0}, \"data\": {\"spans\": [{\"trace_id\": \"1Ufk3ShlyRtJOkLOKPcAvg==\", \"span_id\": \"FL2pIugS7M0=\", \"parent_span_id\": null, \"name\": \"root_span\", \"start_time_unix_nano\": 1791135146612223000, \"end_time_unix_nano\": 1791135146612389000, \"events\": [], \"status\": {\"code\": \"STATUS_CODE_OK\", \"message\": \"\"}, \"attributes\": {\"mlflow.traceRequestId\": \"\\\"tr-d547e4dd2865c91b493a42ce28f700be\\\"\", \"mlflow.spanType\": \"\\\"CHAIN\\\"\", \"mlflow.spanInputs\": \"{\\\"artifact_id\\\": \\\"slug-reference\\\"}\", \"mlflow.spanOutputs\": \"{\\\"artifact_id\\\": \\\"slug-reference\\\", \\\"case_id\\\": \\\"slug\\\", \\\"input\\\": \\\"Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading\/trailing hyphens. Empty or all-separator input returns an empty string.\\\\nThe file is \/workspace\/project.py.\\\", \\\"final_source\\\": \\\"import re\\\\n\\\\ndef slug(text):\\\\n    return re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')\\\\n\\\"}\", \"mlflow.spanLogLevel\": \"10\"}, \"links\": []}]}}",
+    "client_request_id":null,
+    "state":"OK",
+    "request_time":1791135146612,
+    "execution_duration":0,
+    "request":{
+      "artifact_id":"slug-reference"
+    },
+    "response":{
+      "artifact_id":"slug-reference",
+      "case_id":"slug",
+      "input":"Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading\/trailing hyphens. Empty or all-separator input returns an empty string.\nThe file is \/workspace\/project.py.",
+      "final_source":"import re\n\ndef slug(text):\n    return re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')\n"
+    },
+    "trace_metadata":{
+      "mlflow.source.git.branch":"main",
+      "mlflow.source.git.commit":"270d1a9b40ce5a7c02287a1b4673f6821e9cf61a",
+      "mlflow.source.git.repoURL":"https:\/\/github.com\/Hegdesachin87\/Inspect-AI.git",
+      "mlflow.source.name":"\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/worker.py",
+      "mlflow.source.type":"LOCAL",
+      "mlflow.sourceRun":"1da8ee5ccfbf4a0a8be3e2f0b0e4e824",
+      "mlflow.trace.infoFinalized":"true",
+      "mlflow.trace.sizeBytes":"2684",
+      "mlflow.trace.sizeStats":"{\"total_size_bytes\": 2684, \"num_spans\": 1, \"max\": 961, \"p25\": 961, \"p50\": 961, \"p75\": 961}",
+      "mlflow.traceInputs":"{\"artifact_id\": \"slug-reference\"}",
+      "mlflow.traceOutputs":"{\"artifact_id\": \"slug-reference\", \"case_id\": \"slug\", \"input\": \"Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading\/trailing hyphens. Empty or all-separator in...",
+      "mlflow.trace_schema.version":"3",
+      "mlflow.user":"ankitsingh"
+    },
+    "tags":{
+      "mlflow.artifactLocation":"file:\/\/\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/runs\/2026-10-04-demo\/controls\/mlflow\/artifacts\/traces\/tr-d547e4dd2865c91b493a42ce28f700be\/artifacts",
+      "mlflow.trace.spansLocation":"TRACKING_STORE",
+      "mlflow.eval.requestId":"2b52fefe41a0e68049168fcf0ad5c762356954ef6913f6704751cd5dab034494",
+      "mlflow.traceName":"root_span"
+    },
+    "spans":[
+      {
+        "trace_id":"1Ufk3ShlyRtJOkLOKPcAvg==",
+        "span_id":"FL2pIugS7M0=",
+        "parent_span_id":null,
+        "name":"root_span",
+        "start_time_unix_nano":1791135146612223000,
+        "end_time_unix_nano":1791135146612389000,
+        "events":[
+
+        ],
+        "status":{
+          "code":"STATUS_CODE_OK",
+          "message":""
+        },
+        "attributes":{
+          "mlflow.traceRequestId":"\"tr-d547e4dd2865c91b493a42ce28f700be\"",
+          "mlflow.spanType":"\"CHAIN\"",
+          "mlflow.spanInputs":"{\"artifact_id\": \"slug-reference\"}",
+          "mlflow.spanOutputs":"{\"artifact_id\": \"slug-reference\", \"case_id\": \"slug\", \"input\": \"Fix slug(text). Lowercase ASCII letters, preserve ASCII digits, replace each run of all other characters with one hyphen, and remove leading\/trailing hyphens. Empty or all-separator input returns an empty string.\\nThe file is \/workspace\/project.py.\", \"final_source\": \"import re\\n\\ndef slug(text):\\n    return re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')\\n\"}",
+          "mlflow.spanLogLevel":"10"
+        },
+        "links":[
+
+        ]
+      }
+    ],
+    "assessments":[
+      {
+        "assessment_id":"a-d8baebd9e1bc4853abe181fac63ec761",
+        "assessment_name":"fixed_tests",
+        "trace_id":"tr-d547e4dd2865c91b493a42ce28f700be",
+        "span_id":"14bda922e812eccd",
+        "source":{
+          "source_type":"CODE",
+          "source_id":"default"
+        },
+        "create_time":"2026-10-04T17:32:27.190Z",
+        "last_update_time":"2026-10-04T17:32:27.190Z",
+        "feedback":{
+          "value":1.0
+        },
+        "rationale":"test_slug (__main__.RepairTests.test_slug) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+        "metadata":{
+          "mlflow.assessment.sourceRunId":"1da8ee5ccfbf4a0a8be3e2f0b0e4e824"
+        },
+        "valid":true
+      }
+    ]
+  },
+  {
+    "trace_id":"tr-7af853ea74d261b88ef406593c4ff200",
+    "fixed_tests\/value":0.0,
+    "fixed_tests\/rationale":"test_intervals (__main__.RepairTests.test_intervals) ... \n  test_intervals (__main__.RepairTests.test_intervals) (value=[[5, 6], [1, 3], [2, 6]]) ... FAIL\n  test_intervals (__main__.RepairTests.test_intervals) (value=[[1, 3], [2, 3]]) ... FAIL\n  test_intervals (__main__.RepairTests.test_intervals) (value=[[1, 2], [2, 3]]) ... FAIL\n  test_intervals (__main__.RepairTests.test_intervals) (value=[[5, 2], [1, 2]]) ... FAIL\n\n======================================================================\nFAIL: test_intervals (__main__.RepairTests.test_intervals) (value=[[5, 6], [1, 3], [2, 6]])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 19, in test_intervals\nAssertionError: Lists differ: [[5, 6]] != [[1, 7]]\n\nFirst differing element 0:\n[5, 6]\n[1, 7]\n\n- [[5, 6]]\n?   ^  ^\n\n+ [[1, 7]]\n?   ^  ^\n\n\n======================================================================\nFAIL: test_intervals (__main__.RepairTests.test_intervals) (value=[[1, 3], [2, 3]])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 19, in test_intervals\nAssertionError: Lists differ: [[1, 3]] != [[1, 10]]\n\nFirst differing element 0:\n[1, 3]\n[1, 10]\n\n- [[1, 3]]\n?      ^\n\n+ [[1, 10]]\n?      ^^\n\n\n======================================================================\nFAIL: test_intervals (__main__.RepairTests.test_intervals) (value=[[1, 2], [2, 3]])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 19, in test_intervals\nAssertionError: Lists differ: [[1, 2], [2, 3]] != [[1, 3]]\n\nFirst differing element 0:\n[1, 2]\n[1, 3]\n\nFirst list contains 1 additional elements.\nFirst extra element 1:\n[2, 3]\n\n- [[1, 2], [2, 3]]\n+ [[1, 3]]\n\n======================================================================\nFAIL: test_intervals (__main__.RepairTests.test_intervals) (value=[[5, 2], [1, 2]])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 19, in test_intervals\nAssertionError: Lists differ: [[5, 2]] != [[1, 2], [5, 6]]\n\nFirst differing element 0:\n[5, 2]\n[1, 2]\n\nSecond list contains 1 additional elements.\nFirst extra element 1:\n[5, 6]\n\n- [[5, 2]]\n+ [[1, 2], [5, 6]]\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=4)\n",
+    "trace":"{\"info\": {\"trace_id\": \"tr-7af853ea74d261b88ef406593c4ff200\", \"trace_location\": {\"type\": \"MLFLOW_EXPERIMENT\", \"mlflow_experiment\": {\"experiment_id\": \"1\"}}, \"request_time\": \"2026-10-04T17:32:26.928Z\", \"state\": \"OK\", \"trace_metadata\": {\"mlflow.traceInputs\": \"{\\\"artifact_id\\\": \\\"intervals-broken\\\"}\", \"mlflow.source.git.branch\": \"main\", \"mlflow.trace.infoFinalized\": \"true\", \"mlflow.trace.sizeStats\": \"{\\\"total_size_bytes\\\": 3116, \\\"num_spans\\\": 1, \\\"max\\\": 1176, \\\"p25\\\": 1176, \\\"p50\\\": 1176, \\\"p75\\\": 1176}\", \"mlflow.source.name\": \"\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/worker.py\", \"mlflow.trace_schema.version\": \"3\", \"mlflow.sourceRun\": \"1da8ee5ccfbf4a0a8be3e2f0b0e4e824\", \"mlflow.source.git.commit\": \"270d1a9b40ce5a7c02287a1b4673f6821e9cf61a\", \"mlflow.source.git.repoURL\": \"https:\/\/github.com\/Hegdesachin87\/Inspect-AI.git\", \"mlflow.source.type\": \"LOCAL\", \"mlflow.traceOutputs\": \"{\\\"artifact_id\\\": \\\"intervals-broken\\\", \\\"case_id\\\": \\\"intervals\\\", \\\"input\\\": \\\"Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. ...\", \"mlflow.trace.sizeBytes\": \"3116\", \"mlflow.user\": \"ankitsingh\"}, \"assessments\": [{\"assessment_id\": \"a-f40239eaa39949b2b5d4bb170d527bfe\", \"assessment_name\": \"fixed_tests\", \"trace_id\": \"tr-7af853ea74d261b88ef406593c4ff200\", \"span_id\": \"57dbae4607d3c06d\", \"source\": {\"source_type\": \"CODE\", \"source_id\": \"default\"}, \"create_time\": \"2026-10-04T17:32:27.446Z\", \"last_update_time\": \"2026-10-04T17:32:27.446Z\", \"feedback\": {\"value\": 0.0}, \"rationale\": \"test_intervals (__main__.RepairTests.test_intervals) ... \\n  test_intervals (__main__.RepairTests.test_intervals) (value=[[5, 6], [1, 3], [2, 6]]) ... FAIL\\n  test_intervals (__main__.RepairTests.test_intervals) (value=[[1, 3], [2, 3]]) ... FAIL\\n  test_intervals (__main__.RepairTests.test_intervals) (value=[[1, 2], [2, 3]]) ... FAIL\\n  test_intervals (__main__.RepairTests.test_intervals) (value=[[5, 2], [1, 2]]) ... FAIL\\n\\n======================================================================\\nFAIL: test_intervals (__main__.RepairTests.test_intervals) (value=[[5, 6], [1, 3], [2, 6]])\\n----------------------------------------------------------------------\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 19, in test_intervals\\nAssertionError: Lists differ: [[5, 6]] != [[1, 7]]\\n\\nFirst differing element 0:\\n[5, 6]\\n[1, 7]\\n\\n- [[5, 6]]\\n?   ^  ^\\n\\n+ [[1, 7]]\\n?   ^  ^\\n\\n\\n======================================================================\\nFAIL: test_intervals (__main__.RepairTests.test_intervals) (value=[[1, 3], [2, 3]])\\n----------------------------------------------------------------------\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 19, in test_intervals\\nAssertionError: Lists differ: [[1, 3]] != [[1, 10]]\\n\\nFirst differing element 0:\\n[1, 3]\\n[1, 10]\\n\\n- [[1, 3]]\\n?      ^\\n\\n+ [[1, 10]]\\n?      ^^\\n\\n\\n======================================================================\\nFAIL: test_intervals (__main__.RepairTests.test_intervals) (value=[[1, 2], [2, 3]])\\n----------------------------------------------------------------------\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 19, in test_intervals\\nAssertionError: Lists differ: [[1, 2], [2, 3]] != [[1, 3]]\\n\\nFirst differing element 0:\\n[1, 2]\\n[1, 3]\\n\\nFirst list contains 1 additional elements.\\nFirst extra element 1:\\n[2, 3]\\n\\n- [[1, 2], [2, 3]]\\n+ [[1, 3]]\\n\\n======================================================================\\nFAIL: test_intervals (__main__.RepairTests.test_intervals) (value=[[5, 2], [1, 2]])\\n----------------------------------------------------------------------\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 19, in test_intervals\\nAssertionError: Lists differ: [[5, 2]] != [[1, 2], [5, 6]]\\n\\nFirst differing element 0:\\n[5, 2]\\n[1, 2]\\n\\nSecond list contains 1 additional elements.\\nFirst extra element 1:\\n[5, 6]\\n\\n- [[5, 2]]\\n+ [[1, 2], [5, 6]]\\n\\n----------------------------------------------------------------------\\nRan 1 test in 0.000s\\n\\nFAILED (failures=4)\\n\", \"metadata\": {\"mlflow.assessment.sourceRunId\": \"1da8ee5ccfbf4a0a8be3e2f0b0e4e824\"}, \"valid\": true}], \"tags\": {\"mlflow.artifactLocation\": \"file:\/\/\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/runs\/2026-10-04-demo\/controls\/mlflow\/artifacts\/traces\/tr-7af853ea74d261b88ef406593c4ff200\/artifacts\", \"mlflow.trace.spansLocation\": \"TRACKING_STORE\", \"mlflow.eval.requestId\": \"0b898235ef57b177707326da3050901466c4d8a4a273a266f4072e5acf5a554b\", \"mlflow.traceName\": \"root_span\"}, \"request_preview\": \"{\\\"artifact_id\\\": \\\"intervals-broken\\\"}\", \"response_preview\": \"{\\\"artifact_id\\\": \\\"intervals-broken\\\", \\\"case_id\\\": \\\"intervals\\\", \\\"input\\\": \\\"Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\\\\nThe file is \/workspace\/project.py.\\\", \\\"final_source\\\": \\\"def merge_intervals(intervals):\\\\n    if not intervals:\\\\n        return []\\\\n    result = [intervals[0]]\\\\n    for start, end in intervals[1:]:\\\\n        if start < result[-1][1]:\\\\n            result[-1][1] = end\\\\n        else:\\\\n            result.append([start, end])\\\\n    return result\\\\n\\\"}\", \"execution_duration_ms\": 1}, \"data\": {\"spans\": [{\"trace_id\": \"evhT6nTSYbiO9AZZPE\/yAA==\", \"span_id\": \"V9uuRgfTwG0=\", \"parent_span_id\": null, \"name\": \"root_span\", \"start_time_unix_nano\": 1791135146928125000, \"end_time_unix_nano\": 1791135146929167000, \"events\": [], \"status\": {\"code\": \"STATUS_CODE_OK\", \"message\": \"\"}, \"attributes\": {\"mlflow.traceRequestId\": \"\\\"tr-7af853ea74d261b88ef406593c4ff200\\\"\", \"mlflow.spanType\": \"\\\"CHAIN\\\"\", \"mlflow.spanInputs\": \"{\\\"artifact_id\\\": \\\"intervals-broken\\\"}\", \"mlflow.spanOutputs\": \"{\\\"artifact_id\\\": \\\"intervals-broken\\\", \\\"case_id\\\": \\\"intervals\\\", \\\"input\\\": \\\"Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\\\\nThe file is \/workspace\/project.py.\\\", \\\"final_source\\\": \\\"def merge_intervals(intervals):\\\\n    if not intervals:\\\\n        return []\\\\n    result = [intervals[0]]\\\\n    for start, end in intervals[1:]:\\\\n        if start < result[-1][1]:\\\\n            result[-1][1] = end\\\\n        else:\\\\n            result.append([start, end])\\\\n    return result\\\\n\\\"}\", \"mlflow.spanLogLevel\": \"10\"}, \"links\": []}]}}",
+    "client_request_id":null,
+    "state":"OK",
+    "request_time":1791135146928,
+    "execution_duration":1,
+    "request":{
+      "artifact_id":"intervals-broken"
+    },
+    "response":{
+      "artifact_id":"intervals-broken",
+      "case_id":"intervals",
+      "input":"Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\nThe file is \/workspace\/project.py.",
+      "final_source":"def merge_intervals(intervals):\n    if not intervals:\n        return []\n    result = [intervals[0]]\n    for start, end in intervals[1:]:\n        if start < result[-1][1]:\n            result[-1][1] = end\n        else:\n            result.append([start, end])\n    return result\n"
+    },
+    "trace_metadata":{
+      "mlflow.source.git.branch":"main",
+      "mlflow.source.git.commit":"270d1a9b40ce5a7c02287a1b4673f6821e9cf61a",
+      "mlflow.source.git.repoURL":"https:\/\/github.com\/Hegdesachin87\/Inspect-AI.git",
+      "mlflow.source.name":"\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/worker.py",
+      "mlflow.source.type":"LOCAL",
+      "mlflow.sourceRun":"1da8ee5ccfbf4a0a8be3e2f0b0e4e824",
+      "mlflow.trace.infoFinalized":"true",
+      "mlflow.trace.sizeBytes":"3116",
+      "mlflow.trace.sizeStats":"{\"total_size_bytes\": 3116, \"num_spans\": 1, \"max\": 1176, \"p25\": 1176, \"p50\": 1176, \"p75\": 1176}",
+      "mlflow.traceInputs":"{\"artifact_id\": \"intervals-broken\"}",
+      "mlflow.traceOutputs":"{\"artifact_id\": \"intervals-broken\", \"case_id\": \"intervals\", \"input\": \"Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. ...",
+      "mlflow.trace_schema.version":"3",
+      "mlflow.user":"ankitsingh"
+    },
+    "tags":{
+      "mlflow.artifactLocation":"file:\/\/\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/runs\/2026-10-04-demo\/controls\/mlflow\/artifacts\/traces\/tr-7af853ea74d261b88ef406593c4ff200\/artifacts",
+      "mlflow.trace.spansLocation":"TRACKING_STORE",
+      "mlflow.eval.requestId":"0b898235ef57b177707326da3050901466c4d8a4a273a266f4072e5acf5a554b",
+      "mlflow.traceName":"root_span"
+    },
+    "spans":[
+      {
+        "trace_id":"evhT6nTSYbiO9AZZPE\/yAA==",
+        "span_id":"V9uuRgfTwG0=",
+        "parent_span_id":null,
+        "name":"root_span",
+        "start_time_unix_nano":1791135146928125000,
+        "end_time_unix_nano":1791135146929167000,
+        "events":[
+
+        ],
+        "status":{
+          "code":"STATUS_CODE_OK",
+          "message":""
+        },
+        "attributes":{
+          "mlflow.traceRequestId":"\"tr-7af853ea74d261b88ef406593c4ff200\"",
+          "mlflow.spanType":"\"CHAIN\"",
+          "mlflow.spanInputs":"{\"artifact_id\": \"intervals-broken\"}",
+          "mlflow.spanOutputs":"{\"artifact_id\": \"intervals-broken\", \"case_id\": \"intervals\", \"input\": \"Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\\nThe file is \/workspace\/project.py.\", \"final_source\": \"def merge_intervals(intervals):\\n    if not intervals:\\n        return []\\n    result = [intervals[0]]\\n    for start, end in intervals[1:]:\\n        if start < result[-1][1]:\\n            result[-1][1] = end\\n        else:\\n            result.append([start, end])\\n    return result\\n\"}",
+          "mlflow.spanLogLevel":"10"
+        },
+        "links":[
+
+        ]
+      }
+    ],
+    "assessments":[
+      {
+        "assessment_id":"a-f40239eaa39949b2b5d4bb170d527bfe",
+        "assessment_name":"fixed_tests",
+        "trace_id":"tr-7af853ea74d261b88ef406593c4ff200",
+        "span_id":"57dbae4607d3c06d",
+        "source":{
+          "source_type":"CODE",
+          "source_id":"default"
+        },
+        "create_time":"2026-10-04T17:32:27.446Z",
+        "last_update_time":"2026-10-04T17:32:27.446Z",
+        "feedback":{
+          "value":0.0
+        },
+        "rationale":"test_intervals (__main__.RepairTests.test_intervals) ... \n  test_intervals (__main__.RepairTests.test_intervals) (value=[[5, 6], [1, 3], [2, 6]]) ... FAIL\n  test_intervals (__main__.RepairTests.test_intervals) (value=[[1, 3], [2, 3]]) ... FAIL\n  test_intervals (__main__.RepairTests.test_intervals) (value=[[1, 2], [2, 3]]) ... FAIL\n  test_intervals (__main__.RepairTests.test_intervals) (value=[[5, 2], [1, 2]]) ... FAIL\n\n======================================================================\nFAIL: test_intervals (__main__.RepairTests.test_intervals) (value=[[5, 6], [1, 3], [2, 6]])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 19, in test_intervals\nAssertionError: Lists differ: [[5, 6]] != [[1, 7]]\n\nFirst differing element 0:\n[5, 6]\n[1, 7]\n\n- [[5, 6]]\n?   ^  ^\n\n+ [[1, 7]]\n?   ^  ^\n\n\n======================================================================\nFAIL: test_intervals (__main__.RepairTests.test_intervals) (value=[[1, 3], [2, 3]])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 19, in test_intervals\nAssertionError: Lists differ: [[1, 3]] != [[1, 10]]\n\nFirst differing element 0:\n[1, 3]\n[1, 10]\n\n- [[1, 3]]\n?      ^\n\n+ [[1, 10]]\n?      ^^\n\n\n======================================================================\nFAIL: test_intervals (__main__.RepairTests.test_intervals) (value=[[1, 2], [2, 3]])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 19, in test_intervals\nAssertionError: Lists differ: [[1, 2], [2, 3]] != [[1, 3]]\n\nFirst differing element 0:\n[1, 2]\n[1, 3]\n\nFirst list contains 1 additional elements.\nFirst extra element 1:\n[2, 3]\n\n- [[1, 2], [2, 3]]\n+ [[1, 3]]\n\n======================================================================\nFAIL: test_intervals (__main__.RepairTests.test_intervals) (value=[[5, 2], [1, 2]])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 19, in test_intervals\nAssertionError: Lists differ: [[5, 2]] != [[1, 2], [5, 6]]\n\nFirst differing element 0:\n[5, 2]\n[1, 2]\n\nSecond list contains 1 additional elements.\nFirst extra element 1:\n[5, 6]\n\n- [[5, 2]]\n+ [[1, 2], [5, 6]]\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=4)\n",
+        "metadata":{
+          "mlflow.assessment.sourceRunId":"1da8ee5ccfbf4a0a8be3e2f0b0e4e824"
+        },
+        "valid":true
+      }
+    ]
+  },
+  {
+    "trace_id":"tr-dfa0535bed7058608d9edf128a2aae42",
+    "fixed_tests\/value":1.0,
+    "fixed_tests\/rationale":"test_intervals (__main__.RepairTests.test_intervals) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+    "trace":"{\"info\": {\"trace_id\": \"tr-dfa0535bed7058608d9edf128a2aae42\", \"trace_location\": {\"type\": \"MLFLOW_EXPERIMENT\", \"mlflow_experiment\": {\"experiment_id\": \"1\"}}, \"request_time\": \"2026-10-04T17:32:27.196Z\", \"state\": \"OK\", \"trace_metadata\": {\"mlflow.traceInputs\": \"{\\\"artifact_id\\\": \\\"intervals-reference\\\"}\", \"mlflow.source.git.branch\": \"main\", \"mlflow.trace.infoFinalized\": \"true\", \"mlflow.trace.sizeStats\": \"{\\\"total_size_bytes\\\": 3091, \\\"num_spans\\\": 1, \\\"max\\\": 1162, \\\"p25\\\": 1162, \\\"p50\\\": 1162, \\\"p75\\\": 1162}\", \"mlflow.source.name\": \"\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/worker.py\", \"mlflow.trace_schema.version\": \"3\", \"mlflow.sourceRun\": \"1da8ee5ccfbf4a0a8be3e2f0b0e4e824\", \"mlflow.source.git.commit\": \"270d1a9b40ce5a7c02287a1b4673f6821e9cf61a\", \"mlflow.source.git.repoURL\": \"https:\/\/github.com\/Hegdesachin87\/Inspect-AI.git\", \"mlflow.source.type\": \"LOCAL\", \"mlflow.traceOutputs\": \"{\\\"artifact_id\\\": \\\"intervals-reference\\\", \\\"case_id\\\": \\\"intervals\\\", \\\"input\\\": \\\"Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns [...\", \"mlflow.trace.sizeBytes\": \"3091\", \"mlflow.user\": \"ankitsingh\"}, \"assessments\": [{\"assessment_id\": \"a-82c358955d744773bd100c8346930366\", \"assessment_name\": \"fixed_tests\", \"trace_id\": \"tr-dfa0535bed7058608d9edf128a2aae42\", \"span_id\": \"a92edd5377367c19\", \"source\": {\"source_type\": \"CODE\", \"source_id\": \"default\"}, \"create_time\": \"2026-10-04T17:32:27.756Z\", \"last_update_time\": \"2026-10-04T17:32:27.756Z\", \"feedback\": {\"value\": 1.0}, \"rationale\": \"test_intervals (__main__.RepairTests.test_intervals) ... ok\\n\\n----------------------------------------------------------------------\\nRan 1 test in 0.000s\\n\\nOK\\n\", \"metadata\": {\"mlflow.assessment.sourceRunId\": \"1da8ee5ccfbf4a0a8be3e2f0b0e4e824\"}, \"valid\": true}], \"tags\": {\"mlflow.artifactLocation\": \"file:\/\/\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/runs\/2026-10-04-demo\/controls\/mlflow\/artifacts\/traces\/tr-dfa0535bed7058608d9edf128a2aae42\/artifacts\", \"mlflow.trace.spansLocation\": \"TRACKING_STORE\", \"mlflow.eval.requestId\": \"08e64c20fc0367972c7e45e7d717c39c09911bdc335e16ad21174dd84b3637da\", \"mlflow.traceName\": \"root_span\"}, \"request_preview\": \"{\\\"artifact_id\\\": \\\"intervals-reference\\\"}\", \"response_preview\": \"{\\\"artifact_id\\\": \\\"intervals-reference\\\", \\\"case_id\\\": \\\"intervals\\\", \\\"input\\\": \\\"Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\\\\nThe file is \/workspace\/project.py.\\\", \\\"final_source\\\": \\\"def merge_intervals(intervals):\\\\n    result = []\\\\n    for start, end in sorted(intervals):\\\\n        if result and start <= result[-1][1]:\\\\n            result[-1][1] = max(result[-1][1], end)\\\\n        else:\\\\n            result.append([start, end])\\\\n    return result\\\\n\\\"}\", \"execution_duration_ms\": 1}, \"data\": {\"spans\": [{\"trace_id\": \"36BTW+1wWGCNnt8SiiquQg==\", \"span_id\": \"qS7dU3c2fBk=\", \"parent_span_id\": null, \"name\": \"root_span\", \"start_time_unix_nano\": 1791135147196493000, \"end_time_unix_nano\": 1791135147197606000, \"events\": [], \"status\": {\"code\": \"STATUS_CODE_OK\", \"message\": \"\"}, \"attributes\": {\"mlflow.traceRequestId\": \"\\\"tr-dfa0535bed7058608d9edf128a2aae42\\\"\", \"mlflow.spanType\": \"\\\"CHAIN\\\"\", \"mlflow.spanInputs\": \"{\\\"artifact_id\\\": \\\"intervals-reference\\\"}\", \"mlflow.spanOutputs\": \"{\\\"artifact_id\\\": \\\"intervals-reference\\\", \\\"case_id\\\": \\\"intervals\\\", \\\"input\\\": \\\"Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\\\\nThe file is \/workspace\/project.py.\\\", \\\"final_source\\\": \\\"def merge_intervals(intervals):\\\\n    result = []\\\\n    for start, end in sorted(intervals):\\\\n        if result and start <= result[-1][1]:\\\\n            result[-1][1] = max(result[-1][1], end)\\\\n        else:\\\\n            result.append([start, end])\\\\n    return result\\\\n\\\"}\", \"mlflow.spanLogLevel\": \"10\"}, \"links\": []}]}}",
+    "client_request_id":null,
+    "state":"OK",
+    "request_time":1791135147196,
+    "execution_duration":1,
+    "request":{
+      "artifact_id":"intervals-reference"
+    },
+    "response":{
+      "artifact_id":"intervals-reference",
+      "case_id":"intervals",
+      "input":"Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\nThe file is \/workspace\/project.py.",
+      "final_source":"def merge_intervals(intervals):\n    result = []\n    for start, end in sorted(intervals):\n        if result and start <= result[-1][1]:\n            result[-1][1] = max(result[-1][1], end)\n        else:\n            result.append([start, end])\n    return result\n"
+    },
+    "trace_metadata":{
+      "mlflow.source.git.branch":"main",
+      "mlflow.source.git.commit":"270d1a9b40ce5a7c02287a1b4673f6821e9cf61a",
+      "mlflow.source.git.repoURL":"https:\/\/github.com\/Hegdesachin87\/Inspect-AI.git",
+      "mlflow.source.name":"\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/worker.py",
+      "mlflow.source.type":"LOCAL",
+      "mlflow.sourceRun":"1da8ee5ccfbf4a0a8be3e2f0b0e4e824",
+      "mlflow.trace.infoFinalized":"true",
+      "mlflow.trace.sizeBytes":"3091",
+      "mlflow.trace.sizeStats":"{\"total_size_bytes\": 3091, \"num_spans\": 1, \"max\": 1162, \"p25\": 1162, \"p50\": 1162, \"p75\": 1162}",
+      "mlflow.traceInputs":"{\"artifact_id\": \"intervals-reference\"}",
+      "mlflow.traceOutputs":"{\"artifact_id\": \"intervals-reference\", \"case_id\": \"intervals\", \"input\": \"Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns [...",
+      "mlflow.trace_schema.version":"3",
+      "mlflow.user":"ankitsingh"
+    },
+    "tags":{
+      "mlflow.artifactLocation":"file:\/\/\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/runs\/2026-10-04-demo\/controls\/mlflow\/artifacts\/traces\/tr-dfa0535bed7058608d9edf128a2aae42\/artifacts",
+      "mlflow.trace.spansLocation":"TRACKING_STORE",
+      "mlflow.eval.requestId":"08e64c20fc0367972c7e45e7d717c39c09911bdc335e16ad21174dd84b3637da",
+      "mlflow.traceName":"root_span"
+    },
+    "spans":[
+      {
+        "trace_id":"36BTW+1wWGCNnt8SiiquQg==",
+        "span_id":"qS7dU3c2fBk=",
+        "parent_span_id":null,
+        "name":"root_span",
+        "start_time_unix_nano":1791135147196493000,
+        "end_time_unix_nano":1791135147197606000,
+        "events":[
+
+        ],
+        "status":{
+          "code":"STATUS_CODE_OK",
+          "message":""
+        },
+        "attributes":{
+          "mlflow.traceRequestId":"\"tr-dfa0535bed7058608d9edf128a2aae42\"",
+          "mlflow.spanType":"\"CHAIN\"",
+          "mlflow.spanInputs":"{\"artifact_id\": \"intervals-reference\"}",
+          "mlflow.spanOutputs":"{\"artifact_id\": \"intervals-reference\", \"case_id\": \"intervals\", \"input\": \"Fix merge_intervals(intervals). Input is a list of [start, end] pairs with start <= end. Return sorted pairs, merging overlapping or touching intervals. Empty input returns []. Do not mutate the input or its nested pairs.\\nThe file is \/workspace\/project.py.\", \"final_source\": \"def merge_intervals(intervals):\\n    result = []\\n    for start, end in sorted(intervals):\\n        if result and start <= result[-1][1]:\\n            result[-1][1] = max(result[-1][1], end)\\n        else:\\n            result.append([start, end])\\n    return result\\n\"}",
+          "mlflow.spanLogLevel":"10"
+        },
+        "links":[
+
+        ]
+      }
+    ],
+    "assessments":[
+      {
+        "assessment_id":"a-82c358955d744773bd100c8346930366",
+        "assessment_name":"fixed_tests",
+        "trace_id":"tr-dfa0535bed7058608d9edf128a2aae42",
+        "span_id":"a92edd5377367c19",
+        "source":{
+          "source_type":"CODE",
+          "source_id":"default"
+        },
+        "create_time":"2026-10-04T17:32:27.756Z",
+        "last_update_time":"2026-10-04T17:32:27.756Z",
+        "feedback":{
+          "value":1.0
+        },
+        "rationale":"test_intervals (__main__.RepairTests.test_intervals) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+        "metadata":{
+          "mlflow.assessment.sourceRunId":"1da8ee5ccfbf4a0a8be3e2f0b0e4e824"
+        },
+        "valid":true
+      }
+    ]
+  },
+  {
+    "trace_id":"tr-3adfab1d04ca0a80cb3b36c995cdf0e5",
+    "fixed_tests\/value":0.0,
+    "fixed_tests\/rationale":"test_chunks (__main__.RepairTests.test_chunks) ... \n  test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2, 3, 4, 5], size=2) ... FAIL\n  test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2], size=5) ... FAIL\n  test_chunks (__main__.RepairTests.test_chunks) (value=[], size=-1) ... FAIL\n  test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2], size=-1) ... FAIL\n\n======================================================================\nFAIL: test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2, 3, 4, 5], size=2)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 27, in test_chunks\nAssertionError: Lists differ: [[1, 2], [3, 4]] != [[1, 2], [3, 4], [5]]\n\nSecond list contains 1 additional elements.\nFirst extra element 2:\n[5]\n\n- [[1, 2], [3, 4]]\n+ [[1, 2], [3, 4], [5]]\n?                ++++ +\n\n\n======================================================================\nFAIL: test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2], size=5)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 27, in test_chunks\nAssertionError: Lists differ: [] != [[1, 2]]\n\nSecond list contains 1 additional elements.\nFirst extra element 0:\n[1, 2]\n\n- []\n+ [[1, 2]]\n\n======================================================================\nFAIL: test_chunks (__main__.RepairTests.test_chunks) (value=[], size=-1)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 32, in test_chunks\nAssertionError: ValueError not raised\n\n======================================================================\nFAIL: test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2], size=-1)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 32, in test_chunks\nAssertionError: ValueError not raised\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=4)\n",
+    "trace":"{\"info\": {\"trace_id\": \"tr-3adfab1d04ca0a80cb3b36c995cdf0e5\", \"trace_location\": {\"type\": \"MLFLOW_EXPERIMENT\", \"mlflow_experiment\": {\"experiment_id\": \"1\"}}, \"request_time\": \"2026-10-04T17:32:27.449Z\", \"state\": \"OK\", \"trace_metadata\": {\"mlflow.traceInputs\": \"{\\\"artifact_id\\\": \\\"chunks-broken\\\"}\", \"mlflow.source.git.branch\": \"main\", \"mlflow.trace.infoFinalized\": \"true\", \"mlflow.trace.sizeStats\": \"{\\\"total_size_bytes\\\": 2785, \\\"num_spans\\\": 1, \\\"max\\\": 1012, \\\"p25\\\": 1012, \\\"p50\\\": 1012, \\\"p75\\\": 1012}\", \"mlflow.source.name\": \"\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/worker.py\", \"mlflow.trace_schema.version\": \"3\", \"mlflow.sourceRun\": \"1da8ee5ccfbf4a0a8be3e2f0b0e4e824\", \"mlflow.source.git.commit\": \"270d1a9b40ce5a7c02287a1b4673f6821e9cf61a\", \"mlflow.source.git.repoURL\": \"https:\/\/github.com\/Hegdesachin87\/Inspect-AI.git\", \"mlflow.source.type\": \"LOCAL\", \"mlflow.traceOutputs\": \"{\\\"artifact_id\\\": \\\"chunks-broken\\\", \\\"case_id\\\": \\\"chunks\\\", \\\"input\\\": \\\"Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items is...\", \"mlflow.trace.sizeBytes\": \"2785\", \"mlflow.user\": \"ankitsingh\"}, \"assessments\": [{\"assessment_id\": \"a-f572bba0381b4a929ce57b3b575e3883\", \"assessment_name\": \"fixed_tests\", \"trace_id\": \"tr-3adfab1d04ca0a80cb3b36c995cdf0e5\", \"span_id\": \"a731f7b21d2e19a9\", \"source\": {\"source_type\": \"CODE\", \"source_id\": \"default\"}, \"create_time\": \"2026-10-04T17:32:28.021Z\", \"last_update_time\": \"2026-10-04T17:32:28.021Z\", \"feedback\": {\"value\": 0.0}, \"rationale\": \"test_chunks (__main__.RepairTests.test_chunks) ... \\n  test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2, 3, 4, 5], size=2) ... FAIL\\n  test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2], size=5) ... FAIL\\n  test_chunks (__main__.RepairTests.test_chunks) (value=[], size=-1) ... FAIL\\n  test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2], size=-1) ... FAIL\\n\\n======================================================================\\nFAIL: test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2, 3, 4, 5], size=2)\\n----------------------------------------------------------------------\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 27, in test_chunks\\nAssertionError: Lists differ: [[1, 2], [3, 4]] != [[1, 2], [3, 4], [5]]\\n\\nSecond list contains 1 additional elements.\\nFirst extra element 2:\\n[5]\\n\\n- [[1, 2], [3, 4]]\\n+ [[1, 2], [3, 4], [5]]\\n?                ++++ +\\n\\n\\n======================================================================\\nFAIL: test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2], size=5)\\n----------------------------------------------------------------------\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 27, in test_chunks\\nAssertionError: Lists differ: [] != [[1, 2]]\\n\\nSecond list contains 1 additional elements.\\nFirst extra element 0:\\n[1, 2]\\n\\n- []\\n+ [[1, 2]]\\n\\n======================================================================\\nFAIL: test_chunks (__main__.RepairTests.test_chunks) (value=[], size=-1)\\n----------------------------------------------------------------------\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 32, in test_chunks\\nAssertionError: ValueError not raised\\n\\n======================================================================\\nFAIL: test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2], size=-1)\\n----------------------------------------------------------------------\\nTraceback (most recent call last):\\n  File \\\"<string>\\\", line 32, in test_chunks\\nAssertionError: ValueError not raised\\n\\n----------------------------------------------------------------------\\nRan 1 test in 0.000s\\n\\nFAILED (failures=4)\\n\", \"metadata\": {\"mlflow.assessment.sourceRunId\": \"1da8ee5ccfbf4a0a8be3e2f0b0e4e824\"}, \"valid\": true}], \"tags\": {\"mlflow.artifactLocation\": \"file:\/\/\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/runs\/2026-10-04-demo\/controls\/mlflow\/artifacts\/traces\/tr-3adfab1d04ca0a80cb3b36c995cdf0e5\/artifacts\", \"mlflow.trace.spansLocation\": \"TRACKING_STORE\", \"mlflow.eval.requestId\": \"0bde3f020f22bf10316dac97cc6100d0ff4fcc550bb10d45899c9a094ecc9a71\", \"mlflow.traceName\": \"root_span\"}, \"request_preview\": \"{\\\"artifact_id\\\": \\\"chunks-broken\\\"}\", \"response_preview\": \"{\\\"artifact_id\\\": \\\"chunks-broken\\\", \\\"case_id\\\": \\\"chunks\\\", \\\"input\\\": \\\"Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items is empty. Input items is a list; size is an integer. Do not mutate items.\\\\nThe file is \/workspace\/project.py.\\\", \\\"final_source\\\": \\\"def chunks(items, size):\\\\n    return [items[i:i + size] for i in range(0, len(items) - size + 1, size)]\\\\n\\\"}\", \"execution_duration_ms\": 0}, \"data\": {\"spans\": [{\"trace_id\": \"Ot+rHQTKCoDLOzbJlc3w5Q==\", \"span_id\": \"pzH3sh0uGak=\", \"parent_span_id\": null, \"name\": \"root_span\", \"start_time_unix_nano\": 1791135147449319000, \"end_time_unix_nano\": 1791135147449651000, \"events\": [], \"status\": {\"code\": \"STATUS_CODE_OK\", \"message\": \"\"}, \"attributes\": {\"mlflow.traceRequestId\": \"\\\"tr-3adfab1d04ca0a80cb3b36c995cdf0e5\\\"\", \"mlflow.spanType\": \"\\\"CHAIN\\\"\", \"mlflow.spanInputs\": \"{\\\"artifact_id\\\": \\\"chunks-broken\\\"}\", \"mlflow.spanOutputs\": \"{\\\"artifact_id\\\": \\\"chunks-broken\\\", \\\"case_id\\\": \\\"chunks\\\", \\\"input\\\": \\\"Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items is empty. Input items is a list; size is an integer. Do not mutate items.\\\\nThe file is \/workspace\/project.py.\\\", \\\"final_source\\\": \\\"def chunks(items, size):\\\\n    return [items[i:i + size] for i in range(0, len(items) - size + 1, size)]\\\\n\\\"}\", \"mlflow.spanLogLevel\": \"10\"}, \"links\": []}]}}",
+    "client_request_id":null,
+    "state":"OK",
+    "request_time":1791135147449,
+    "execution_duration":0,
+    "request":{
+      "artifact_id":"chunks-broken"
+    },
+    "response":{
+      "artifact_id":"chunks-broken",
+      "case_id":"chunks",
+      "input":"Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items is empty. Input items is a list; size is an integer. Do not mutate items.\nThe file is \/workspace\/project.py.",
+      "final_source":"def chunks(items, size):\n    return [items[i:i + size] for i in range(0, len(items) - size + 1, size)]\n"
+    },
+    "trace_metadata":{
+      "mlflow.source.git.branch":"main",
+      "mlflow.source.git.commit":"270d1a9b40ce5a7c02287a1b4673f6821e9cf61a",
+      "mlflow.source.git.repoURL":"https:\/\/github.com\/Hegdesachin87\/Inspect-AI.git",
+      "mlflow.source.name":"\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/worker.py",
+      "mlflow.source.type":"LOCAL",
+      "mlflow.sourceRun":"1da8ee5ccfbf4a0a8be3e2f0b0e4e824",
+      "mlflow.trace.infoFinalized":"true",
+      "mlflow.trace.sizeBytes":"2785",
+      "mlflow.trace.sizeStats":"{\"total_size_bytes\": 2785, \"num_spans\": 1, \"max\": 1012, \"p25\": 1012, \"p50\": 1012, \"p75\": 1012}",
+      "mlflow.traceInputs":"{\"artifact_id\": \"chunks-broken\"}",
+      "mlflow.traceOutputs":"{\"artifact_id\": \"chunks-broken\", \"case_id\": \"chunks\", \"input\": \"Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items is...",
+      "mlflow.trace_schema.version":"3",
+      "mlflow.user":"ankitsingh"
+    },
+    "tags":{
+      "mlflow.artifactLocation":"file:\/\/\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/runs\/2026-10-04-demo\/controls\/mlflow\/artifacts\/traces\/tr-3adfab1d04ca0a80cb3b36c995cdf0e5\/artifacts",
+      "mlflow.trace.spansLocation":"TRACKING_STORE",
+      "mlflow.eval.requestId":"0bde3f020f22bf10316dac97cc6100d0ff4fcc550bb10d45899c9a094ecc9a71",
+      "mlflow.traceName":"root_span"
+    },
+    "spans":[
+      {
+        "trace_id":"Ot+rHQTKCoDLOzbJlc3w5Q==",
+        "span_id":"pzH3sh0uGak=",
+        "parent_span_id":null,
+        "name":"root_span",
+        "start_time_unix_nano":1791135147449319000,
+        "end_time_unix_nano":1791135147449651000,
+        "events":[
+
+        ],
+        "status":{
+          "code":"STATUS_CODE_OK",
+          "message":""
+        },
+        "attributes":{
+          "mlflow.traceRequestId":"\"tr-3adfab1d04ca0a80cb3b36c995cdf0e5\"",
+          "mlflow.spanType":"\"CHAIN\"",
+          "mlflow.spanInputs":"{\"artifact_id\": \"chunks-broken\"}",
+          "mlflow.spanOutputs":"{\"artifact_id\": \"chunks-broken\", \"case_id\": \"chunks\", \"input\": \"Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items is empty. Input items is a list; size is an integer. Do not mutate items.\\nThe file is \/workspace\/project.py.\", \"final_source\": \"def chunks(items, size):\\n    return [items[i:i + size] for i in range(0, len(items) - size + 1, size)]\\n\"}",
+          "mlflow.spanLogLevel":"10"
+        },
+        "links":[
+
+        ]
+      }
+    ],
+    "assessments":[
+      {
+        "assessment_id":"a-f572bba0381b4a929ce57b3b575e3883",
+        "assessment_name":"fixed_tests",
+        "trace_id":"tr-3adfab1d04ca0a80cb3b36c995cdf0e5",
+        "span_id":"a731f7b21d2e19a9",
+        "source":{
+          "source_type":"CODE",
+          "source_id":"default"
+        },
+        "create_time":"2026-10-04T17:32:28.021Z",
+        "last_update_time":"2026-10-04T17:32:28.021Z",
+        "feedback":{
+          "value":0.0
+        },
+        "rationale":"test_chunks (__main__.RepairTests.test_chunks) ... \n  test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2, 3, 4, 5], size=2) ... FAIL\n  test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2], size=5) ... FAIL\n  test_chunks (__main__.RepairTests.test_chunks) (value=[], size=-1) ... FAIL\n  test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2], size=-1) ... FAIL\n\n======================================================================\nFAIL: test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2, 3, 4, 5], size=2)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 27, in test_chunks\nAssertionError: Lists differ: [[1, 2], [3, 4]] != [[1, 2], [3, 4], [5]]\n\nSecond list contains 1 additional elements.\nFirst extra element 2:\n[5]\n\n- [[1, 2], [3, 4]]\n+ [[1, 2], [3, 4], [5]]\n?                ++++ +\n\n\n======================================================================\nFAIL: test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2], size=5)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 27, in test_chunks\nAssertionError: Lists differ: [] != [[1, 2]]\n\nSecond list contains 1 additional elements.\nFirst extra element 0:\n[1, 2]\n\n- []\n+ [[1, 2]]\n\n======================================================================\nFAIL: test_chunks (__main__.RepairTests.test_chunks) (value=[], size=-1)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 32, in test_chunks\nAssertionError: ValueError not raised\n\n======================================================================\nFAIL: test_chunks (__main__.RepairTests.test_chunks) (value=[1, 2], size=-1)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<string>\", line 32, in test_chunks\nAssertionError: ValueError not raised\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=4)\n",
+        "metadata":{
+          "mlflow.assessment.sourceRunId":"1da8ee5ccfbf4a0a8be3e2f0b0e4e824"
+        },
+        "valid":true
+      }
+    ]
+  },
+  {
+    "trace_id":"tr-60d4778a016efcb263e275add23154ba",
+    "fixed_tests\/value":1.0,
+    "fixed_tests\/rationale":"test_chunks (__main__.RepairTests.test_chunks) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+    "trace":"{\"info\": {\"trace_id\": \"tr-60d4778a016efcb263e275add23154ba\", \"trace_location\": {\"type\": \"MLFLOW_EXPERIMENT\", \"mlflow_experiment\": {\"experiment_id\": \"1\"}}, \"request_time\": \"2026-10-04T17:32:27.763Z\", \"state\": \"OK\", \"trace_metadata\": {\"mlflow.traceInputs\": \"{\\\"artifact_id\\\": \\\"chunks-reference\\\"}\", \"mlflow.source.git.branch\": \"main\", \"mlflow.trace.infoFinalized\": \"true\", \"mlflow.trace.sizeStats\": \"{\\\"total_size_bytes\\\": 2922, \\\"num_spans\\\": 1, \\\"max\\\": 1079, \\\"p25\\\": 1079, \\\"p50\\\": 1079, \\\"p75\\\": 1079}\", \"mlflow.source.name\": \"\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/worker.py\", \"mlflow.trace_schema.version\": \"3\", \"mlflow.sourceRun\": \"1da8ee5ccfbf4a0a8be3e2f0b0e4e824\", \"mlflow.source.git.commit\": \"270d1a9b40ce5a7c02287a1b4673f6821e9cf61a\", \"mlflow.source.git.repoURL\": \"https:\/\/github.com\/Hegdesachin87\/Inspect-AI.git\", \"mlflow.source.type\": \"LOCAL\", \"mlflow.traceOutputs\": \"{\\\"artifact_id\\\": \\\"chunks-reference\\\", \\\"case_id\\\": \\\"chunks\\\", \\\"input\\\": \\\"Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items...\", \"mlflow.trace.sizeBytes\": \"2922\", \"mlflow.user\": \"ankitsingh\"}, \"assessments\": [{\"assessment_id\": \"a-12189372ba9e447cbfdf0fed56099c63\", \"assessment_name\": \"fixed_tests\", \"trace_id\": \"tr-60d4778a016efcb263e275add23154ba\", \"span_id\": \"27fae4c2da846af8\", \"source\": {\"source_type\": \"CODE\", \"source_id\": \"default\"}, \"create_time\": \"2026-10-04T17:32:28.243Z\", \"last_update_time\": \"2026-10-04T17:32:28.243Z\", \"feedback\": {\"value\": 1.0}, \"rationale\": \"test_chunks (__main__.RepairTests.test_chunks) ... ok\\n\\n----------------------------------------------------------------------\\nRan 1 test in 0.000s\\n\\nOK\\n\", \"metadata\": {\"mlflow.assessment.sourceRunId\": \"1da8ee5ccfbf4a0a8be3e2f0b0e4e824\"}, \"valid\": true}], \"tags\": {\"mlflow.artifactLocation\": \"file:\/\/\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/runs\/2026-10-04-demo\/controls\/mlflow\/artifacts\/traces\/tr-60d4778a016efcb263e275add23154ba\/artifacts\", \"mlflow.trace.spansLocation\": \"TRACKING_STORE\", \"mlflow.eval.requestId\": \"0a6f87922d4bcb597f16fa77429e3071796c95c3b1a8b325c599ee625d62f4f9\", \"mlflow.traceName\": \"root_span\"}, \"request_preview\": \"{\\\"artifact_id\\\": \\\"chunks-reference\\\"}\", \"response_preview\": \"{\\\"artifact_id\\\": \\\"chunks-reference\\\", \\\"case_id\\\": \\\"chunks\\\", \\\"input\\\": \\\"Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items is empty. Input items is a list; size is an integer. Do not mutate items.\\\\nThe file is \/workspace\/project.py.\\\", \\\"final_source\\\": \\\"def chunks(items, size):\\\\n    if size <= 0:\\\\n        raise ValueError('size must be positive')\\\\n    return [items[i:i + size] for i in range(0, len(items), size)]\\\\n\\\"}\", \"execution_duration_ms\": 0}, \"data\": {\"spans\": [{\"trace_id\": \"YNR3igFu\/LJj4nWt0jFUug==\", \"span_id\": \"J\/rkwtqEavg=\", \"parent_span_id\": null, \"name\": \"root_span\", \"start_time_unix_nano\": 1791135147763556000, \"end_time_unix_nano\": 1791135147764168000, \"events\": [], \"status\": {\"code\": \"STATUS_CODE_OK\", \"message\": \"\"}, \"attributes\": {\"mlflow.traceRequestId\": \"\\\"tr-60d4778a016efcb263e275add23154ba\\\"\", \"mlflow.spanType\": \"\\\"CHAIN\\\"\", \"mlflow.spanInputs\": \"{\\\"artifact_id\\\": \\\"chunks-reference\\\"}\", \"mlflow.spanOutputs\": \"{\\\"artifact_id\\\": \\\"chunks-reference\\\", \\\"case_id\\\": \\\"chunks\\\", \\\"input\\\": \\\"Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items is empty. Input items is a list; size is an integer. Do not mutate items.\\\\nThe file is \/workspace\/project.py.\\\", \\\"final_source\\\": \\\"def chunks(items, size):\\\\n    if size <= 0:\\\\n        raise ValueError('size must be positive')\\\\n    return [items[i:i + size] for i in range(0, len(items), size)]\\\\n\\\"}\", \"mlflow.spanLogLevel\": \"10\"}, \"links\": []}]}}",
+    "client_request_id":null,
+    "state":"OK",
+    "request_time":1791135147763,
+    "execution_duration":0,
+    "request":{
+      "artifact_id":"chunks-reference"
+    },
+    "response":{
+      "artifact_id":"chunks-reference",
+      "case_id":"chunks",
+      "input":"Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items is empty. Input items is a list; size is an integer. Do not mutate items.\nThe file is \/workspace\/project.py.",
+      "final_source":"def chunks(items, size):\n    if size <= 0:\n        raise ValueError('size must be positive')\n    return [items[i:i + size] for i in range(0, len(items), size)]\n"
+    },
+    "trace_metadata":{
+      "mlflow.source.git.branch":"main",
+      "mlflow.source.git.commit":"270d1a9b40ce5a7c02287a1b4673f6821e9cf61a",
+      "mlflow.source.git.repoURL":"https:\/\/github.com\/Hegdesachin87\/Inspect-AI.git",
+      "mlflow.source.name":"\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/worker.py",
+      "mlflow.source.type":"LOCAL",
+      "mlflow.sourceRun":"1da8ee5ccfbf4a0a8be3e2f0b0e4e824",
+      "mlflow.trace.infoFinalized":"true",
+      "mlflow.trace.sizeBytes":"2922",
+      "mlflow.trace.sizeStats":"{\"total_size_bytes\": 2922, \"num_spans\": 1, \"max\": 1079, \"p25\": 1079, \"p50\": 1079, \"p75\": 1079}",
+      "mlflow.traceInputs":"{\"artifact_id\": \"chunks-reference\"}",
+      "mlflow.traceOutputs":"{\"artifact_id\": \"chunks-reference\", \"case_id\": \"chunks\", \"input\": \"Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items...",
+      "mlflow.trace_schema.version":"3",
+      "mlflow.user":"ankitsingh"
+    },
+    "tags":{
+      "mlflow.artifactLocation":"file:\/\/\/Users\/ankitsingh\/dev\/Inspect-AI\/comparison\/runs\/2026-10-04-demo\/controls\/mlflow\/artifacts\/traces\/tr-60d4778a016efcb263e275add23154ba\/artifacts",
+      "mlflow.trace.spansLocation":"TRACKING_STORE",
+      "mlflow.eval.requestId":"0a6f87922d4bcb597f16fa77429e3071796c95c3b1a8b325c599ee625d62f4f9",
+      "mlflow.traceName":"root_span"
+    },
+    "spans":[
+      {
+        "trace_id":"YNR3igFu\/LJj4nWt0jFUug==",
+        "span_id":"J\/rkwtqEavg=",
+        "parent_span_id":null,
+        "name":"root_span",
+        "start_time_unix_nano":1791135147763556000,
+        "end_time_unix_nano":1791135147764168000,
+        "events":[
+
+        ],
+        "status":{
+          "code":"STATUS_CODE_OK",
+          "message":""
+        },
+        "attributes":{
+          "mlflow.traceRequestId":"\"tr-60d4778a016efcb263e275add23154ba\"",
+          "mlflow.spanType":"\"CHAIN\"",
+          "mlflow.spanInputs":"{\"artifact_id\": \"chunks-reference\"}",
+          "mlflow.spanOutputs":"{\"artifact_id\": \"chunks-reference\", \"case_id\": \"chunks\", \"input\": \"Fix chunks(items, size). Return a list of successive list slices, including a final shorter slice. Empty items returns []. Raise ValueError whenever size <= 0, including when items is empty. Input items is a list; size is an integer. Do not mutate items.\\nThe file is \/workspace\/project.py.\", \"final_source\": \"def chunks(items, size):\\n    if size <= 0:\\n        raise ValueError('size must be positive')\\n    return [items[i:i + size] for i in range(0, len(items), size)]\\n\"}",
+          "mlflow.spanLogLevel":"10"
+        },
+        "links":[
+
+        ]
+      }
+    ],
+    "assessments":[
+      {
+        "assessment_id":"a-12189372ba9e447cbfdf0fed56099c63",
+        "assessment_name":"fixed_tests",
+        "trace_id":"tr-60d4778a016efcb263e275add23154ba",
+        "span_id":"27fae4c2da846af8",
+        "source":{
+          "source_type":"CODE",
+          "source_id":"default"
+        },
+        "create_time":"2026-10-04T17:32:28.243Z",
+        "last_update_time":"2026-10-04T17:32:28.243Z",
+        "feedback":{
+          "value":1.0
+        },
+        "rationale":"test_chunks (__main__.RepairTests.test_chunks) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+        "metadata":{
+          "mlflow.assessment.sourceRunId":"1da8ee5ccfbf4a0a8be3e2f0b0e4e824"
+        },
+        "valid":true
+      }
+    ]
+  }
+]

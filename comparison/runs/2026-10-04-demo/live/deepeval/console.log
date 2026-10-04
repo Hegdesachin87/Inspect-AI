@@ -1,0 +1,23 @@
+
+⚠ WARNING: No hyperparameters logged.
+» Log hyperparameters to attribute prompts and models to your test runs.
+
+================================================================================
+Test run saved at 
+/Users/ankitsingh/dev/Inspect-AI/comparison/runs/2026-10-04-demo/live/deepeval/n
+ative-results/test_run_20261004_133430.json
+
+
+✓ Evaluation completed 🎉! (time taken: 18.94s | token cost: None)
+» Test Results (3 total tests):
+   » Pass Rate: 66.67% | Passed: 2 | Failed: 1
+
+ ===============================================================================
+= 
+
+» Want to share evals with your team, or a place for your test cases to live? ❤️
+🏡
+  » Run 'deepeval view' to analyze and save testing results on Confident AI.
+
+
+{"framework": "deepeval", "rows": 3, "passed": 2}

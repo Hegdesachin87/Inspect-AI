@@ -1,0 +1,2 @@
+retry_immediate=True has no effect when retry_attempts=0; no task-level retries will be performed.
+{"framework": "inspect", "rows": 6, "passed": 3}
