@@ -1,0 +1,11 @@
+.venv-comparison/
+.comparison-setup/
+.deepeval/
+.sessions/
+__pycache__/
+*.pyc
+comparison/runs/**/*.db
+comparison/runs/**/*.db-shm
+comparison/runs/**/*.db-wal
+comparison/runs/**/artifacts/
+comparison/runs/**/.test_run.lock
