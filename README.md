@@ -124,7 +124,7 @@ This is a small demonstration, not a leaderboard.
 - **Docker** with a working daemon:
   - Windows: **Docker Desktop** (Linux containers)
   - macOS/Linux: **Docker** or **Colima**
-- **OpenAI API key** (only required for live model runs; controls/recovery/tests do not call the model)
+- **An LLM API key** — OpenAI or DeepSeek (only required for live model runs; controls/recovery/tests do not call the model)
 
 Pinned SDK versions (from `comparison/requirements.in`):
 
@@ -137,7 +137,7 @@ Pinned SDK versions (from `comparison/requirements.in`):
 | openai | 3.3.0 |
 | langchain-community | 0.3.31 (pinned for Ragas compatibility) |
 
-The model is `gpt-4o-mini-2024-07-18` with temperature 0, at most **6 model calls per case** and **700 output tokens per call**.
+The model is `deepseek-flash` by default (configurable in `comparison/cases.py`; the original recorded demo used OpenAI's `gpt-4o-mini-2024-07-18`). Temperature 0, at most **6 model calls per case**, **700 output tokens per call**.
 
 ---
 
@@ -146,7 +146,8 @@ The model is `gpt-4o-mini-2024-07-18` with temperature 0, at most **6 model call
 | Variable | Required for | Description |
 | --- | --- | --- |
 | `DOCKER_HOST` | All Docker phases | **Windows:** `npipe:////./pipe/docker_engine`. **macOS/Colima:** `unix://$HOME/.colima/inspect-comparison/docker.sock`. The runner defaults to the Colima socket, so on Windows this must be set explicitly. |
-| `OPENAI_API_KEY` | Live runs (and Inspect init) | Your OpenAI key. Inspect requires the variable to *exist* even for no-call phases; a placeholder works for controls/recovery. |
+| `OPENAI_API_KEY` | Live runs (and Inspect init) | Your provider's API key. Inspect requires the variable to *exist* even for no-call phases; a placeholder works for controls/recovery. Set it **without quotes**. |
+| `OPENAI_BASE_URL` | DeepSeek / other OpenAI-compatible providers | API base URL. DeepSeek: `https://api.deepseek.com`. Leave unset for OpenAI. |
 | `COMPARISON_IMAGE` | Optional | Pin the exact Docker image digest for reproduction. If unset, the runner resolves the digest of a pulled `python:3.12-slim`. |
 | `PYTHONUTF8` | Windows | Set to `1` to avoid a `cp1252` encoding crash in DeepEval/rich console output. |
 
@@ -204,19 +205,33 @@ export COMPARISON_IMAGE='python@sha256:02108f5d322dd89f1c9e552442c25acb0543dfdbc
 docker pull "$COMPARISON_IMAGE"
 ```
 
-### 4. Set your OpenAI API key
+### 4. Configure your model provider
+
+The default model is `deepseek-flash` (set in `comparison/cases.py`).
+
+**DeepSeek** (no code change needed):
 
 ```powershell
 # PowerShell
-$env:OPENAI_API_KEY = "sk-..."
+$env:OPENAI_API_KEY = "sk-your-deepseek-key"
+$env:OPENAI_BASE_URL = "https://api.deepseek.com"
 ```
+
+```cmd
+:: Command Prompt — NO quotes around the key
+set OPENAI_API_KEY=sk-your-deepseek-key
+set OPENAI_BASE_URL=https://api.deepseek.com
+```
+
+**OpenAI** — set `MODEL = "gpt-4o-mini-2024-07-18"` in `comparison/cases.py` and leave `OPENAI_BASE_URL` unset:
 
 ```bash
-# Bash
-export OPENAI_API_KEY="sk-..."
+export OPENAI_API_KEY="sk-your-openai-key"
 ```
 
-> Only needed for live runs. For controls/recovery/tests you can use a placeholder like `"sk-placeholder"` because no model call is made.
+> Only needed for live runs. For controls/recovery/tests you can use a placeholder (`sk-placeholder`) because no model call is made — but Inspect still requires the variable to *exist*.
+>
+> ⚠️ In Command Prompt, `set VAR="value"` stores the quotes in the value. Always use `set VAR=value` with no quotes (see Troubleshooting).
 
 ---
 
@@ -229,7 +244,7 @@ The entry point is always:
 .venv-comparison/bin/python -m comparison.run <options>            # macOS/Linux
 ```
 
-(Substitute `.venv-comparison/bin/python` for `Scripts/python.exe` on macOS/Linux throughout.)
+(Substitute `.venv-comparison/bin/python` for `Scripts/python.exe` on macOS/Linux. In Command Prompt use backslashes: `.venv-comparison\Scripts\python.exe`.)
 
 ### Step 1 — Unit tests (no API key, no cost)
 
@@ -372,15 +387,45 @@ $env:PYTHONUTF8 = "1"
 
 (Running inside **Windows Terminal** avoids this entirely.)
 
-### `openai.AuthenticationError: 401 Incorrect API key`
+### `Access is denied` / 0-byte `python.exe` (Windows)
 
-The key is invalid/revoked/truncated, or it belongs to a different provider. Verify it:
+If `.venv-comparison\Scripts\python.exe` becomes 0 bytes (typically after antivirus quarantines it), Windows reports "Access is denied". Recreate the venv:
+
+```cmd
+uv venv --python 3.12 .venv-comparison --clear
+uv pip install --python .venv-comparison\Scripts\python.exe -r comparison\requirements.lock
+```
+
+Add a Windows Security folder exclusion for `D:\Impact AI\.venv-comparison` to prevent it recurring.
+
+### `deepseek-chat` model not found
+
+Some DeepSeek accounts expose `deepseek-flash` / `deepseek-v4-pro` instead of `deepseek-chat`. List your models and update `MODEL` in `comparison/cases.py` accordingly:
+
+```cmd
+curl.exe -s https://api.deepseek.com/models -H "Authorization: Bearer %OPENAI_API_KEY%"
+```
+
+### Recovery on Windows
+
+`comparison/recovery.py` uses `os.killpg` (POSIX) on macOS/Linux and `terminate()`/`kill()` on Windows. The code is already cross-platform — no action needed.
+
+### `AuthenticationError: 401 ... api key is invalid`
+
+The key is invalid/revoked/truncated, it belongs to a different provider, **or it was set with quotes**. Verify it against the provider:
 
 ```powershell
+# DeepSeek
+curl.exe -s https://api.deepseek.com/models -H "Authorization: Bearer $env:OPENAI_API_KEY"
+# OpenAI
 curl.exe -s https://api.openai.com/v1/models -H "Authorization: Bearer $env:OPENAI_API_KEY"
 ```
 
-A JSON list of models means the key works.
+A JSON list of models means the key works. In Command Prompt re-set it with **no quotes** — `set OPENAI_API_KEY=sk-...` (not `set OPENAI_API_KEY="sk-..."`). To see the exact stored value:
+
+```cmd
+.venv-comparison\Scripts\python.exe -c "import os; print(repr(os.environ.get('OPENAI_API_KEY')))"
+```
 
 ### Recovery fails with "use a fresh output directory"
 
@@ -405,7 +450,7 @@ For the full interpretation, see `docs/comparison-results.md`.
 
 ## Cost
 
-Using published GPT-4o-mini prices, the recorded demo's total model usage was roughly **one cent** (~$0.01): about $0.0016 for common-agent trajectories, ~$0.0066 for all four live phases, plus a small failed-setup attempt. Exact token-based calculations are in `comparison/runs/2026-10-04-demo/costs.json`. Controls, scoring, and recovery do **not** call a model.
+The recorded OpenAI demo (`gpt-4o-mini`) used roughly **one cent** (~$0.01) of tokens: ~$0.0016 common-agent + ~$0.0066 live phases + a small failed-setup attempt. Exact token-based calculations are in `comparison/runs/2026-10-04-demo/costs.json`. With DeepSeek, costs differ (typically lower). Controls, scoring, and recovery do **not** call a model.
 
 ---
 
