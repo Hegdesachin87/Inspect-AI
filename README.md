@@ -11,18 +11,19 @@ The point is **not** to find "the best framework." It is to measure, with real c
 1. [What the project does](#what-the-project-does)
 2. [The experiment in brief](#the-experiment-in-brief)
 3. [Key findings](#key-findings)
-4. [Repository layout](#repository-layout)
-5. [Requirements](#requirements)
-6. [Environment variables](#environment-variables)
-7. [Setup](#setup)
-8. [Running the project](#running-the-project)
-9. [Understanding the phases](#understanding-the-phases)
-10. [Outputs and where to find them](#outputs-and-where-to-find-them)
-11. [Viewing results](#viewing-results)
-12. [Troubleshooting](#troubleshooting)
-13. [Interpreting results (caveats)](#interpreting-results-caveats)
-14. [Cost](#cost)
-15. [Further reading](#further-reading)
+4. [The role of Inspect AI](#the-role-of-inspect-ai)
+5. [Repository layout](#repository-layout)
+6. [Requirements](#requirements)
+7. [Environment variables](#environment-variables)
+8. [Setup](#setup)
+9. [Running the project](#running-the-project)
+10. [Understanding the phases](#understanding-the-phases)
+11. [Outputs and where to find them](#outputs-and-where-to-find-them)
+12. [Viewing results](#viewing-results)
+13. [Troubleshooting](#troubleshooting)
+14. [Interpreting results (caveats)](#interpreting-results-caveats)
+15. [Cost](#cost)
+16. [Further reading](#further-reading)
 
 ---
 
@@ -75,6 +76,37 @@ From the recorded demo (see `docs/comparison-results.md`):
 - If an application already owns its agent loop and environments, Ragas/DeepEval/MLflow can evaluate it without handing execution to Inspect.
 
 This is a small demonstration, not a leaderboard.
+
+---
+
+## The role of Inspect AI
+
+Inspect AI is the only framework in this comparison that **owns the experiment end to end** — it supplies the environment, the tool, the execution loop, and the result tracking. The other three frameworks (Ragas, DeepEval, MLflow) evaluate an application the project already built; Inspect *is* the application runner.
+
+### What Inspect supplies (from `comparison/inspect_runner.py`)
+
+| Capability | Inspect primitive | What it does in this project |
+| --- | --- | --- |
+| Task definition | `Task`, `Sample`, `@task` | Declares each dataset row (input prompt + the broken `/workspace/project.py` file) and attaches the solver and scorer. |
+| Sandbox | `sandbox=("docker", compose_file)` | Provisions and tears down the isolated Docker container per task (no network, read-only root, tmpfs workspace, UID 1000). |
+| Tool dispatch | `@tool`, `use_tools()` | Exposes `run_command` to the model and routes each tool call into the sandbox. |
+| Model loop | `@solver`, `generate(state, tool_calls="single")` | Drives the agent's model ↔ tool conversation loop. |
+| Scoring | `@scorer`, `accuracy()` | Runs the fixed-test grader against the final source and records pass/fail. |
+| Run management | `eval_set()` | Runs all tasks, writes `.eval` logs, and tracks which tasks are already complete. |
+
+### What the project still had to write for Inspect
+
+Even with all that machinery, three small pieces were task-specific:
+
+1. **`shell_tool()`** — a thin wrapper that delegates to Inspect's `sandbox().exec(...)`.
+2. **`fixed_tests()`** — the scorer that calls the shared `grade()` function in `comparison/sandbox.py` (the same grader every framework uses).
+3. **`bounded_agent()`** — the solver that enforces the shared 6-call budget and records token usage.
+
+Inspect removed the need for the application's `Workspace` class and its tool-dispatch loop, but it did **not** remove the need for task-specific grading code.
+
+### The differentiator this experiment measured
+
+In the **recovery** phase, Inspect's `eval_set()` **reused an already-completed task** after interruption and scheduled only the missing one. Ragas, DeepEval, and MLflow re-invoked the completed callback. That is the concrete advantage Inspect demonstrated: **completed-work tracking and reuse, not better scoring**.
 
 ---
 
