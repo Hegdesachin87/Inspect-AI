@@ -16,6 +16,22 @@ from .cases import CASES, MODEL, prompt
 from .sandbox import docker
 
 
+def _interrupt(process):
+    """Interrupt the worker. POSIX sends SIGINT to its process group; Windows terminates."""
+    if hasattr(os, "killpg"):
+        os.killpg(process.pid, signal.SIGINT)
+    else:
+        process.terminate()
+
+
+def _kill(process):
+    """Force-kill the worker. POSIX sends SIGKILL to its process group; Windows kills."""
+    if hasattr(os, "killpg"):
+        os.killpg(process.pid, signal.SIGKILL)
+    else:
+        process.kill()
+
+
 def install_fixture(runner, output, interrupt):
     calls = 0
     invocation_log = output / "fixture-invocations.jsonl"
@@ -95,15 +111,15 @@ def run_recovery(output, frameworks):
                     if time.monotonic() >= deadline:
                         raise TimeoutError(f"Recovery worker did not reach the second task: {root}")
                     time.sleep(0.1)
-                os.killpg(process.pid, signal.SIGINT)
+                _interrupt(process)
                 try:
                     process.wait(timeout=30)
                 except subprocess.TimeoutExpired:
-                    os.killpg(process.pid, signal.SIGKILL)
+                    _kill(process)
                     process.wait()
             finally:
                 if process.poll() is None:
-                    os.killpg(process.pid, signal.SIGKILL)
+                    _kill(process)
                     process.wait()
         info = json.loads(marker.read_text())
         if info.get("container"):

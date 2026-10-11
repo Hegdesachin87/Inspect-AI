@@ -9,3 +9,8 @@ comparison/runs/**/*.db-shm
 comparison/runs/**/*.db-wal
 comparison/runs/**/artifacts/
 comparison/runs/**/.test_run.lock
+
+# Unrelated tooling (pi coding agent)
+node_modules/
+package.json
+package-lock.json

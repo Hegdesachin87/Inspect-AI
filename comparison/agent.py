@@ -32,7 +32,6 @@ def run_agent(case_id, output_dir):
             result = client.chat.completions.create(
                 model=MODEL, messages=messages, tools=[TOOL],
                 temperature=0, max_tokens=MAX_OUTPUT_TOKENS,
-                parallel_tool_calls=False,
             )
             input_tokens += result.usage.prompt_tokens
             output_tokens += result.usage.completion_tokens

@@ -19,7 +19,7 @@ CASES = {
 }
 
 SYSTEM = """You are repairing a small Python project. Use run_command to inspect and edit /workspace/project.py and run local checks. Implement the stated requirements without changing the function name. You have at most 6 model calls, each with at most 700 output tokens. The sandbox has Python and no network. Grading runs fixed tests outside your editable sandbox after you finish. When done, give a short summary without calling another tool."""
-MODEL = "gpt-4o-mini-2024-07-18"
+MODEL = "deepseek-flash"
 MAX_CALLS = 6
 MAX_OUTPUT_TOKENS = 700
 COMMAND_TIMEOUT = 15

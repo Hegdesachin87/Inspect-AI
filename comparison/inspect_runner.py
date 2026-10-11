@@ -90,7 +90,7 @@ def repair(case_id, compose_file, output_dir):
         solver=[system_message(SYSTEM), use_tools(shell_tool()), bounded_agent(output_dir)],
         scorer=fixed_tests(), sandbox=("docker", compose_file),
         config=GenerateConfig(temperature=0, max_tokens=MAX_OUTPUT_TOKENS,
-                              parallel_tool_calls=False, max_retries=0, timeout=45),
+                              max_retries=0, timeout=45),
     )
 
 
