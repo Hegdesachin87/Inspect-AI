@@ -2,7 +2,7 @@
 type: tutorial
 title: Your first Inspect AI evaluation
 description: Ask a model three questions, score its answers, and inspect the results with one small Python file.
-timestamp: 2026-10-18T12:14:22-04:00
+timestamp: 2026-10-18T12:21:00-04:00
 ---
 
 # Your first Inspect AI evaluation
@@ -90,6 +90,22 @@ This makes three paid model requests on a normal successful run. Provider retrie
 
 Inspect displays accuracy. Three correct answers produce `1.0`; two produce about `0.667`. A short, correct answer is required, so extra explanation can lower the score even when the model knows the capital.
 
+### Use DeepSeek instead
+
+If your terminal already has `DEEPSEEK_API_KEY` set, run:
+
+```bash
+OPENAI_API_KEY="$DEEPSEEK_API_KEY" inspect eval tutorial/first_eval.py \
+  --model openai/deepseek-flash \
+  --model-base-url https://api.deepseek.com \
+  --max-tokens 128 \
+  --log-dir tutorial/logs
+```
+
+The `openai/` prefix selects the OpenAI-compatible API client, not OpenAI's service. The explicit base URL sends the requests to DeepSeek. The key assignment applies only to this command and does not replace your terminal's existing OpenAI key.
+
+A real DeepSeek run on 2026-10-18 answered `Paris`, `Tokyo`, and `Rome`, scoring 3/3. This verifies the live evaluation path, not general model ability. The larger output allowance leaves room for this model's reasoning tokens.
+
 ### Try it without an API key
 
 Instead of the live command, you can run:
@@ -124,4 +140,12 @@ Rerun the same evaluation command. Inspect now evaluates four questions and writ
 
 You have now defined an Inspect task, run a model, scored its responses, and examined the evidence. These three questions teach the mechanics; they are not a meaningful benchmark of general model ability.
 
-For tools, Docker sandboxes, and interrupted-run recovery, see the separate [coding-agent comparison runbook](comparison-runbook.md).
+## Does Inspect snapshot an environment?
+
+Inspect is an evaluation framework with optional environment management:
+
+- A Docker image and configuration define a repeatable starting environment. Inspect can start a fresh isolated sandbox for each sample. Prebuilt images avoid rebuilding dependencies, but container startup and sample setup still take time.
+- [Agent checkpointing](https://inspect.aisi.org.uk/checkpointing.html) can save registered agent state, selected sandbox filesystem paths, and Inspect's sample state. A retry can restore those into a fresh sandbox and continue. It requires a compatible Inspect version and a checkpoint-aware agent, and must be enabled explicitly.
+- A checkpoint is not a full running-machine snapshot. It does not restore arbitrary process memory, running tools, sockets, or external services.
+
+This first tutorial uses neither a sandbox nor checkpoints. The separate [coding-agent comparison runbook](comparison-runbook.md) demonstrates Docker environments and completed-task reuse after interruption. That reuse is different from restoring an unfinished agent from a checkpoint.

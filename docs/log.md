@@ -2,6 +2,7 @@
 
 ## 2026-10-18
 
+- Added a DeepSeek command and recorded a real 3/3 tutorial run; clarified reproducible sandboxes, opt-in agent checkpoints, and their limits compared with full-machine snapshots.
 - Added a beginner Inspect AI tutorial with a standalone three-question evaluation, minimal dependencies, live and no-key mock commands, and a results-viewer walkthrough; linked it from the README and documentation index.
 
 ## 2026-10-04
