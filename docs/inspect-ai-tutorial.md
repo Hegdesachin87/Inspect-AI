@@ -1,19 +1,19 @@
 ---
 type: tutorial
-title: Your first Inspect AI evaluation
-description: Ask a model three questions, score its answers, and inspect the results with one small Python file.
-timestamp: 2026-10-18T12:21:00-04:00
+title: Repair one Python function with Inspect AI
+description: Run a real DeepSeek coding agent in Docker, grade its repair with fixed tests, and read the Inspect evaluation log.
+timestamp: 2026-10-18T12:31:00-04:00
 ---
 
-# Your first Inspect AI evaluation
+# Repair one Python function with Inspect AI
 
-Inspect AI runs questions against a model, scores the answers, and saves a record you can inspect. This tutorial teaches that evaluation loop. It does not train a model.
+This tutorial runs a real coding agent. DeepSeek inspects and edits a broken Python file inside Docker. Inspect runs the conversation and shell tool, grades the final file with fixed tests in a separate container, and records what happened. Nothing in this tutorial uses a mock model or replayed model responses.
 
-We will ask three capital-city questions. No Docker, coding agent, other evaluation frameworks, or AI judge is needed.
+The runnable example is [tutorial/repair.py](../tutorial/repair.py). The accompanying files are [compose.yaml](../tutorial/compose.yaml) and [fixed_tests.py](../tutorial/fixed_tests.py). The snippets below explain those files; you do not need to assemble them yourself.
 
-## 1. Set up
+## Before you start
 
-These commands are for macOS or Linux. Run them from the repository root with [uv](https://docs.astral.sh/uv/getting-started/installation/) installed:
+You need Python 3.12, [uv](https://docs.astral.sh/uv/getting-started/installation/), Docker with Docker Compose, and a DeepSeek API key. These shell commands are for macOS or Linux and run from the repository root:
 
 ```bash
 uv venv --python 3.12 .venv-tutorial
@@ -21,131 +21,168 @@ uv pip install --python .venv-tutorial/bin/python -r tutorial/requirements.txt
 source .venv-tutorial/bin/activate
 ```
 
-This installs Inspect AI, the OpenAI client, and their dependencies, not the four-framework comparison environment.
+If `.venv-tutorial` already exists, skip its creation and install the requirements before activating it. You do not need the four-framework comparison environment.
 
-## 2. Read the evaluation
+## 1. Define one repair problem as a dataset sample
 
-The complete example is already in [tutorial/first_eval.py](../tutorial/first_eval.py):
+The starting file deliberately sums every number:
 
 ```python
-from inspect_ai import Task, task
-from inspect_ai.dataset import Sample
-from inspect_ai.scorer import match
-from inspect_ai.solver import generate, system_message
-
-
-@task
-def capitals():
-    return Task(
-        dataset=[
-            Sample(input="What is the capital of France?", target="Paris"),
-            Sample(input="What is the capital of Japan?", target="Tokyo"),
-            Sample(input="What is the capital of Italy?", target="Rome"),
-        ],
-        solver=[
-            system_message("Reply with only the city name, without punctuation."),
-            generate(),
-        ],
-        scorer=match(location="exact"),
-    )
+STARTING_CODE = "def sum_even(numbers):\n    return sum(numbers)\n"
 ```
 
-Here is what each part does:
+For `[1, 2, 3, 4]`, it returns `10`. We want `6`, the sum of the even numbers only.
 
-- A `Sample` contains a question in `input` and the expected answer in `target`. The model sees the question, not the target.
-- The dataset is our list of three samples.
-- The solver describes how to obtain an answer. `system_message()` sets the response format, then `generate()` calls the model once per sample.
-- The scorer checks each model answer against its target. `match(location="exact")` compares the whole answer, ignoring case and surrounding whitespace and punctuation. `paris` passes for `Paris`; `The capital is Paris` fails. This is a text check, not a second model call.
-- `Task` connects the dataset, solver, and scorer. `@task` makes the function discoverable by the Inspect command.
+In `repair.py`, the dataset contains one `Sample`. Its `input` asks the agent to fix the function, handle empty lists and negative integers, and leave the input unchanged. Its `files` field supplies the broken file:
 
-For each sample, the flow is **question → model answer → score**. Inspect also saves the messages and scores in an evaluation log.
+```python
+files={"/workspace/project.py": STARTING_CODE}
+```
 
-## 3. Run it
+Inspect places that file in the agent's sandbox before the solver runs. `/workspace/project.py` is a container path, not a file in your checkout. The model must edit this file; an explanation in its final chat reply is not a repair.
 
-For OpenAI, enter your API key without putting it in shell history:
+There is no answer string in `target`. Our scorer will execute tests against the saved code instead of comparing the model's final message with a reference answer.
+
+## 2. Create an Inspect Task
+
+Open the `repair()` function in [repair.py](../tutorial/repair.py). The `@task` decorator makes it discoverable by `inspect eval`. It returns a `Task` connecting:
+
+- The one-sample dataset and its starting file.
+- The solver that instructs the model and runs its tool calls.
+- The Docker sandbox configuration.
+- The fixed-test scorer.
+
+The model is selected at the command line, not hardcoded in the task. `GenerateConfig` allows up to 1,024 output tokens per generation, one provider retry, and a 60-second request timeout. The task permits at most six model turns. These bound this small paid demonstration; a rerun makes new requests.
+
+## 3. Configure the solver and shell tool
+
+The task's solver is:
+
+```python
+solver=[
+    system_message(
+        "You are fixing a Python function. Edit the actual file, not just "
+        "your final reply. Work in /workspace and check your repair."
+    ),
+    use_tools(bash(timeout=30, sandbox="default")),
+    generate(),
+]
+```
+
+`system_message()` tells the agent how to work. `use_tools()` exposes Inspect's built-in `bash` tool, bound to the `default` container. Each command has a 30-second timeout.
+
+`generate()` handles the model/tool loop. Inspect sends the conversation to DeepSeek, executes requested shell commands, and returns their output to the model. This continues until the model finishes or the task reaches its turn limit. You do not write your own API or tool-dispatch loop.
+
+## 4. Run the agent inside a Docker sandbox
+
+The task selects its sandbox with:
+
+```python
+sandbox=("docker", str(HERE / "compose.yaml"))
+```
+
+The Compose file defines two containers from the same pinned Python image:
+
+- `default` is the agent workspace. This is the only container its shell tool can use.
+- `grader` is a separate workspace for the final source and fixed tests.
+
+They have separate temporary filesystems, no network, no host mounts, a read-only root filesystem, and a non-root user. The API client runs on the host; API keys are not passed into these containers. Only shell work runs inside Docker, not the entire Inspect evaluation process.
+
+### Start Docker
+
+If Docker Desktop or a Linux Docker daemon is already working, use that daemon and skip the Colima commands. On this Mac, use a dedicated Colima profile and restore the previous global Docker context:
 
 ```bash
-printf 'OpenAI API key: '
-read -r -s OPENAI_API_KEY
-export OPENAI_API_KEY
+previous_context=$(docker context show)
+colima start --profile inspect-tutorial --cpu 2 --memory 2 --disk 8
+docker context use "$previous_context"
+export DOCKER_HOST="unix://$HOME/.colima/inspect-tutorial/docker.sock"
+```
+
+Pull the image specified by the tutorial:
+
+```bash
+docker compose -f tutorial/compose.yaml pull
+```
+
+### Supply the key and run
+
+If `DEEPSEEK_API_KEY` is already set in this terminal, use it. Otherwise enter it without putting its value in shell history:
+
+```bash
+printf 'DeepSeek API key: '
+read -r -s DEEPSEEK_API_KEY
+export DEEPSEEK_API_KEY
 echo
 ```
 
-If you previously configured DeepSeek or another OpenAI-compatible endpoint, clear that setting before using an OpenAI key:
+Run the actual evaluation:
 
 ```bash
-unset OPENAI_BASE_URL
-```
-
-Run the evaluation:
-
-```bash
-inspect eval tutorial/first_eval.py \
-  --model openai/gpt-4o-mini \
-  --max-tokens 30 \
-  --log-dir tutorial/logs
-```
-
-This makes three paid model requests on a normal successful run. Provider retries can add requests. The model is selected at the command line, so changing it does not require editing the task.
-
-Inspect displays accuracy. Three correct answers produce `1.0`; two produce about `0.667`. A short, correct answer is required, so extra explanation can lower the score even when the model knows the capital.
-
-### Use DeepSeek instead
-
-If your terminal already has `DEEPSEEK_API_KEY` set, run:
-
-```bash
-OPENAI_API_KEY="$DEEPSEEK_API_KEY" inspect eval tutorial/first_eval.py \
+OPENAI_API_KEY="$DEEPSEEK_API_KEY" inspect eval tutorial/repair.py \
   --model openai/deepseek-flash \
   --model-base-url https://api.deepseek.com \
-  --max-tokens 128 \
-  --log-dir tutorial/logs
+  --log-dir tutorial/repair-logs
 ```
 
-The `openai/` prefix selects the OpenAI-compatible API client, not OpenAI's service. The explicit base URL sends the requests to DeepSeek. The key assignment applies only to this command and does not replace your terminal's existing OpenAI key.
+The `openai/` prefix selects the OpenAI-compatible API client. The base URL routes requests to DeepSeek. The temporary key assignment does not replace your terminal's existing OpenAI key.
 
-A real DeepSeek run on 2026-10-18 answered `Paris`, `Tokyo`, and `Rome`, scoring 3/3. This verifies the live evaluation path, not general model ability. The larger output allowance leaves room for this model's reasoning tokens.
+This makes paid requests and executes the generated repair inside Docker. Inspect creates the sandboxes, seeds the broken file, runs the agent, scores its final code, writes a `.eval` log, and removes the containers. The recorded run passed; future model behavior can differ.
 
-### Try it without an API key
+## 5. Score the repair with fixed tests
 
-Instead of the live command, you can run:
+The `repair_tests()` scorer runs after the solver finishes:
+
+1. Read the final `/workspace/project.py` from the agent container.
+2. Copy that source into `grader`.
+3. Write the fixed, project-authored tests into `grader`, not the agent workspace.
+4. Execute `python -B -m unittest -v fixed_tests` there.
+5. Return `CORRECT` only when the test process exits successfully, otherwise `INCORRECT`.
+
+The five tests cover mixed values, an empty list, all-odd values, negative numbers and zero, and preserving the input list. No LLM judges the repair. The agent can write its own checks, but those do not determine the final score.
+
+`Score.answer` stores the actual repaired source. `Score.explanation` stores the fixed-test output. The `accuracy()` metric reports `1.0` if this one sample passes every test, or `0.0` otherwise. It is not the fraction of individual tests passed.
+
+We also ran the fixed tests directly in the grading container: the original source failed four of five tests, and a reference repair passed all five. The outputs are saved in [controls.json](../tutorial/recorded/controls.json). These are real Docker executions, not mocked results.
+
+This is a cooperative repair exercise. Separate containers keep the agent from changing the fixed test file, but the tests and repaired code share a Python process during grading. This is not a hardened anti-cheating system.
+
+## 6. Open the evaluation log and explain what happened
+
+For the evaluation you just ran:
 
 ```bash
-inspect eval tutorial/first_eval.py \
-  --model mockllm/model \
-  --log-dir tutorial/mock-logs
+inspect view --log-dir tutorial/repair-logs --port 7575
 ```
 
-Inspect's built-in mock model returns dummy text, not capital-city answers, so accuracy should be `0.0`. This checks the evaluation and log-viewing workflow without network requests or API charges. It does not measure a real model.
+Open [localhost:7575](http://localhost:7575), select `repair`, and open sample `sum-even`. Stop the viewer with `Ctrl+C`.
 
-## 4. Open the results
+### Read the real recorded run
 
-For a live run:
+A real DeepSeek + Docker log is also checked into [tutorial/recorded/](../tutorial/recorded/2026-10-18T16-28-58-00-00_repair_a86dcXpoiTkLyrq3QpfcTd.eval). To view it without rerunning the model or starting Docker:
 
 ```bash
-inspect view --log-dir tutorial/logs --port 7575
+inspect view --log-dir tutorial/recorded --port 7575
 ```
 
-For a mock run, use `--log-dir tutorial/mock-logs` instead. Open [localhost:7575](http://localhost:7575), select the evaluation, and open a sample. Look at the question, system instruction, model answer, target, and score. Stop the viewer with `Ctrl+C`.
+In that run on 2026-10-18:
 
-## 5. Make one change
+1. The agent read `project.py` and checked the broken function. The shell returned `sum_even([1,2,3,4]) = 10`.
+2. The agent rewrote the file to sum only even integers. The actual generated implementation is visible in the tool call and the scorer's answer.
+3. The agent ran its own checks for empty inputs, negative numbers, and input preservation.
+4. The model finished after four generations and four shell tool calls. Its first generation requested two shell commands.
+5. The scorer then read the saved source and ran the five fixed tests in `grader`. All five passed, giving this sample accuracy `1.0`.
 
-Add another sample to the dataset:
+When presenting, distinguish the agent's own "ALL TESTS PASSED" tool output from the scorer's independent fixed-test results. Expand the `repair_tests` score to see the latter. The recorded result demonstrates one successful repair, not general coding ability.
 
-```python
-Sample(input="What is the capital of Germany?", target="Berlin"),
+## What happens when you rerun?
+
+Inspect creates fresh sandboxes and seeds the same broken file again. The pinned image and configuration reproduce the starting environment; cached images avoid downloading dependencies again. It does not reuse the previous agent's edited file or its answers, and startup still takes time.
+
+This tutorial does not enable agent checkpointing. Restoring an unfinished agent and selected sandbox files requires separate checkpoint configuration and a compatible agent. See [Inspect's checkpointing documentation](https://inspect.aisi.org.uk/checkpointing.html). Recreating a clean starting environment is different from resuming a checkpoint.
+
+When finished on this Mac, stop the dedicated VM:
+
+```bash
+colima stop --profile inspect-tutorial
 ```
-
-Rerun the same evaluation command. Inspect now evaluates four questions and writes a new log. A live rerun makes new paid requests.
-
-You have now defined an Inspect task, run a model, scored its responses, and examined the evidence. These three questions teach the mechanics; they are not a meaningful benchmark of general model ability.
-
-## Does Inspect snapshot an environment?
-
-Inspect is an evaluation framework with optional environment management:
-
-- A Docker image and configuration define a repeatable starting environment. Inspect can start a fresh isolated sandbox for each sample. Prebuilt images avoid rebuilding dependencies, but container startup and sample setup still take time.
-- [Agent checkpointing](https://inspect.aisi.org.uk/checkpointing.html) can save registered agent state, selected sandbox filesystem paths, and Inspect's sample state. A retry can restore those into a fresh sandbox and continue. It requires a compatible Inspect version and a checkpoint-aware agent, and must be enabled explicitly.
-- A checkpoint is not a full running-machine snapshot. It does not restore arbitrary process memory, running tools, sockets, or external services.
-
-This first tutorial uses neither a sandbox nor checkpoints. The separate [coding-agent comparison runbook](comparison-runbook.md) demonstrates Docker environments and completed-task reuse after interruption. That reuse is different from restoring an unfinished agent from a checkpoint.

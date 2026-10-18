@@ -2,6 +2,7 @@
 
 ## 2026-10-18
 
+- Replaced the introductory capital-city walkthrough with a six-step coding-repair tutorial using real DeepSeek calls, isolated Docker agent and grader containers, fixed tests, and a checked-in successful evaluation log with observed tool calls and grading results.
 - Added a DeepSeek command and recorded a real 3/3 tutorial run; clarified reproducible sandboxes, opt-in agent checkpoints, and their limits compared with full-machine snapshots.
 - Added a beginner Inspect AI tutorial with a standalone three-question evaluation, minimal dependencies, live and no-key mock commands, and a results-viewer walkthrough; linked it from the README and documentation index.
 
