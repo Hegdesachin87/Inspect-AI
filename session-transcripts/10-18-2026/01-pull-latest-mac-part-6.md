@@ -1,0 +1,182 @@
+---
+type: "transcript"
+title: "Clarify tutorial mock testing"
+description: "Verbatim user prompts and assistant responses from an agent session, with tool calls and thinking condensed."
+timestamp: "2026-10-18T16:18:07+00:00"
+source: "2026-10-18T16-09-38-645Z_01a14fc6-9c55-7c56-89ad-806a065c7a8c.jsonl"
+---
+
+# Clarify tutorial mock testing
+
+Source: 2026-10-18T16-09-38-645Z_01a14fc6-9c55-7c56-89ad-806a065c7a8c.jsonl (pi) · Session: 01a14fc6-9c55-7c56-89ad-806a065c7a8c
+
+Prompts and responses are copied verbatim. Quoted *Activity* lines are editorial summaries of tool calls and model thinking, not source text.
+
+## Prompt 1
+
+pull latest on https://github.com/Hegdesachin87/Inspect-AI.git
+
+## Response 1
+
+> *Activity:* Checked the repository, pulled main, and read transcript instructions while preserving untracked files.
+
+Pulled the latest `main` successfully, now at `d890d8d`. Your untracked `.DS_Store` files were left untouched.
+
+
+> *Activity:* Exported, checked, committed, and pushed session transcripts using the documented tooling.
+
+Pulled latest `main` successfully. Local files were preserved. Session transcript saved and pushed.
+
+## Prompt 2
+
+can you give me the demo, how to run it?
+
+## Response 2
+
+> *Activity:* Read the README, runbook, and runner; checked local tools, saved logs, and viewer options.
+
+The recorded demo is already on this Mac, so you can view it without Docker or API calls. I also checked the fresh-run commands. The current model is `deepseek-flash`, and the `shared` phase does make model calls despite what the README's phase table says.
+
+
+> *Activity:* Exported, checked, committed, and pushed session transcripts using the documented tooling.
+
+### View the recorded demo
+
+No Docker or API key needed. Run:
+
+```bash
+cd /Users/ankitsingh/dev/Inspect-AI
+
+.venv-comparison/bin/inspect view \
+  --log-dir comparison/runs/2026-10-04-demo/live/inspect/logs \
+  --port 7575
+```
+
+Open **http://localhost:7575**. Select a task to see the broken Python code, the agent's commands and repairs, and its test score.
+
+### Run a fresh comparison
+
+This runs three repair tasks through Inspect, Ragas, DeepEval, and MLflow, then tests recovery after interruption. It makes paid model calls.
+
+Your virtual environment already exists. Start Docker:
+
+```bash
+previous_context=$(docker context show)
+colima start --profile inspect-comparison --cpu 2 --memory 2 --disk 8
+docker context use "$previous_context"
+
+export DOCKER_HOST="unix://$HOME/.colima/inspect-comparison/docker.sock"
+docker pull python:3.12-slim
+```
+
+Enter a **DeepSeek API key**, matching the current `deepseek-flash` model:
+
+```bash
+export OPENAI_BASE_URL="https://api.deepseek.com"
+printf 'DeepSeek API key: '
+read -r -s OPENAI_API_KEY
+export OPENAI_API_KEY
+echo
+```
+
+Run all four frameworks:
+
+```bash
+RUN="comparison/runs/demo-$(date +%Y%m%d-%H%M%S)"
+.venv-comparison/bin/python -m comparison.run --output "$RUN"
+```
+
+Results go into `$RUN/summary.json`. To inspect the new agent conversations:
+
+```bash
+.venv-comparison/bin/inspect view \
+  --log-dir "$RUN/live/inspect/logs" --port 7575
+```
+
+Stop the earlier viewer with `Ctrl+C` before reusing its port.
+
+## Prompt 3
+
+what is the demo?
+
+## Response 3
+
+> *Activity:* Exported, checked, committed, and pushed session transcripts using the documented tooling.
+
+The demo compares **four frameworks running the same AI coding-repair task**: Inspect AI, Ragas, DeepEval, and MLflow.
+
+The AI receives broken Python code and a shell tool. It must fix three functions:
+- Turn text into a URL slug.
+- Merge overlapping intervals.
+- Split a list into chunks.
+
+Fixed tests check each repair. You can inspect the agent's conversation, commands, final code, and scores.
+
+The demo also interrupts runs and restarts them to see which frameworks reuse completed work.
+
+**The point is to compare how the frameworks run, record, and resume experiments, not which makes the AI smarter.**
+
+## Prompt 4
+
+we are supposed to teach InspectAI, dos this tutorial explain that?
+
+## Response 4
+
+> *Activity:* Exported, checked, committed, and pushed session transcripts using the documented tooling.
+
+**Only partly. The current demo compares frameworks; it isn't a step-by-step Inspect AI tutorial.** My earlier instructions showed how to run it, not how Inspect works.
+
+The code contains the right ingredients, but a teaching walkthrough should introduce them in order:
+
+1. Define one repair problem as a dataset sample.
+2. Create an Inspect `Task`.
+3. Configure the solver and shell tool.
+4. Run the agent inside a Docker sandbox.
+5. Score its repair with fixed tests.
+6. Open the evaluation log and explain what happened.
+
+Completed-task recovery can come afterward. The four-framework comparison should be optional context, not the main lesson.
+
+## Prompt 5
+
+can you create a very simple inspect ai tutorial?
+
+## Response 5
+
+> *Activity:* Checked the repository, pulled main, and read transcript instructions while preserving untracked files.
+
+I'll make a tiny question-and-answer tutorial with one file and no Docker. It will show how Inspect connects a dataset, model generation, scoring, and the results viewer.
+
+
+> *Activity:* Created and documented the tutorial. Verified real Inspect execution with mock model replies, checked correct and incorrect scores and provider loading without live API calls, then committed and pushed the changes.
+
+The tutorial is written and tested. It covers three questions, scoring, and the log viewer, with a no-key mock run and an optional paid OpenAI run. I verified correct and incorrect answers without making any paid calls.
+
+
+> *Activity:* Exported, checked, committed, and pushed session transcripts using the documented tooling.
+
+Created and pushed to `main`.
+
+- [Tutorial](docs/inspect-ai-tutorial.md): step-by-step explanation.
+- [Example](tutorial/first_eval.py): 22 lines covering questions, model generation, and scoring.
+
+Try it now without an API key or Docker:
+
+```bash
+source .venv-tutorial/bin/activate
+
+inspect eval tutorial/first_eval.py \
+  --model mockllm/model --log-dir tutorial/mock-logs
+
+inspect view --log-dir tutorial/mock-logs --port 7575
+```
+
+Open **http://localhost:7575**. The mock returns dummy answers, so its expected score is zero. The tutorial also explains how to run a real model.
+
+## Prompt 6
+
+did you mock everything?
+
+## Response 6
+
+> *Activity:* Exported, checked, committed, and pushed session transcripts using the documented tooling.
