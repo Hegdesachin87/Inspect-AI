@@ -1,4 +1,7 @@
 .venv-comparison/
+.venv-tutorial/
+tutorial/logs/
+tutorial/mock-logs/
 .comparison-setup/
 .deepeval/
 .sessions/

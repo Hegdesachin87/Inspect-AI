@@ -1,5 +1,9 @@
 # Documentation changelog
 
+## 2026-10-18
+
+- Added a beginner Inspect AI tutorial with a standalone three-question evaluation, minimal dependencies, live and no-key mock commands, and a results-viewer walkthrough; linked it from the README and documentation index.
+
 ## 2026-10-04
 
 - Executed the four-framework coding-agent comparison and added measured shared-trajectory results, live outcomes, interruption recovery, token-cost estimates, and integration findings.
