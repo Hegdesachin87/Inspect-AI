@@ -1,6 +1,6 @@
 # Four-Framework Coding-Agent Comparison
 
-**New to Inspect AI?** Start with [the coding-repair tutorial](docs/inspect-ai-tutorial.md). Run a real DeepSeek agent in Docker, grade its repair with fixed tests, and inspect the saved evaluation log. A real recorded run is included.
+**New to Inspect AI?** Start with [the coding-repair tutorial](docs/inspect-ai-tutorial.md). Run a real DeepSeek agent in Docker, grade its repair with fixed tests, and inspect the saved evaluation log. A real recorded run is included. The [presentation and demo script](docs/inspect-ai-presentation.md) provides slides, narration, and terminal commands.
 
 A controlled, executable experiment that runs the **same** Python coding-repair agent through four LLM evaluation frameworks — **Inspect AI**, **Ragas**, **DeepEval**, and **MLflow** — and compares how each one wires up the experiment, executes it, scores the result, stores evidence, and reuses completed work after an interruption.
 

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inspect AI: a real coding-repair evaluation</title>
+<style>
+:root { color-scheme: light; --ink: #182d35; --muted: #52636b; --accent: #086e70; --paper: #f7f5ef; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: system-ui, sans-serif; }
+[hidden] { display: none !important; }
+main { max-width: 1440px; margin: auto; padding: 5vh 6vw 90px; }
+.slide { min-height: 74vh; }
+.kicker { color: var(--accent); font-size: clamp(16px, 1.5vw, 22px); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+h1 { max-width: 1000px; font-size: clamp(34px, 4.8vw, 70px); line-height: 1.08; margin: 22px 0 30px; }
+h2 { font-size: clamp(24px, 2.4vw, 36px); margin: 0 0 18px; }
+p, li { font-size: clamp(20px, 2vw, 30px); line-height: 1.45; }
+li { margin: 12px 0; }
+.subtitle { max-width: 980px; color: var(--muted); }
+.columns { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+.card { background: white; border: 1px solid #d9dfdc; border-radius: 12px; padding: 24px; }
+.card p { margin: 8px 0; }
+pre { background: #172b34; color: #eff7f4; padding: 24px; border-radius: 12px; white-space: pre-wrap; overflow-wrap: anywhere; font-size: clamp(15px, 1.6vw, 23px); line-height: 1.5; }
+code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+p code, li code { color: var(--accent); }
+.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin: 36px 0; font-size: clamp(22px, 2.6vw, 38px); }
+.flow span { padding: 18px 24px; border: 2px solid #bfd2ce; border-radius: 12px; }
+.note { color: var(--muted); font-size: clamp(17px, 1.6vw, 23px); }
+.result { color: var(--accent); font-weight: 750; font-size: clamp(32px, 4vw, 58px); }
+a { color: var(--accent); }
+footer { position: fixed; bottom: 0; width: 100%; background: var(--paper); border-top: 1px solid #d9dfdc; padding: 14px 6vw; display: flex; gap: 16px; align-items: center; }
+button { background: white; border: 1px solid #9cafaf; border-radius: 6px; padding: 8px 14px; color: var(--ink); font: inherit; cursor: pointer; }
+button:disabled { opacity: .4; cursor: default; }
+#counter { margin-left: auto; color: var(--muted); }
+.hint { color: var(--muted); font-size: 14px; }
+@media (max-height: 760px) { main { padding-top: 24px; padding-bottom: 76px; } h1 { margin: 16px 0 22px; font-size: clamp(32px, 4.2vw, 54px); } pre { padding: 18px; font-size: clamp(15px, 1.5vw, 20px); line-height: 1.35; } .slide { min-height: calc(100vh - 140px); } }
+@media (max-width: 800px) { .columns { grid-template-columns: 1fr; } .hint { display: none; } main { padding-top: 24px; } }
+@page { size: 16in 9in; margin: 0; }
+@media print { footer { display: none; } main { padding: 0; } .slide, .slide[hidden] { display: block !important; min-height: 0; break-after: page; padding: 24px; } pre { white-space: pre-wrap; } }
+</style>
+</head>
+<body>
+<main>
+<section class="slide" aria-labelledby="title-1">
+<div class="kicker">Inspect AI · Live demonstration</div>
+<h1 id="title-1">Evaluate a real coding repair</h1>
+<p class="subtitle">Give DeepSeek a broken Python file. Let it work in Docker. Grade the saved repair with fixed tests.</p>
+<div class="flow"><span>One repair problem</span> → <span>Real shell commands</span> → <span>Tested result</span></div>
+<p class="note">Inspect runs the evaluation. DeepSeek proposes the repair. Python tests determine the score.</p>
+</section>
+
+<section class="slide" hidden aria-labelledby="title-2">
+<div class="kicker">Step 1 · Dataset sample</div>
+<h1 id="title-2">Define the problem and starting file</h1>
+<div class="columns">
+<div><h2>The broken function</h2><pre><code>def sum_even(numbers):
+    return sum(numbers)</code></pre><p><code>[1, 2, 3, 4]</code> gives <strong>10</strong>.<br>We want <strong>6</strong>.</p></div>
+<div class="card"><h2>One Sample</h2><p><code>input</code> describes the repair.</p><p><code>files</code> supplies the broken file at <code>/workspace/project.py</code>.</p><p>Also handle empty lists and negative integers. Do not change the input list.</p></div>
+</div>
+<p class="note">The final file is the answer being evaluated. A correct-looking chat reply is not enough.</p>
+</section>
+
+<section class="slide" hidden aria-labelledby="title-3">
+<div class="kicker">Step 2 · Inspect Task</div>
+<h1 id="title-3">Connect the experiment</h1>
+<div class="columns">
+<div class="card"><h2>Task</h2><p>Dataset: what problem to attempt.</p><p>Solver: how the model works.</p><p>Sandbox: where commands execute.</p><p>Scorer: how the result is judged.</p></div>
+<div><p><code>@task</code> makes <code>repair()</code> discoverable by the Inspect CLI.</p><p>The CLI selects the model. The task supplies the experiment.</p><p class="note">Our code defines the problem and tests. Inspect supplies execution, tool dispatch, sandbox lifecycle, metrics, and logs.</p></div>
+</div>
+</section>
+
+<section class="slide" hidden aria-labelledby="title-4">
+<div class="kicker">Step 3 · Solver and shell tool</div>
+<h1 id="title-4">Let the model inspect, edit, and check</h1>
+<pre><code>solver=[
+    system_message(
+        "You are fixing a Python function. Edit the actual file, not just "
+        "your final reply. Work in /workspace and check your repair."
+    ),
+    use_tools(bash(timeout=30, sandbox="default")),
+    generate(),
+]</code></pre>
+<p><code>generate()</code> runs the conversation and tool-call loop.</p>
+<p class="note">Each shell call has a 30-second timeout. This task allows at most six model turns.</p>
+</section>
+
+<section class="slide" hidden aria-labelledby="title-5">
+<div class="kicker">Step 4 · Docker sandbox</div>
+<h1 id="title-5">Keep repair and grading separate</h1>
+<div class="columns">
+<div class="card"><h2>Agent: default</h2><p>Receives the broken file.</p><p>The model's bash tool runs here.</p><p>No fixed grading tests are supplied here.</p></div>
+<div class="card"><h2>Grader: grader</h2><p>Receives the final source after the agent finishes.</p><p>Runs our fixed tests.</p><p>The model's shell tool cannot access it.</p></div>
+</div>
+<p class="note">Pinned Python image. Separate temporary filesystems. No network, host mounts, or API keys in either container.</p>
+<p class="note">This is a cooperative repair exercise, not a hardened anti-cheating benchmark.</p>
+</section>
+
+<section class="slide" hidden aria-labelledby="title-6">
+<div class="kicker">Step 4 · Switch to the live terminal</div>
+<h1 id="title-6">Run the evaluation</h1>
+<pre><code>RUN="tutorial/repair-logs/demo-$(date +%Y%m%d-%H%M%S)"
+
+OPENAI_API_KEY="$DEEPSEEK_API_KEY" inspect eval tutorial/repair.py \
+  --model openai/deepseek-flash \
+  --model-base-url https://api.deepseek.com \
+  --log-dir "$RUN"</code></pre>
+<p>The API request goes to DeepSeek. The shell work runs in Docker.</p>
+<p class="note">Environment and Docker setup happen before the talk. This command makes real paid model requests. A successful outcome is not guaranteed.</p>
+</section>
+
+<section class="slide" hidden aria-labelledby="title-7">
+<div class="kicker">Step 5 · Fixed-test scoring</div>
+<h1 id="title-7">Test the saved file, not the claim</h1>
+<div class="columns">
+<div><ul><li>Mixed even and odd values.</li><li>Empty input.</li><li>All-odd input.</li><li>Negative integers and zero.</li><li>Input list stays unchanged.</li></ul></div>
+<div class="card"><h2>No LLM judge</h2><pre><code>python -B -m unittest -v fixed_tests</code></pre><p>All tests pass → sample score 1.</p><p>Any test fails → sample score 0.</p></div>
+</div>
+<p class="note">There is one sample and five tests. Accuracy 1.0 means that one repair passed every fixed test.</p>
+</section>
+
+<section class="slide" hidden aria-labelledby="title-8">
+<div class="kicker">Step 6 · Evaluation log</div>
+<h1 id="title-8">Show what actually happened</h1>
+<div class="columns">
+<div><ol><li>Open the new evaluation and sample <code>sum-even</code>.</li><li>Inspect bash commands and their outputs.</li><li>Inspect the repaired source.</li><li>Expand the <code>repair_tests</code> score.</li></ol></div>
+<div class="card"><h2>Real recorded run · 2026-10-18</h2><p>4 model generations.</p><p>4 shell tool calls.</p><p>5 fixed tests passed.</p><p class="result">Accuracy 1.0</p></div>
+</div>
+<p class="note">Those counts describe the saved run. Use the actual log for today's live result, even if it fails.</p>
+</section>
+
+<section class="slide" hidden aria-labelledby="title-9">
+<div class="kicker">What Inspect supplied</div>
+<h1 id="title-9">A repeatable experiment with evidence</h1>
+<div class="flow"><span>Dataset + Task</span> → <span>Model + tools + sandbox</span> → <span>Tests + log</span></div>
+<p>We authored the repair problem, environment configuration, and fixed tests. Inspect ran them together and recorded the result.</p>
+<p class="note">A rerun starts with a fresh broken file. This demo recreates the starting environment; it does not demonstrate checkpoint restoration.</p>
+<p class="note">One repair teaches the workflow. It does not establish general coding ability.</p>
+</section>
+</main>
+<footer>
+<button id="previous" type="button" aria-label="Previous slide">← Back</button>
+<button id="next" type="button" aria-label="Next slide">Next →</button>
+<button id="fullscreen" type="button">Full screen</button>
+<span class="hint">Arrow keys to navigate · Home / End · Print to save as PDF</span>
+<span id="counter" aria-live="polite"></span>
+</footer>
+<noscript><p>Enable JavaScript for slide navigation, or print this page to show all slides.</p></noscript>
+<script>
+const slides = Array.from(document.querySelectorAll('.slide'));
+const previous = document.getElementById('previous');
+const next = document.getElementById('next');
+const counter = document.getElementById('counter');
+let current = 0;
+function show(index) {
+  current = Math.max(0, Math.min(slides.length - 1, index));
+  slides.forEach((slide, i) => { slide.hidden = i !== current; });
+  previous.disabled = current === 0;
+  next.disabled = current === slides.length - 1;
+  counter.textContent = `${current + 1} / ${slides.length}`;
+  document.title = `${current + 1}. ${slides[current].querySelector('h1').textContent} | Inspect AI`;
+  window.scrollTo(0, 0);
+}
+previous.addEventListener('click', () => show(current - 1));
+next.addEventListener('click', () => show(current + 1));
+document.addEventListener('keydown', (event) => {
+  if (event.altKey || event.ctrlKey || event.metaKey || event.target.closest('input, textarea, select')) return;
+  if (event.key === 'ArrowRight' || event.key === 'PageDown') { event.preventDefault(); show(current + 1); }
+  if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); show(current - 1); }
+  if (event.key === 'Home') { event.preventDefault(); show(0); }
+  if (event.key === 'End') { event.preventDefault(); show(slides.length - 1); }
+});
+document.getElementById('fullscreen').addEventListener('click', async () => {
+  try {
+    if (document.fullscreenElement) await document.exitFullscreen();
+    else await document.documentElement.requestFullscreen();
+  } catch { document.getElementById('fullscreen').textContent = 'Use browser full screen'; }
+});
+show(0);
+</script>
+</body>
+</html>
