@@ -1,0 +1,351 @@
+---
+type: "transcript"
+title: "Inspect versus other evaluation frameworks"
+description: "Verbatim user prompts and assistant responses from an agent session, with tool calls and thinking condensed."
+timestamp: "2026-10-18T16:49:44+00:00"
+source: "2026-10-18T16-09-38-645Z_01a14fc6-9c55-7c56-89ad-806a065c7a8c.jsonl"
+---
+
+# Inspect versus other evaluation frameworks
+
+Source: 2026-10-18T16-09-38-645Z_01a14fc6-9c55-7c56-89ad-806a065c7a8c.jsonl (pi) · Session: 01a14fc6-9c55-7c56-89ad-806a065c7a8c
+
+Prompts and responses are copied verbatim. Quoted *Activity* lines are editorial summaries of tool calls and model thinking, not source text.
+
+## Prompt 1
+
+pull latest on https://github.com/Hegdesachin87/Inspect-AI.git
+
+## Response 1
+
+> *Activity:* Checked repository status, pulled main, and checked prerequisites while preserving unrelated untracked files.
+
+Pulled the latest `main` successfully, now at `d890d8d`. Your untracked `.DS_Store` files were left untouched.
+
+
+> *Activity:* Exported, verified, committed, and pushed session transcripts with the documented tooling.
+
+Pulled latest `main` successfully. Local files were preserved. Session transcript saved and pushed.
+
+## Prompt 2
+
+can you give me the demo, how to run it?
+
+## Response 2
+
+> *Activity:* Read the README, runbook, and comparison runner; checked tools, saved logs, and viewer options.
+
+The recorded demo is already on this Mac, so you can view it without Docker or API calls. I also checked the fresh-run commands. The current model is `deepseek-flash`, and the `shared` phase does make model calls despite what the README's phase table says.
+
+
+> *Activity:* Exported, verified, committed, and pushed session transcripts with the documented tooling.
+
+### View the recorded demo
+
+No Docker or API key needed. Run:
+
+```bash
+cd /Users/ankitsingh/dev/Inspect-AI
+
+.venv-comparison/bin/inspect view \
+  --log-dir comparison/runs/2026-10-04-demo/live/inspect/logs \
+  --port 7575
+```
+
+Open **http://localhost:7575**. Select a task to see the broken Python code, the agent's commands and repairs, and its test score.
+
+### Run a fresh comparison
+
+This runs three repair tasks through Inspect, Ragas, DeepEval, and MLflow, then tests recovery after interruption. It makes paid model calls.
+
+Your virtual environment already exists. Start Docker:
+
+```bash
+previous_context=$(docker context show)
+colima start --profile inspect-comparison --cpu 2 --memory 2 --disk 8
+docker context use "$previous_context"
+
+export DOCKER_HOST="unix://$HOME/.colima/inspect-comparison/docker.sock"
+docker pull python:3.12-slim
+```
+
+Enter a **DeepSeek API key**, matching the current `deepseek-flash` model:
+
+```bash
+export OPENAI_BASE_URL="https://api.deepseek.com"
+printf 'DeepSeek API key: '
+read -r -s OPENAI_API_KEY
+export OPENAI_API_KEY
+echo
+```
+
+Run all four frameworks:
+
+```bash
+RUN="comparison/runs/demo-$(date +%Y%m%d-%H%M%S)"
+.venv-comparison/bin/python -m comparison.run --output "$RUN"
+```
+
+Results go into `$RUN/summary.json`. To inspect the new agent conversations:
+
+```bash
+.venv-comparison/bin/inspect view \
+  --log-dir "$RUN/live/inspect/logs" --port 7575
+```
+
+Stop the earlier viewer with `Ctrl+C` before reusing its port.
+
+## Prompt 3
+
+what is the demo?
+
+## Response 3
+
+> *Activity:* Exported, verified, committed, and pushed session transcripts with the documented tooling.
+
+The demo compares **four frameworks running the same AI coding-repair task**: Inspect AI, Ragas, DeepEval, and MLflow.
+
+The AI receives broken Python code and a shell tool. It must fix three functions:
+- Turn text into a URL slug.
+- Merge overlapping intervals.
+- Split a list into chunks.
+
+Fixed tests check each repair. You can inspect the agent's conversation, commands, final code, and scores.
+
+The demo also interrupts runs and restarts them to see which frameworks reuse completed work.
+
+**The point is to compare how the frameworks run, record, and resume experiments, not which makes the AI smarter.**
+
+## Prompt 4
+
+we are supposed to teach InspectAI, dos this tutorial explain that?
+
+## Response 4
+
+> *Activity:* Exported, verified, committed, and pushed session transcripts with the documented tooling.
+
+**Only partly. The current demo compares frameworks; it isn't a step-by-step Inspect AI tutorial.** My earlier instructions showed how to run it, not how Inspect works.
+
+The code contains the right ingredients, but a teaching walkthrough should introduce them in order:
+
+1. Define one repair problem as a dataset sample.
+2. Create an Inspect `Task`.
+3. Configure the solver and shell tool.
+4. Run the agent inside a Docker sandbox.
+5. Score its repair with fixed tests.
+6. Open the evaluation log and explain what happened.
+
+Completed-task recovery can come afterward. The four-framework comparison should be optional context, not the main lesson.
+
+## Prompt 5
+
+can you create a very simple inspect ai tutorial?
+
+## Response 5
+
+> *Activity:* Checked repository status, pulled main, and checked prerequisites while preserving unrelated untracked files.
+
+I'll make a tiny question-and-answer tutorial with one file and no Docker. It will show how Inspect connects a dataset, model generation, scoring, and the results viewer.
+
+
+> *Activity:* Created and documented the introductory tutorial, tested Inspect with controlled model replies and provider loading, and committed and pushed the changes.
+
+The tutorial is written and tested. It covers three questions, scoring, and the log viewer, with a no-key mock run and an optional paid OpenAI run. I verified correct and incorrect answers without making any paid calls.
+
+
+> *Activity:* Exported, verified, committed, and pushed session transcripts with the documented tooling.
+
+Created and pushed to `main`.
+
+- [Tutorial](docs/inspect-ai-tutorial.md): step-by-step explanation.
+- [Example](tutorial/first_eval.py): 22 lines covering questions, model generation, and scoring.
+
+Try it now without an API key or Docker:
+
+```bash
+source .venv-tutorial/bin/activate
+
+inspect eval tutorial/first_eval.py \
+  --model mockllm/model --log-dir tutorial/mock-logs
+
+inspect view --log-dir tutorial/mock-logs --port 7575
+```
+
+Open **http://localhost:7575**. The mock returns dummy answers, so its expected score is zero. The tutorial also explains how to run a real model.
+
+## Prompt 6
+
+did you mock everything?
+
+## Response 6
+
+> *Activity:* Exported, verified, committed, and pushed session transcripts with the documented tooling.
+
+No. **Only the model's replies were mocked during testing.** Inspect's dataset handling, solver execution, scoring, and log creation all ran for real.
+
+I haven't tested a live model call. The tutorial includes the command to use OpenAI with your API key.
+
+## Prompt 7
+
+we can use deepseek key in the terminal. ALSO i need to know isnt inspect ai tool to create a snapshot of environment and then quickly load same environment whenever working on a evaluation?
+
+## Response 7
+
+> *Activity:* Checked repository status, pulled main, and checked prerequisites while preserving unrelated untracked files.
+
+The DeepSeek key is available. I'll use it for a real run of the three-question tutorial.
+
+Inspect is primarily an evaluation framework. It can recreate isolated environments from Docker images and configuration, but that is different from automatically snapshotting and restoring a running environment.
+
+
+> *Activity:* Read sandbox and checkpoint documentation, checked installed support, ran the real DeepSeek capital-city evaluation, and documented the result and checkpoint distinctions.
+
+The real DeepSeek run passed all three questions.
+
+I also found an important qualification to my earlier answer: Inspect supports opt-in agent checkpoints. These can restore saved agent state and selected sandbox files into a fresh container, but not process memory or a whole running machine. The tutorial now explains that distinction and includes the DeepSeek command.
+
+
+> *Activity:* Read sandbox and checkpoint documentation, checked installed support, ran the real DeepSeek capital-city evaluation, and documented the result and checkpoint distinctions.
+
+I used the terminal's DeepSeek key for a real run. **All three questions passed.**
+
+On environments, **you're partly right. My earlier explanation was incomplete.** Inspect supports two different things:
+
+- **Repeatable starting environments.** Define a Docker image and configuration. Inspect starts fresh sandboxes from them for evaluation samples. A prebuilt image avoids reinstalling dependencies.
+- **Checkpoint and resume.** When enabled with a compatible agent, Inspect saves agent state and selected sandbox files, then restores them after interruption.
+
+That isn't a full running-machine snapshot. Process memory, running commands, and external services aren't restored. Loading isn't necessarily instantaneous.
+
+The simple tutorial teaches the evaluation loop only. **It does not yet demonstrate sandbox recreation or checkpoint restoration.** I've added the DeepSeek command and this distinction to the [tutorial](docs/inspect-ai-tutorial.md).
+
+## Prompt 8
+
+ok prepare an actual tutorial then, dont just fake/mock. isnt proper tutorial:  1. Define one repair problem as a dataset sample.                                                                                                                                 
+ 2. Create an Inspect Task.                                                                                                                                                        
+ 3. Configure the solver and shell tool.                                                                                                                                           
+ 4. Run the agent inside a Docker sandbox.                                                                                                                                         
+ 5. Score its repair with fixed tests.                                                                                                                                             
+ 6. Open the evaluation log and explain what happened.
+
+## Response 8
+
+> *Activity:* Checked repository status, pulled main, and checked prerequisites while preserving unrelated untracked files.
+
+I'll build that six-step tutorial around one broken Python function, then run it with DeepSeek in a real Docker sandbox. The scorer will run fixed tests in a separate container the agent cannot access. I'll also check the evaluation log and document what the agent actually did.
+
+
+> *Activity:* Built and ran the real Docker repair task with DeepSeek and a separate fixed-test grader. The startup monitor idled despite completed startup, so Docker readiness was confirmed directly. Verified the successful repair and failing broken-code control, saved the real log after checking for API-key values, and updated the tutorial.
+
+The real run succeeded. DeepSeek inspected the file, reproduced the wrong result, edited the function, and checked its repair. All five fixed grading tests then passed in the separate container.
+
+I also verified that the original broken code fails those tests. The rewritten tutorial follows your six steps and includes the real evaluation log.
+
+
+> *Activity:* Started the recorded repair viewer, verified HTTP 200, opened it in the browser, checked sandbox cleanup, and committed and pushed the real repair tutorial and artifacts.
+
+Created the [six-step tutorial](docs/inspect-ai-tutorial.md) and pushed it to `main`.
+
+It uses a real DeepSeek agent to repair `sum_even()` inside Docker, then grades the saved file in a separate container.
+
+Verified:
+- Original code failed four of five fixed tests.
+- DeepSeek's repair passed all five.
+- The actual evaluation log is included.
+
+The log viewer is running and opened at **http://127.0.0.1:7575**. Select `repair`, then `sum-even`, to inspect the commands, repaired source, and independent grading results.
+
+## Prompt 9
+
+how do i explain: 
+
+ 1. Define one repair problem as a dataset sample.                                                                                                                                 
+ 2. Create an Inspect Task.                                                                                                                                                        
+ 3. Configure the solver and shell tool.                                                                                                                                           
+ 4. Run the agent inside a Docker sandbox.                                                                                                                                         
+ 5. Score its repair with fixed tests.                                                                                                                                             
+ 6. Open the evaluation log and explain what happened.
+
+
+Can you make me a presentation, and commands i need to run, pretend i am demoing to an audience
+
+## Response 9
+
+> *Activity:* Read writing instructions or prepared the response. Thinking text was not visible.
+
+I'll make a browser slide deck and a presenter script for the six steps, with what to say, what to show, and the commands to run. It will use the real repair example and include a clearly labeled recorded-run fallback.
+
+
+> *Activity:* Created the browser slides and presenter guide with narration, live commands, and a labeled fallback. Tested actual Chrome navigation and layouts at two screen sizes; fixed a footer overlap and a stale scratch-browser debug-port file, then verified navigation and layout again. Checked shell syntax and links and opened the deck. No additional model calls were made.
+
+The nine-slide deck is open in your browser. The presenter guide has narration, source-code cues, exact commands, and wording for both a successful and a failed live run.
+
+I checked slide navigation and layout in Chrome at 1440×900 and 1280×720. No additional model calls were needed.
+
+
+> *Activity:* Committed and pushed the presentation and presenter guide, then exported the session transcript with the documented script.
+
+Created and pushed both:
+
+- [Nine-slide presentation](docs/inspect-ai-slides.html), already opened in your browser.
+- [Presenter script](docs/inspect-ai-presentation.md), with exactly what to say, show, and run for each step.
+
+Start your talk with:
+
+> “Today I'll give DeepSeek a broken Python function and let it repair the file inside Docker. Then we'll use fixed tests to judge the repair and inspect the commands it actually ran.”
+
+### Live command
+
+After the preparation in the presenter script, run in Terminal A:
+
+```bash
+RUN="tutorial/repair-logs/demo-$(date +%Y%m%d-%H%M%S)"
+
+OPENAI_API_KEY="$DEEPSEEK_API_KEY" inspect eval tutorial/repair.py \
+  --model openai/deepseek-flash \
+  --model-base-url https://api.deepseek.com \
+  --log-dir "$RUN"
+```
+
+In Terminal B:
+
+```bash
+source .venv-tutorial/bin/activate
+inspect view --log-dir tutorial/repair-logs --port 7576
+```
+
+Open **http://localhost:7576**, select the newly created evaluation, then `sum-even`.
+
+The script walks you through the shell commands, repaired source, and independent grading results. It also includes honest narration for a failed live run and a clearly labeled recorded-run fallback.
+
+## Prompt 10
+
+ok but whats so special about inspect ai? what does it offer to us here?
+
+## Response 10
+
+> *Activity:* Prepared the response and captured the session transcript with the documented export tooling.
+
+**Inspect doesn't make the repair smarter. It saves us from building the infrastructure to run and investigate evaluations.**
+
+In our demo, it provides:
+
+- **The agent loop.** Sends messages to DeepSeek, executes requested shell tools, and returns their outputs.
+- **Sandbox management.** Starts the Docker containers, supplies the broken file, and cleans up afterward. We still define the image and isolation settings.
+- **Evaluation execution.** Connects each problem to the solver and scorer, enforces configured limits, and calculates metrics.
+- **An inspectable record.** Saves model messages, tool calls, outputs, repaired source, test results, and token usage. The viewer lets us investigate failures.
+
+We still write the repair requirements and fixed tests. DeepSeek writes the repair. Python tests determine correctness.
+
+**For one function, a Python script would be enough.** Inspect becomes useful when we evaluate many problems or compare models repeatedly without rebuilding the execution, scoring, and logging machinery.
+
+Your presentation's main point should be:
+
+> “We're demonstrating a repeatable, inspectable evaluation of an agent, not just watching an AI fix code.”
+
+## Prompt 11
+
+but what is special about it versus other evaluation framework?
+
+## Response 11
+
+> *Activity:* Read the recorded four-framework comparison results to verify execution ownership, equal grading, and completed-task reuse evidence; captured the session transcript.
