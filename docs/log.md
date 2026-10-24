@@ -1,5 +1,9 @@
 # Documentation changelog
 
+## 2026-10-24
+
+- Added a consolidated experiment account covering the project timeline, motivating question, comparison design and build, measured results, portability work, teaching arc, framework conclusions, and known gaps.
+
 ## 2026-10-18
 
 - Added a nine-slide browser presentation and presenter script covering the six repair-demo steps, terminal preparation, live DeepSeek commands, log walkthrough, and clearly labeled recorded-run fallback.
