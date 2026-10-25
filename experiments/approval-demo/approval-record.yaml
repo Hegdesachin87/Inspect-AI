@@ -1,0 +1,16 @@
+# Unattended recording policy: same allowlist tiers as approval.yaml, but the
+# final tier auto-REJECTS anything that escalates (instead of prompting a human).
+# This reproduces the decision chain without an interactive terminal.
+approvers:
+  - name: bash_allowlist
+    tools: "*bash*"
+    allowed_commands: ["ls", "echo", "cat"]
+
+  - name: python_allowlist
+    tools: "*python*"
+    allowed_functions: ["print"]
+    allowed_modules: ["math"]
+
+  - name: auto
+    tools: "*"
+    decision: reject

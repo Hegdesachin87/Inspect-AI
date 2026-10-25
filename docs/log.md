@@ -2,6 +2,7 @@
 
 ## 2026-10-25
 
+- Added a runnable packaging of experiment 2 under experiments/approval-demo (task, interactive and unattended approval policies, decision-chain summarizer, slide deck) with a recorded run, and linked it from the guide.
 - Added a runnable packaging of experiment 1 under experiments/judge-swap (task, four-arm runner, judge-matrix summarizer, slide deck) with a recorded DeepSeek run, and documented the z.ai chat-completions requirement in the guide.
 - Added five small hands-on experiments sourced from the official Inspect tutorial, docs, and examples, with commands smoke-tested against inspect-ai 0.3.276 and DeepSeek provider notes.
 

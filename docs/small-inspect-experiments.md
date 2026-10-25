@@ -81,6 +81,8 @@ Requires Docker and an interactive terminal. `ls` sails through the custom `bash
 
 **Expect to find:** the run freezes exactly at the dangerous call and resumes after your decision — the core governance primitive for agentic AI, experienced rather than described. The two custom `@approver`s in [approval.py](../reference/inspect_ai/examples/approval/approval.py) are ~40 lines each and worth reading aloud in class.
 
+**Runnable version:** [`experiments/approval-demo/`](../experiments/approval-demo/README.md) — task + both policies (interactive human tier and unattended auto-reject recording), `run.sh`, decision-chain `summarize.py`, and `approval-demo.pptx`.
+
 **Sources:** [Approval mode](https://inspect.aisi.org.uk/approval.html) · example: [`reference/inspect_ai/examples/approval/`](../reference/inspect_ai/examples/approval/README.md)
 
 ---
