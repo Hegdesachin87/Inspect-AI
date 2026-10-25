@@ -55,9 +55,13 @@ inspect score "$L" --scorer model_graded_fact \
 
 **Expect to find:** the deterministic `includes` matcher mis-scores open-ended answers (it cannot judge paraphrases — that limitation is the lesson); the model judge handles them, and self- vs cross-grading diverges on borderline samples. This is grader bias, measured on your own log for about a cent.
 
+**Runnable version:** [`experiments/judge-swap/`](../experiments/judge-swap/README.md) — self-contained task, `run.sh` (all arms), `summarize.py` (judge matrix), and `judge-swap.pptx` (deck explaining the experiment).
+
 **Sources:** [Scoring workflow](https://inspect.aisi.org.uk/scoring-workflow.html) · [Model-graded scorers](https://inspect.aisi.org.uk/model-graded.html) (self-grading default and `model_role` precedence) · example: [`reference/inspect_ai/examples/theory_of_mind.py`](../reference/inspect_ai/examples/theory_of_mind.py)
 
 ---
+
+**z.ai note:** z.ai's OpenAI-compatible endpoint serves chat completions only — add `-M responses_api=false` or Inspect 0.3.276 calls `/responses` and gets a 404 (the run script does this for you). Verify account balance before a run: an unfunded key returns error 1113 on every model.
 
 ## 2. Human approval of a dangerous command
 

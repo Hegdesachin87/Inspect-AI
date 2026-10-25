@@ -18,3 +18,4 @@ comparison/runs/**/.test_run.lock
 node_modules/
 package.json
 package-lock.json
+.venv-pptx/
