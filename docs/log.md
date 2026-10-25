@@ -1,5 +1,9 @@
 # Documentation changelog
 
+## 2026-10-25
+
+- Added five small hands-on experiments sourced from the official Inspect tutorial, docs, and examples, with commands smoke-tested against inspect-ai 0.3.276 and DeepSeek provider notes.
+
 ## 2026-10-24
 
 - Added a consolidated experiment account covering the project timeline, motivating question, comparison design and build, measured results, portability work, teaching arc, framework conclusions, and known gaps.

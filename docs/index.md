@@ -1,6 +1,7 @@
 # Documentation
 
 - [The four-framework experiment, complete account](experiment-report.md): Consolidates the origin, design, measured results, teaching arc, and framework conclusions of the Inspect-versus-Ragas/DeepEval/MLflow comparison into one document.
+- [Five small Inspect AI experiments](small-inspect-experiments.md): Minutes-scale, cents-scale hands-on experiments from the official tutorial, docs, and examples — judge swaps on one log, human approval, a two-model tool probe, cache A/B, and a five-sample LLM-judge eval.
 - [Presentation and live-demo script](inspect-ai-presentation.md): Provides slide-by-slide narration, audience-demo commands, and a labeled real-recording fallback.
 - [Browser slide deck](inspect-ai-slides.html): Presents the six-step Inspect coding-repair workflow in nine slides with keyboard navigation and PDF printing.
 - [Repair one Python function with Inspect AI](inspect-ai-tutorial.md): Teaches a real DeepSeek agent, Docker sandboxes, fixed-test scoring, and reading the recorded evaluation log.
